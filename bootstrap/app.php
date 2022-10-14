@@ -1,4 +1,9 @@
 <?php
+/*
+ *  Author: Raul Perusquia <raul@inikoo.com>
+ *  Created: Fri, 14 Oct 2022 14:09:24 Central European Summer Time, Sheffield, UK
+ *  Copyright (c) 2022, Raul A Perusquia Flores
+ */
 
 /*
 |--------------------------------------------------------------------------
@@ -11,7 +16,7 @@
 |
 */
 
-$app = new Illuminate\Foundation\Application(
+$app = new Gecche\Multidomain\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 

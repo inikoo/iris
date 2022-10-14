@@ -1,9 +1,14 @@
 <?php
+/*
+ *  Author: Raul Perusquia <raul@inikoo.com>
+ *  Created: Fri, 14 Oct 2022 14:10:15 Central European Summer Time, Sheffield, UK
+ *  Copyright (c) 2022, Raul A Perusquia Flores
+ */
 
 namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
-use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Gecche\Multidomain\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {

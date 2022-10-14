@@ -1,8 +1,13 @@
 <?php
+/*
+ *  Author: Raul Perusquia <raul@inikoo.com>
+ *  Created: Fri, 14 Oct 2022 14:09:37 Central European Summer Time, Sheffield, UK
+ *  Copyright (c) 2022, Raul A Perusquia Flores
+ */
 
 namespace App\Http;
 
-use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Gecche\Multidomain\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
