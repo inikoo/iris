@@ -16,3 +16,5 @@ yarn-error.log
 /.idea
 /.vscode
 config/domain.php
+storage/**
+.env.*
