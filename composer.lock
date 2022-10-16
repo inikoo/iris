@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "29c2c5c3d8ff041c998f4688557a21c7",
+    "content-hash": "5d309913a41f6013e5c572ca01158291",
     "packages": [
         {
             "name": "brick/math",
@@ -1891,6 +1891,55 @@
                 }
             ],
             "time": "2022-01-25T15:50:27+00:00"
+        },
+        {
+            "name": "michaelachrisco/readonly",
+            "version": "v0.50.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/michaelachrisco/ReadOnlyTraitLaravel.git",
+                "reference": "dca9d5bef52650608f49203873848c88fe039eff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/michaelachrisco/ReadOnlyTraitLaravel/zipball/dca9d5bef52650608f49203873848c88fe039eff",
+                "reference": "dca9d5bef52650608f49203873848c88fe039eff",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "illuminate/database": "=8.83.23",
+                "kahlan/kahlan": "^2.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MichaelAChrisco\\ReadOnly\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Chrisco",
+                    "email": "michaelachrisco@gmail.com"
+                }
+            ],
+            "description": "Readonly Models for Laravel 5+",
+            "keywords": [
+                "Read-Only",
+                "eloquent",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/michaelachrisco/ReadOnlyTraitLaravel/issues",
+                "source": "https://github.com/michaelachrisco/ReadOnlyTraitLaravel/tree/v0.50.0"
+            },
+            "time": "2022-09-07T16:14:13+00:00"
         },
         {
             "name": "monolog/monolog",

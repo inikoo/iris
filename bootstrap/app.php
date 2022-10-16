@@ -16,8 +16,15 @@
 |
 */
 
+$domainParams = [
+    'domain_detection_function_web' => function() {
+        return \Illuminate\Support\Arr::get($_SERVER,'HTTP_HOST');
+    }
+];
+
+
 $app = new Gecche\Multidomain\Foundation\Application(
-    $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
+    $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__), null, $domainParams
 );
 
 /*

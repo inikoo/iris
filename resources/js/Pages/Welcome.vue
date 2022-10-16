@@ -6,6 +6,7 @@ defineProps({
     canRegister: Boolean,
     laravelVersion: String,
     phpVersion: String,
+    websiteID: String,
 })
 </script>
 
@@ -110,7 +111,7 @@ defineProps({
                 </div>
 
                 <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                    Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})
+                    Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }}) w:{{websiteID}}
                 </div>
             </div>
         </div>

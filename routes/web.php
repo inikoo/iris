@@ -21,6 +21,7 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'websiteID' => app()->domain().'-'.config('website.website_id'),
     ]);
 });
 

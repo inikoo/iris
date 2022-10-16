@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'iris'),
 
     /*
     |--------------------------------------------------------------------------
@@ -35,6 +35,7 @@ return [
 
     'connections' => [
 
+        /*
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
@@ -62,8 +63,9 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
+        */
 
-        'pgsql' => [
+        'iris' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
@@ -77,21 +79,22 @@ return [
             'search_path' => 'public',
             'sslmode' => 'prefer',
         ],
-
-        'sqlsrv' => [
-            'driver' => 'sqlsrv',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', 'localhost'),
-            'port' => env('DB_PORT', '1433'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+        'pika' => [
+            'driver' => 'pgsql',
+            'url' => env('PIKA_DATABASE_URL'),
+            'host' => env('PIKA_DB_HOST', '127.0.0.1'),
+            'port' => env('PIKA_DB_PORT', '5432'),
+            'database' => env('PIKA_DB_DATABASE', 'forge'),
+            'username' => env('PIKA_DB_USERNAME', 'forge'),
+            'password' => env('PIKA_DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
-            // 'encrypt' => env('DB_ENCRYPT', 'yes'),
-            // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
+            'search_path' => env('PIKA_DB_SCHEMA', 'public'),
+            'sslmode' => 'prefer',
         ],
+
+
 
     ],
 
