@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Foundation\Application;
+use App\Actions\UI\ShowHomepage;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -15,15 +15,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-        'websiteID' => app()->domain().'-'.config('website.website_id'),
-    ]);
-});
+Route::get('/', ShowHomepage::class);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

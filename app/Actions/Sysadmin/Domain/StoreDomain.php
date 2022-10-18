@@ -24,7 +24,7 @@ class StoreDomain
 
     private ?CentralDomain $centralDomain;
 
-    public function handle(CentralDomain $centralDomain): Domain
+    public function handle(CentralDomain $centralDomain, $soft = false): Domain
     {
         $url = app()->isProduction() ? $centralDomain->domain : $centralDomain->slug.'.test';
 
@@ -38,30 +38,34 @@ class StoreDomain
                     'website_id' => $centralDomain->website_id,
                 ]
             );
-
-            $exitCode = Artisan::call("domain:add $url");
-
-
-            if ($exitCode > 0) {
-                abort(422, 'domain.add command failed');
-            }
-
-            $environmentData = json_encode(
-                [
-                    'WEBSITE_ID' => $domain->website_id,
-                    'DB_CONNECTION'=>'pika',
-                    'PIKA_DB_DATABASE'=>'pika_'.$centralDomain->tenant->code
-                ]
-            );
-
-
-            $exitCode = Artisan::call("domain:update_env --domain_values='$environmentData' $url");
-
-            if ($exitCode > 0) {
-                abort(422, 'domain.update_env command failed');
-            }
         } catch (QueryException) {
-            abort(422, 'Domain model can not be added');
+            if (!$soft) {
+                abort(422, 'Domain model can not be added');
+            }
+
+            $domain = Domain::where('url', $url)->firstOrFail();
+        }
+
+        $exitCode = Artisan::call("domain:add $url");
+
+
+        if ($exitCode > 0) {
+            abort(422, 'domain.add command failed');
+        }
+
+        $environmentData = json_encode(
+            [
+                'WEBSITE_ID'       => $domain->website_id,
+                'DB_CONNECTION'    => 'pika',
+                'PIKA_DB_DATABASE' => 'pika_'.$centralDomain->tenant->code
+            ]
+        );
+
+
+        $exitCode = Artisan::call("domain:update_env --domain_values='$environmentData' $url");
+
+        if ($exitCode > 0) {
+            abort(422, 'domain.update_env command failed');
         }
 
         return $domain;
@@ -78,9 +82,10 @@ class StoreDomain
     {
         $this->centralDomain = CentralDomain::find($request->get('central_domain_id'));
 
-
-        if (Domain::where('slug', $this->centralDomain->slug)->exists()) {
-            $validator->errors()->add('domain', 'Domain already exists.');
+        if (!$request->exists('soft')) {
+            if (Domain::where('slug', $this->centralDomain->slug)->exists()) {
+                $validator->errors()->add('domain', 'Domain already exists.');
+            }
         }
     }
 
@@ -88,7 +93,7 @@ class StoreDomain
     {
         $request->validate();
 
-        return $this->handle($this->centralDomain);
+        return $this->handle($this->centralDomain, $request->exists('soft'));
     }
 
     public function jsonResponse(Domain $domain): DomainResource

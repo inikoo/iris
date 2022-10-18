@@ -1,3 +1,9 @@
+/*
+ *  Author: Raul Perusquia <raul@inikoo.com>
+ *  Created: Sun, 16 Oct 2022 19:14:22 British Summer Time, Sheffield, UK
+ *  Copyright (c) 2022, Raul A Perusquia Flores
+ */
+
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
@@ -16,6 +22,12 @@ module.exports = {
             },
         },
     },
+    corePlugins: {
+        aspectRatio: false,
+    },
 
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/aspect-ratio'),
+    ],
 };
