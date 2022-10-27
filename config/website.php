@@ -6,6 +6,6 @@
  */
 
 return [
-    'website_id'=>env('WEBSITE_ID')
+    'id'=>env('WEBSITE_ID')
 ];
 

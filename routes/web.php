@@ -1,6 +1,6 @@
 <?php
 
-use App\Actions\UI\ShowHomepage;
+use App\Actions\Web\WebsiteNode\ShowWebsiteNode;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -15,7 +15,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', ShowHomepage::class);
+Route::get('/', [ShowWebsiteNode::class, 'home']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
