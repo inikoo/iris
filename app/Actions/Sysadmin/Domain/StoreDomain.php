@@ -27,8 +27,6 @@ class StoreDomain
     public function handle(CentralDomain $centralDomain, $soft = false): Domain
     {
         $url = app()->isProduction() ? $centralDomain->domain : $centralDomain->slug.'.test';
-
-
         try {
             $domain = Domain::create(
                 [
@@ -42,7 +40,6 @@ class StoreDomain
             if (!$soft) {
                 abort(422, 'Domain model can not be added');
             }
-
             $domain = Domain::where('url', $url)->firstOrFail();
         }
 
@@ -55,9 +52,10 @@ class StoreDomain
 
         $environmentData = json_encode(
             [
-                'WEBSITE_ID'       => $domain->website_id,
-                'DB_CONNECTION'    => 'pika',
-                'PIKA_DB_DATABASE' => 'pika_'.$centralDomain->tenant->code
+                'WEBSITE_ID'     => $domain->website_id,
+                'WEBSITE_DOMAIN'     => $domain->url,
+                'DB_CONNECTION'  => 'pika',
+                'PIKA_DB_SCHEMA' => 'pika_'.$centralDomain->tenant->code
             ]
         );
 

@@ -12,7 +12,7 @@ use App\Actions\Sysadmin\User\ShowUser;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:admin')->group(function () {
     Route::get('/user', ShowUser::class);
 
     Route::get('/domains', IndexDomains::class);

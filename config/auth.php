@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\SysAdmin\User;
+use App\Models\Web\WebUser;
 
 return [
 
@@ -42,6 +43,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'sanctum',
+            'provider' => 'admin',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -64,13 +70,14 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
+            'model' => WebUser::class,
+        ],
+        'admin' => [
+            'driver' => 'eloquent',
             'model' => User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+
     ],
 
     /*
