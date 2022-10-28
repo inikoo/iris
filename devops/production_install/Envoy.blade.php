@@ -83,10 +83,15 @@ git pull origin {{ $branch }}
 echo "***********************************************************************"
 echo "* staging code from {{ $repo_dir }} to {{ $staging_dir }} *"
 rsync   -rlptgoDPzSlh  --no-p --chmod=g=rwX  --delete  --stats --exclude-from={{ $repo_dir }}/devops/deployment/deployment-exclude-list.txt {{ $repo_dir }}/ {{ $staging_dir }}
+echo "rsync done"
+echo "chgrp www-data {{ $staging_dir }}/bootstrap/cache"
+
 sudo chgrp www-data {{ $staging_dir }}/bootstrap/cache
 
 ln -nsf {{ $path }}/.env {{ $new_release_dir }}/.env
 ln -nsf {{ $path }}/storage {{ $new_release_dir }}/storage
+ln -nsf {{ $path }}/bootstrap {{ $new_release_dir }}/bootstrap
+
 ln -nsf {{ $path }}/storage/app/public {{ $new_release_dir }}/public/storage
 
 echo "***********************************************************************"
