@@ -45,7 +45,7 @@ class Admin extends Model
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('name')
+            ->generateSlugsFrom('code')
             ->saveSlugsTo('slug');
     }
 

@@ -16,29 +16,21 @@ class StoreAdmin
 {
     use AsAction;
 
-    public string $commandSignature = 'create:admin {name} {email} {--slug=}';
-
-
-    public function handle(array $modelData): Admin
-    {
-        return Admin::create($modelData);
-    }
+    public string $commandSignature = 'create:admin-user {code} {name} {--e|email=}';
 
 
     public function asCommand(Command $command): int
     {
         $modelData = [
+            'code'  => $command->argument('name'),
             'name'  => $command->argument('name'),
-            'email' => $command->argument('email')
+            'email' => $command->option('email')
         ];
-        if ($command->option('slug')) {
-            $modelData['slug'] = $command->option('slug');
-        }
 
 
-        $admin = $this->handle($modelData);
 
-        $user = StoreUser::run($admin);
+        $admin = Admin::create($modelData);
+        $user  = StoreUser::run($admin);
 
 
         $token = $user->createToken('pika-access', ['pika'])->plainTextToken;

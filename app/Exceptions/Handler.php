@@ -1,4 +1,9 @@
 <?php
+/*
+ *  Author: Raul Perusquia <raul@inikoo.com>
+ *  Created: Fri, 28 Oct 2022 16:29:16 British Summer Time, Sheffield, UK
+ *  Copyright (c) 2022, Raul A Perusquia Flores
+ */
 
 namespace App\Exceptions;
 
@@ -44,7 +49,9 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
+            if (app()->bound('sentry')) {
+                app('sentry')->captureException($e);
+            }
         });
     }
 }

@@ -14,6 +14,8 @@
         "laravel/tinker": "^2.7",
         "lorisleiva/laravel-actions": "^2.4",
         "michaelachrisco/readonly": "^0.50.0",
+        "phlak/semver": "^4.0",
+        "sentry/sentry-laravel": "^3.0",
         "spatie/laravel-sluggable": "^3.4",
         "tightenco/ziggy": "^1.0"
     },

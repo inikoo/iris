@@ -28,7 +28,7 @@ exit('ERROR: DEPLOYMENT_PATH var empty or not defined');
 }
 $path=$_ENV['DEPLOYMENT_PATH'];
 
-/*
+
 if (empty($_ENV['PRODUCTION_ADMIN_EMAIL'])) {
 exit('ERROR: PRODUCTION_ADMIN_EMAIL var empty or not defined');
 }
@@ -43,7 +43,7 @@ if (empty($_ENV['PRODUCTION_ADMIN_NANE'])) {
 exit('ERROR: PRODUCTION_ADMIN_NANE var empty or not defined');
 }
 $adminName=$_ENV['PRODUCTION_ADMIN_NANE'];
-*/
+
 
 $date = ( new DateTime )->format('Y-m-d_H_i_s');
 
@@ -84,9 +84,7 @@ echo "***********************************************************************"
 echo "* staging code from {{ $repo_dir }} to {{ $staging_dir }} *"
 rsync   -rlptgoDPzSlh  --no-p --chmod=g=rwX  --delete  --stats --exclude-from={{ $repo_dir }}/devops/deployment/deployment-exclude-list.txt {{ $repo_dir }}/ {{ $staging_dir }}
 echo "rsync done"
-echo "chgrp www-data {{ $staging_dir }}/bootstrap/cache"
 
-sudo chgrp www-data {{ $staging_dir }}/bootstrap/cache
 
 ln -nsf {{ $path }}/.env {{ $new_release_dir }}/.env
 ln -nsf {{ $path }}/storage {{ $new_release_dir }}/storage
@@ -114,21 +112,17 @@ npm run build
 touch {{ $staging_dir }}/deploy-manifest.json
 echo "***********************************************************************"
 echo "* Sync code from {{ $staging_dir }}  to {{ $new_release_dir }} *"
-sudo rsync -auz --exclude 'node_modules' {{ $staging_dir }}/ {{ $new_release_dir }}
+rsync -auz --exclude 'node_modules' {{ $staging_dir }}/ {{ $new_release_dir }}
 
 echo "***********************************************************************"
 echo "migrating DB and seeding"
 cd {{ $new_release_dir }}
-@foreach (json_decode($_ENV['TENANTS_DATA']) as $tenant => $auroraDB)
-        echo "Dropping tenant datgabases {{ $auroraDB }}"
-        psql -d {{ $_ENV['DB_DATABASE'] }} -qc 'drop SCHEMA IF EXISTS pika_{{ $tenant }} CASCADE;'
-@endforeach
+
 {{$php}} artisan optimize:clear
 {{$php}} artisan migrate:refresh --force
 {{$php}} artisan db:seed --force
 {{$php}} artisan create:first-deployment
-{{$php}} artisan create:admin-user {{ $adminCode }} '{{ $adminName }}' -e={{ $adminEmail }} -a
-{{$php}} artisan create:admin-token {{ $adminCode }} admin root
+{{$php}} artisan create:admin-user {{ $adminCode }} '{{ $adminName }}' -e={{ $adminEmail }}
 
 echo "***********************************************************************"
 echo '* Clearing cache and optimising *'
