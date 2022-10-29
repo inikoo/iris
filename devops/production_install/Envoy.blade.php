@@ -9,7 +9,7 @@
 
 
 @setup
-$dotenv = Dotenv\Dotenv::createImmutable('../../');
+$dotenv = Dotenv\Dotenv::createImmutable('../../envs');
 $dotenv->load();
 // Sanity checks
 
@@ -86,7 +86,7 @@ rsync   -rlptgoDPzSlh  --no-p --chmod=g=rwX  --delete  --stats --exclude-from={{
 echo "rsync done"
 
 
-ln -nsf {{ $path }}/.env {{ $new_release_dir }}/.env
+ln -nsf {{ $path }}/.env {{ $new_release_dir }}/envs/.env
 ln -nsf {{ $path }}/storage {{ $new_release_dir }}/storage
 ln -nsf {{ $path }}/bootstrap {{ $new_release_dir }}/bootstrap
 
