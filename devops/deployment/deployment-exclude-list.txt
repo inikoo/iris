@@ -5,8 +5,8 @@
 /public/css
 /public/js
 /storage
-/bootstrap
 /vendor
+/envs
 .env
 .env.testing
 .env.backup

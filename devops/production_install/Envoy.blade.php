@@ -81,15 +81,15 @@ cd {{$repo_dir}}
 git pull origin {{ $branch }}
 
 echo "***********************************************************************"
-echo "* staging code from {{ $repo_dir }} to {{ $staging_dir }} *"
+echo "* staging code from {{ $repo_dir }} to {{ $staging_dir }} * AAA"
 rsync   -rlptgoDPzSlh  --no-p --chmod=g=rwX  --delete  --stats --exclude-from={{ $repo_dir }}/devops/deployment/deployment-exclude-list.txt {{ $repo_dir }}/ {{ $staging_dir }}
 echo "rsync done"
 
+sudo chgrp www-data {{ $staging_dir }}/bootstrap/cache
 
-ln -nsf {{ $path }}/.env {{ $new_release_dir }}/envs/.env
+echo "ln -nsf {{ $path }}/envs {{ $new_release_dir }}/envs"
+ln -nsf {{ $path }}/envs {{ $new_release_dir }}/envs
 ln -nsf {{ $path }}/storage {{ $new_release_dir }}/storage
-ln -nsf {{ $path }}/bootstrap {{ $new_release_dir }}/bootstrap
-
 ln -nsf {{ $path }}/storage/app/public {{ $new_release_dir }}/public/storage
 
 echo "***********************************************************************"
@@ -111,7 +111,7 @@ npm run build
 
 touch {{ $staging_dir }}/deploy-manifest.json
 echo "***********************************************************************"
-echo "* Sync code from {{ $staging_dir }}  to {{ $new_release_dir }} *"
+echo "* --- Sync code from {{ $staging_dir }}  to {{ $new_release_dir }} *"
 rsync -auz --exclude 'node_modules' {{ $staging_dir }}/ {{ $new_release_dir }}
 
 echo "***********************************************************************"

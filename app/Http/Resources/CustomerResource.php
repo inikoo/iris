@@ -10,6 +10,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
+ * @property string $reference
  * @property mixed $email
  * @property mixed $created_at
  * @property mixed $updated_at
@@ -23,6 +24,7 @@ class CustomerResource extends JsonResource
     public function toArray($request): array
     {
         return [
+            'reference'    => $this->reference,
             'name'         => $this->name,
             'contact_name' => $this->contact_name,
             'company_name' => $this->company_name,
