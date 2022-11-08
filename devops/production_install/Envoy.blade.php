@@ -81,8 +81,8 @@ cd {{$repo_dir}}
 git pull origin {{ $branch }}
 
 echo "***********************************************************************"
-echo "* staging code from {{ $repo_dir }} to {{ $staging_dir }} * AAA"
-rsync   -rlptgoDPzSlh  --no-p --chmod=g=rwX  --delete  --stats --exclude-from={{ $repo_dir }}/devops/deployment/deployment-exclude-list.txt {{ $repo_dir }}/ {{ $staging_dir }}
+echo "* moving code from {{ $repo_dir }} to {{ $new_release_dir }} * AAA"
+rsync   -rlptgoDPzSlh  --no-p --chmod=g=rwX  --delete  --stats --exclude-from={{ $repo_dir }}/devops/deployment/deployment-exclude-list.txt {{ $repo_dir }}/ {{ $new_release_dir }}
 echo "rsync done"
 
 sudo chgrp www-data {{ $staging_dir }}/bootstrap/cache
@@ -94,25 +94,23 @@ ln -nsf {{ $path }}/storage/app/public {{ $new_release_dir }}/public/storage
 
 echo "***********************************************************************"
 echo "* Composer install *"
-cd {{$staging_dir}}
+cd {{$new_release_dir}}
 {{$php}}  /usr/local/bin/composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader --prefer-dist
 
 echo "***********************************************************************"
 echo "* NPM install *"
-cd {{$staging_dir}}
+cd {{$new_release_dir}}
 npm install
 
 echo "***********************************************************************"
 echo "* build VUE *"
-cd {{$staging_dir}}
-ln -sf {{ $path }}/private/ {{ $staging_dir }}/resources/
+cd {{$new_release_dir}}
+ln -sf {{ $path }}/private/ {{ $new_release_dir }}/resources/
 npm run build
 
 
-touch {{ $staging_dir }}/deploy-manifest.json
-echo "***********************************************************************"
-echo "* --- Sync code from {{ $staging_dir }}  to {{ $new_release_dir }} *"
-rsync -auz --exclude 'node_modules' {{ $staging_dir }}/ {{ $new_release_dir }}
+touch {{ $new_release_dir }}/deploy-manifest.json
+
 
 echo "***********************************************************************"
 echo "migrating DB and seeding"
@@ -142,8 +140,9 @@ echo "Cache"
 {{ $php }} artisan view:cache
 
 # Only use when no closure used in routes
-#{{ $php }} artisan optimize
 {{ $php }} artisan route:cache
+
+rm -rf node_modules
 
 echo "***********************************************************************"
 echo "* Activating new release ({{ $new_release_dir }} -> {{ $current_release_dir }}) *"

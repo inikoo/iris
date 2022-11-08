@@ -16,7 +16,7 @@ class StoreAdmin
 {
     use AsAction;
 
-    public string $commandSignature = 'create:admin-user {code} {name} {--e|email=}';
+    public string $commandSignature = 'create:admin-user {code} {name} {email}';
 
 
     public function asCommand(Command $command): int
@@ -24,7 +24,7 @@ class StoreAdmin
         $modelData = [
             'code'  => $command->argument('name'),
             'name'  => $command->argument('name'),
-            'email' => $command->option('email')
+            'email' => $command->argument('email')
         ];
 
 

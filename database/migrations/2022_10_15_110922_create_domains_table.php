@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('slug');
             $table->string('url')->unique();
-            $table->unsignedBigInteger('tenant_id');
+            $table->string('tenant_id');
             $table->unsignedBigInteger('website_id');
 
             $table->timestampsTz();
