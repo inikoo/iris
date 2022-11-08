@@ -120,7 +120,7 @@ cd {{ $new_release_dir }}
 {{$php}} artisan migrate:refresh --force
 {{$php}} artisan db:seed --force
 {{$php}} artisan create:first-deployment
-{{$php}} artisan create:admin-user {{ $adminCode }} '{{ $adminName }}' -e={{ $adminEmail }}
+{{$php}} artisan create:admin-user {{ $adminCode }} '{{ $adminName }}' {{ $adminEmail }}
 
 echo "***********************************************************************"
 echo '* Clearing cache and optimising *'

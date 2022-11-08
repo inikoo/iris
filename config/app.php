@@ -217,4 +217,6 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'central-domain'=>env('APP_CENTRAL_DOMAIN')
+
 ];
