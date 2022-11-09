@@ -1,3 +1,9 @@
+<!--
+  -  Author: Raul Perusquia <raul@inikoo.com>
+  -  Created: Tue, 08 Nov 2022 21:42:27 Malaysia Time, Sheffield, UK
+  -  Copyright (c) 2022, Raul A Perusquia Flores
+  -->
+
 <script setup>
 import Checkbox from '@/Components/Checkbox.vue';
 

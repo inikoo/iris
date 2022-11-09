@@ -1,24 +1,23 @@
 <?php
+/*
+ *  Author: Raul Perusquia <raul@inikoo.com>
+ *  Created: Tue, 08 Nov 2022 20:34:41 Malaysia Time, Sheffield, UK
+ *  Copyright (c) 2022, Raul A Perusquia Flores
+ */
 
 use App\Actions\Web\WebsiteNode\ShowWebsiteNode;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 
 Route::get('/', [ShowWebsiteNode::class, 'home']);
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::prefix('account')
+    ->name('account.')
+    ->middleware(['auth', 'verified'])
+    ->group(__DIR__.'/account.php');
+
 
 require __DIR__.'/auth.php';
+
