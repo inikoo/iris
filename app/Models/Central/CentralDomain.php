@@ -12,7 +12,7 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
  *
  * @property int $id
  * @property string $slug
- * @property int $tenant_id
+ * @property string $tenant_id
  * @property int $website_id
  * @property string $domain
  * @property string $state

@@ -87,7 +87,7 @@ echo "rsync done"
 
 sudo chgrp www-data {{ $staging_dir }}/bootstrap/cache
 
-echo "ln -nsf {{ $path }}/envs {{ $new_release_dir }}/envs"
+rm {{ $path }}/envs/env.*
 ln -nsf {{ $path }}/envs {{ $new_release_dir }}/envs
 ln -nsf {{ $path }}/storage {{ $new_release_dir }}/storage
 ln -nsf {{ $path }}/storage/app/public {{ $new_release_dir }}/public/storage

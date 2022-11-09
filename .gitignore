@@ -21,3 +21,4 @@ storage/**
 /_ide_helper.php
 /_ide_helper_actions.php
 /.phpstorm.meta.php
+/resources/private

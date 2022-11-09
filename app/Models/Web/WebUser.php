@@ -39,8 +39,8 @@ class WebUser extends Authenticatable
 
     protected $casts = [
 
-        'data'              => 'array',
-        'settings'          => 'array',
+        'data'     => 'array',
+        'settings' => 'array',
     ];
 
 

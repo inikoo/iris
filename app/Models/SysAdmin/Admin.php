@@ -18,6 +18,7 @@ use Spatie\Sluggable\SlugOptions;
  *
  * @property int $id
  * @property string $slug
+ * @property string $code
  * @property string $name
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -26,6 +27,7 @@ use Spatie\Sluggable\SlugOptions;
  * @method static Builder|Admin newModelQuery()
  * @method static Builder|Admin newQuery()
  * @method static Builder|Admin query()
+ * @method static Builder|Admin whereCode($value)
  * @method static Builder|Admin whereCreatedAt($value)
  * @method static Builder|Admin whereEmail($value)
  * @method static Builder|Admin whereId($value)

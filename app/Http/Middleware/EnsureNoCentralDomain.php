@@ -8,25 +8,21 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
+use Illuminate\Http\Response;
 
 class EnsureNoCentralDomain
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
-     */
-    public function handle(Request $request, Closure $next)
+
+    public function handle(Request $request, Closure $next): Response|RedirectResponse|JsonResponse
     {
 
-
-        if(app()->domain==config('app.central-domain')){
+        if (preg_match('/([a-z0-9]+[.])*'.preg_replace('/\./', '\.', config('app.central-domain')).'/', app()->domain)) {
             abort(404);
-        };
+        }
+
         return $next($request);
     }
 }

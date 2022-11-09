@@ -1,22 +1,16 @@
 <script setup>
 import Checkbox from '@/Components/Checkbox.vue';
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 
-defineProps({
-    canResetPassword: Boolean,
-    status: String,
-});
+import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
+import Password from '@/Components/Forms/Inputs/Password.vue';
+import ValidationErrors from '@/Components/Forms/ValidationErrors.vue';
+import {trans} from 'laravel-vue-i18n';
 
 const form = useForm({
-    email: '',
-    password: '',
-    remember: false
-});
+                         username: '',
+                         password: '',
+                         remember: false,
+                     });
 
 const submit = () => {
     form.post(route('login'), {
@@ -26,42 +20,58 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Log in" />
+    <Head title="Login"/>
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-            {{ status }}
-        </div>
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
-                <TextInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
+    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+            <form class="space-y-6" @submit.prevent="submit">
+                <div>
+                    <label for="login" class="block text-sm font-medium text-gray-700">{{ trans('Username') }}/{{ trans('Email') }}</label>
+                    <div class="mt-1">
+                        <input v-model="form.username" id="username" name="username" autocomplete="username" required=""
+                               class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"/>
+                    </div>
+                </div>
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-                <TextInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700"> {{ trans('Password') }} </label>
+                    <div class="mt-1 flex rounded-md shadow-sm">
+                        <Password id="password" name="password" v-model="form.password"/>
+                    </div>
+                </div>
 
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
-                </label>
-            </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <Checkbox name="remember-me" id="remember-me" v-model:checked="form.remember"/>
+                        <label for="remember-me" class="ml-2 block text-sm text-gray-900"> {{ trans('Remember me') }} </label>
+                    </div>
 
-            <div class="flex items-center justify-end mt-4">
+
+                </div>
+
+                <div>
+                    <button type="submit"
+                            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        {{ trans('Sign in') }}
+                    </button>
+                </div>
+            </form>
+
+            <ValidationErrors/>
+
+            <div class="mt-5">
                 <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Forgot your password?
+                    {{ trans('Forgot your password?') }}
                 </Link>
-
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
-                </PrimaryButton>
             </div>
-        </form>
-    </GuestLayout>
+        </div>
+    </div>
+
+
 </template>
+
+
+
+
+

@@ -16,8 +16,8 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
  * App\Models\Central\Tenant
  *
  * @property int $id
+ * @property int $numeric_id
  * @property string $code
- * @property string $uuid
  * @property string $name
  * @property mixed $data
  * @property int $country_id
@@ -41,9 +41,9 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
  * @method static Builder|Tenant whereId($value)
  * @method static Builder|Tenant whereLanguageId($value)
  * @method static Builder|Tenant whereName($value)
+ * @method static Builder|Tenant whereNumericId($value)
  * @method static Builder|Tenant whereTimezoneId($value)
  * @method static Builder|Tenant whereUpdatedAt($value)
- * @method static Builder|Tenant whereUuid($value)
  * @mixin \Eloquent
  */
 class Tenant extends Model
