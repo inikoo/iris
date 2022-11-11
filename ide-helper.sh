@@ -1,1 +1,1 @@
-php artisan ide-helper:models -Wr
+php artisan ide-helper:models -Wr --domain=aroma.test

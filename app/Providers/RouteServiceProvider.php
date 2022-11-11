@@ -40,7 +40,7 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('api')
                 ->domain('api.'.config('website.domain'))
-                ->group(base_path('routes/customer-api.php'));
+                ->group(base_path('routes/customer-api/root.php'));
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
