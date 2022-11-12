@@ -49,7 +49,6 @@ $date = ( new DateTime )->format('Y-m-d_H_i_s');
 
 $current_release_dir = $path . '/current';
 $releases_dir = $path . '/releases';
-$staging_dir = $path . '/staging';
 $repo_dir = $path . '/repo';
 $new_release_dir = $releases_dir . '/' . $date;
 
@@ -85,7 +84,7 @@ echo "* moving code from {{ $repo_dir }} to {{ $new_release_dir }} * AAA"
 rsync   -rlptgoDPzSlh  --no-p --chmod=g=rwX  --delete  --stats --exclude-from={{ $repo_dir }}/devops/deployment/deployment-exclude-list.txt {{ $repo_dir }}/ {{ $new_release_dir }}
 echo "rsync done"
 
-sudo chgrp www-data {{ $staging_dir }}/bootstrap/cache
+sudo chgrp www-data {{ $new_release_dir }}/bootstrap/cache
 
 rm -f {{ $path }}/envs/.env.*
 ln -nsf {{ $path }}/envs {{ $new_release_dir }}/envs

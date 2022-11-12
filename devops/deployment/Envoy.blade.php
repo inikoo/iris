@@ -74,7 +74,7 @@ git pull origin {{ $branch }}
 echo "***********************************************************************"
 echo "* moving code from {{ $repo_dir }} to {{ $new_release_dir }} * AAA"
 rsync   -rlptgoDPzSlh  --no-p --chmod=g=rwX  --delete  --stats --exclude-from={{ $repo_dir }}/devops/deployment/deployment-exclude-list.txt {{ $repo_dir }}/ {{ $new_release_dir }}
-sudo chgrp www-data {{ $staging_dir }}/bootstrap/cache
+sudo chgrp www-data {{ $new_release_dir }}/bootstrap/cache
 
 ln -nsf {{ $path }}/envs {{ $new_release_dir }}/envs
 ln -nsf {{ $path }}/storage {{ $new_release_dir }}/storage
