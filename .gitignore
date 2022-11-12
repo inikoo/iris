@@ -22,3 +22,4 @@ storage/**
 /_ide_helper_actions.php
 /.phpstorm.meta.php
 /resources/private
+deploy.sh
