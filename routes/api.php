@@ -5,6 +5,9 @@
  *  Copyright (c) 2022, Raul A Perusquia Flores
  */
 
+use App\Actions\Central\Deployment\ShowDeployment;
+use App\Actions\Central\Deployment\StoreDeployment;
+use App\Actions\Central\Deployment\UpdateDeployment;
 use App\Actions\Sysadmin\Domain\IndexDomains;
 use App\Actions\Sysadmin\Domain\ShowDomain;
 use App\Actions\Sysadmin\Domain\StoreDomain;
@@ -20,5 +23,10 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('/domains/{domain:slug}', ShowDomain::class);
     Route::post('/domains', StoreDomain::class);
     Route::patch('/domains/{domain:slug}', UpdateDomain::class);
+
+    Route::get('/deployments/latest', [ShowDeployment::class, 'latest'])->name('deployments.latest');
+    Route::get('/deployments/{deployment}', ShowDeployment::class)->name('deployments.show');
+    Route::post('/deployments/create', StoreDeployment::class)->name('deployments.store');
+    Route::post('/deployments/latest/edit', [UpdateDeployment::class, 'latest'])->name('deployments.edit.latest');
 });
 
