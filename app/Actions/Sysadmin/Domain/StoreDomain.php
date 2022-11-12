@@ -11,6 +11,7 @@ use App\Http\Resources\DomainResource;
 use App\Models\Central\CentralDomain;
 use App\Models\SysAdmin\Domain;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Artisan;
 use Lorisleiva\Actions\ActionRequest;
 use Lorisleiva\Actions\Concerns\AsAction;
@@ -24,7 +25,7 @@ class StoreDomain
 
     private ?CentralDomain $centralDomain;
 
-    public function handle(CentralDomain $centralDomain, $soft = false): Domain
+    public function handle(CentralDomain $centralDomain, array $modelData): Domain
     {
         $url = app()->isProduction() ? $centralDomain->domain : $centralDomain->slug.'.test';
         try {
@@ -37,7 +38,7 @@ class StoreDomain
                 ]
             );
         } catch (QueryException) {
-            if (!$soft) {
+            if (!Arr::get($modelData, 'soft')) {
                 abort(422, 'Domain model can not be added');
             }
             $domain = Domain::where('url', $url)->firstOrFail();
@@ -50,20 +51,26 @@ class StoreDomain
             abort(422, 'domain.add command failed');
         }
 
-        $environmentData = json_encode(
+        $environmentData =
             [
                 'WEBSITE_ID'     => $domain->website_id,
-                'WEBSITE_DOMAIN'     => $domain->url,
+                'WEBSITE_DOMAIN' => $domain->url,
                 'DB_CONNECTION'  => 'pika',
                 'PIKA_DB_SCHEMA' => 'pika_'.$centralDomain->tenant->code
-            ]
-        );
+            ];
 
+        if (Arr::exists($modelData, 'pika_token')) {
+            $environmentData['PIKA_TOKEN'] = Arr::get($modelData, 'pika_token');
+        }
 
-        $exitCode = Artisan::call("domain:update_env --domain_values='$environmentData' $url");
+        $environmentData = json_encode($environmentData);
+        $exitCode        = Artisan::call("domain:update_env --domain_values='$environmentData' $url");
 
         if ($exitCode > 0) {
             abort(422, 'domain.update_env command failed');
+        }
+        if (app()->environment('production')) {
+            Artisan::call("config:cache --domain= $domain->url");
         }
 
         return $domain;
@@ -73,6 +80,7 @@ class StoreDomain
     {
         return [
             'central_domain_id' => ['required', 'exists:App\Models\Central\CentralDomain,id'],
+            'pika_token'        => ['sometimes', 'string']
         ];
     }
 
@@ -91,7 +99,7 @@ class StoreDomain
     {
         $request->validate();
 
-        return $this->handle($this->centralDomain, $request->exists('soft'));
+        return $this->handle($this->centralDomain, $request->only(['pika_token', 'soft']));
     }
 
     public function jsonResponse(Domain $domain): DomainResource
