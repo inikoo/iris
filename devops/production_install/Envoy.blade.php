@@ -78,6 +78,9 @@ echo "***********************************************************************"
 echo "* Pulling repo *"
 cd {{$repo_dir}}
 git pull origin {{ $branch }}
+cp {{$repo_dir}}/devops/production_install/domain.php {{ $path }}
+sudo chgrp www-data {{ $path }}/domain.php
+
 
 echo "***********************************************************************"
 echo "* moving code from {{ $repo_dir }} to {{ $new_release_dir }} * AAA"
@@ -90,6 +93,7 @@ rm -f {{ $path }}/envs/.env.*
 ln -nsf {{ $path }}/envs {{ $new_release_dir }}/envs
 ln -nsf {{ $path }}/storage {{ $new_release_dir }}/storage
 ln -nsf {{ $path }}/storage/app/public {{ $new_release_dir }}/public/storage
+ln -nsf {{ $path }}/domain.php {{ $new_release_dir }}/config/
 
 echo "***********************************************************************"
 echo "* Composer install *"

@@ -76,9 +76,11 @@ echo "* moving code from {{ $repo_dir }} to {{ $new_release_dir }} * AAA"
 rsync   -rlptgoDPzSlh  --no-p --chmod=g=rwX  --delete  --stats --exclude-from={{ $repo_dir }}/devops/deployment/deployment-exclude-list.txt {{ $repo_dir }}/ {{ $new_release_dir }}
 sudo chgrp www-data {{ $new_release_dir }}/bootstrap/cache
 
+
 ln -nsf {{ $path }}/envs {{ $new_release_dir }}/envs
 ln -nsf {{ $path }}/storage {{ $new_release_dir }}/storage
 ln -nsf {{ $path }}/storage/app/public {{ $new_release_dir }}/public/storage
+ln -nsf {{ $path }}/domain.php {{ $new_release_dir }}/config/
 
 echo "***********************************************************************"
 echo "* Composer install *"
