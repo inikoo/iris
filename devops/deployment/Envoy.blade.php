@@ -102,7 +102,7 @@ echo "***********************************************************************"
 echo "migrating"
 cd {{ $new_release_dir }}
 
-{{$php}} artisan migrate:refresh --force
+{{$php}} artisan migrate --force
 
 echo "***********************************************************************"
 echo '* Clearing cache and optimising *'
