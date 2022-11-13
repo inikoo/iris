@@ -70,7 +70,7 @@ class StoreDomain
             abort(422, 'domain.update_env command failed');
         }
         if (app()->environment('production')) {
-            Artisan::call("config:cache --domain= $domain->url");
+            Artisan::call("config:cache --domain=$domain->url");
         }
 
         return $domain;
