@@ -27,7 +27,13 @@ class StoreDomain
 
     public function handle(CentralDomain $centralDomain, array $modelData): Domain
     {
-        $url = app()->isProduction() ? $centralDomain->domain : $centralDomain->slug.'.test';
+        $url = match (app()->environment()) {
+            'production' => $centralDomain->domain,
+            'staging' => $centralDomain->slug.'.'.config('app.staging_domain'),
+            default => $centralDomain->slug.'.test'
+        };
+
+
         try {
             $domain = Domain::create(
                 [
