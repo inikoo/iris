@@ -32,7 +32,7 @@ class UpdateDomain
 
             );
             Artisan::call("domain:update_env --domain_values='$environmentData' $domain->url");
-            if (app()->environment('production')) {
+            if (app()->environment('production') or app()->environment('staging')) {
                 Artisan::call("config:cache --domain=$domain->url");
             }
 

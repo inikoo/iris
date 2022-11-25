@@ -69,7 +69,7 @@ class StoreDomain
         if ($exitCode > 0) {
             abort(422, 'domain.update_env command failed');
         }
-        if (app()->environment('production')) {
+        if (app()->environment('production') or app()->environment('staging')) {
             Artisan::call("config:cache --domain=$domain->url");
         }
 
