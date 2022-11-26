@@ -43,7 +43,6 @@ if($env=='production'){
     $api_key=$_ENV['STAGING_API_KEY'];
 }
 
-
 $base_path=$_ENV['DEPLOYMENT_PATH'];
 $path=$base_path.'/'.$env;
 
@@ -107,7 +106,7 @@ npm install
 echo "***********************************************************************"
 echo "* build VUE *"
 cd {{$new_release_dir}}
-ln -sf {{ $path }}/assets/private/ {{ $new_release_dir }}/resources/
+ln -sf {{ $base_path }}/assets/private/ {{ $new_release_dir }}/resources/
 npm run build
 
 echo "***********************************************************************"

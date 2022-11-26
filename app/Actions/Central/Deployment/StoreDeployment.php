@@ -76,12 +76,17 @@ class StoreDeployment
             $latestHash = $latestDeployment->hash;
 
 
-            if (!$this->validateHash($currentHash) or !$this->validateHash($latestHash)) {
+            if (!$this->validateHash($currentHash) ) {
                 return response()->json([
-                                            'msg' => "Invalid hash $currentHash or $latestHash",
+                                            'msg' => "Invalid current hash $currentHash ",
 
                                         ], 400);
-            } else {
+            }elseif ( !$this->validateHash($latestHash)) {
+                return response()->json([
+                                            'msg' => "Invalid latest hash $latestHash",
+
+                                        ], 400);
+            }  else {
                 $filesChanged = $this->runGitCommand("git --git-dir ".config('deployments.repo_path')."   diff --name-only $currentHash $latestHash");
 
 
