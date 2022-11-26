@@ -80,7 +80,7 @@ git pull origin {{ $branch }}
 
 
 DEPLOY=$(curl --silent --location --request POST '{{$api_url}}/deployments/create' --header 'Accept: application/json' --header 'Authorization: Bearer {{$api_key}}')
-echo DEPLOY
+echo $DEPLOY
 
 echo "***********************************************************************"
 echo "* moving code from {{ $repo_dir }} to {{ $new_release_dir }} * AAA"
