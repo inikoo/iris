@@ -18,7 +18,7 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
  * App\Models\Web\WebsiteNode
  *
  * @property-read \App\Models\Web\Webpage|null $webpage
- * @property-read \App\Models\Web\Website|null $website
+ * @property-read \App\Models\Web\Website $website
  * @method static Builder|WebsiteNode newModelQuery()
  * @method static Builder|WebsiteNode newQuery()
  * @method static Builder|WebsiteNode query()

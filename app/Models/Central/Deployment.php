@@ -13,13 +13,6 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * App\Models\Central\Deployment
  *
- * @property int $id
- * @property string $version
- * @property string $hash
- * @property string $state
- * @property array $data
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read mixed $skip_build
  * @property-read mixed $skip_composer_install
  * @property-read mixed $skip_npm_install

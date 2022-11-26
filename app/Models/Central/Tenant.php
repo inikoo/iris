@@ -15,35 +15,11 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
 /**
  * App\Models\Central\Tenant
  *
- * @property int $id
- * @property int $numeric_id
- * @property string $code
- * @property string $name
- * @property mixed $data
- * @property int $country_id
- * @property int $language_id
- * @property int $timezone_id
- * @property int $currency_id tenant accounting currency
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Central\CentralDomain[] $centralDomains
  * @property-read int|null $central_domains_count
  * @method static Builder|Tenant newModelQuery()
  * @method static Builder|Tenant newQuery()
  * @method static Builder|Tenant query()
- * @method static Builder|Tenant whereCode($value)
- * @method static Builder|Tenant whereCountryId($value)
- * @method static Builder|Tenant whereCreatedAt($value)
- * @method static Builder|Tenant whereCurrencyId($value)
- * @method static Builder|Tenant whereData($value)
- * @method static Builder|Tenant whereDeletedAt($value)
- * @method static Builder|Tenant whereId($value)
- * @method static Builder|Tenant whereLanguageId($value)
- * @method static Builder|Tenant whereName($value)
- * @method static Builder|Tenant whereNumericId($value)
- * @method static Builder|Tenant whereTimezoneId($value)
- * @method static Builder|Tenant whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class Tenant extends Model

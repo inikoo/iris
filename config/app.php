@@ -217,6 +217,8 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
-    'central-domain'=>env('APP_CENTRAL_DOMAIN')
+    'central-domain'=>env('APP_CENTRAL_DOMAIN'),
+    'pika_url'=>env('PIKA_URL'),
+    'staging_domain'=>env('STAGING_DOMAIN'),
 
 ];

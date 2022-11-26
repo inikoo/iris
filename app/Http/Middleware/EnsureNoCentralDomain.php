@@ -19,7 +19,7 @@ class EnsureNoCentralDomain
     public function handle(Request $request, Closure $next): Response|RedirectResponse|JsonResponse
     {
 
-        if (preg_match('/([a-z0-9]+[.])*'.preg_replace('/\./', '\.', config('app.central-domain')).'/', app()->domain)) {
+        if (preg_match('/([a-z0-9]+[.])*'.preg_replace('/\./', '\.', config('app.central_domain')).'/', app()->domain)) {
             abort(404);
         }
 

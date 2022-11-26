@@ -8,18 +8,15 @@
 namespace App\Actions\Fulfilment\Stock;
 
 use App\Actions\UI\WithInertia;
-use App\Http\Resources\Fulfilment\StockResource;
-use App\Models\Fulfilment\Stock;
 use App\Models\Sales\Customer;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use App\Models\Web\WebUser;
+use GuzzleHttp\Promise\PromiseInterface;
+use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\Rule;
-use Inertia\Inertia;
 use Lorisleiva\Actions\ActionRequest;
 use Lorisleiva\Actions\Concerns\AsAction;
-use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
-use Spatie\QueryBuilder\AllowedFilter;
-use Spatie\QueryBuilder\QueryBuilder;
+
 
 
 class StoreStock
@@ -30,9 +27,20 @@ class StoreStock
 
     private Customer $customer;
 
-    public function handle(Customer $customer, array $modelData)
+    public function handle(WebUser $webUser, array $modelData): PromiseInterface|Response
     {
+        $parameters = array_merge([
+                                      'web_user_id' => $webUser->id
+                                  ],
+                                  $modelData
+        );
 
+        return Http::acceptJson()
+            ->withToken(config('pika.token'))
+            ->post(
+                config('pika.url').'/api/iris/stocks',
+                $parameters
+            );
     }
 
     public function authorize(ActionRequest $request): bool
@@ -46,27 +54,27 @@ class StoreStock
     public function rules(ActionRequest $request): array
     {
         return [
-            'code' => [
+            'code'        => [
                 'required',
                 Rule::unique('stocks', 'code')->where(
                     fn($query) => $query->where('owner_type', 'Customer')->where('owner_id', $request->user()->customer->id)
                 )
             ],
+            'description' => ['sometimes', 'nullable', 'string', 'max:10000']
+
         ];
     }
 
-    public function asController(ActionRequest $request)
+
+    public function asController(ActionRequest $request): PromiseInterface|Response
     {
         $request->validate();
 
-        return $this->handle($request->user()->customer, $request->validated());
+        return $this->handle($request->user(), $request->validated());
     }
 
 
-    public function jsonResponse()
-    {
-        return 'caca22';
-    }
+
 
 
 }
