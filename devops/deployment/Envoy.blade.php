@@ -12,8 +12,6 @@
 $dotenv = Dotenv\Dotenv::createImmutable('../../envs');
 $dotenv->load();
 
-$api_url=$_ENV['PRODUCTION_API_URL'];
-$api_key=$_ENV['PRODUCTION_API_KEY'];
 
 // Sanity checks
 
@@ -30,13 +28,31 @@ $user=$_ENV['DEPLOYMENT_USER'];
 if (empty($_ENV['DEPLOYMENT_PATH'])) {
 exit('ERROR: DEPLOYMENT_PATH var empty or not defined');
 }
-$path=$_ENV['DEPLOYMENT_PATH'];
+
+if(!$env){
+    $env='staging';
+}
+
+$api_url='';
+$api_key='';
+if($env=='production'){
+    $api_url=$_ENV['PRODUCTION_API_URL'];
+    $api_key=$_ENV['PRODUCTION_API_KEY'];
+}elseif($env=='staging'){
+    $api_url=$_ENV['STAGING_API_URL'];
+    $api_key=$_ENV['STAGING_API_KEY'];
+}
+
+
+$base_path=$_ENV['DEPLOYMENT_PATH'];
+$path=$base_path.'/'.$env;
+
 
 $date = ( new DateTime )->format('Y-m-d_H_i_s');
 
 $current_release_dir = $path . '/current';
 $releases_dir = $path . '/releases';
-$repo_dir = $path . '/repo';
+$repo_dir = $base_path . '/repo';
 $new_release_dir = $releases_dir . '/' . $date;
 
 
@@ -58,18 +74,14 @@ mkdir -p {{ $new_release_dir }}
 mkdir -p {{ $new_release_dir }}/public/
 
 
-
-
-
-
-
-
-
-
 echo "***********************************************************************"
 echo "* Pulling repo *"
 cd {{$repo_dir}}
 git pull origin {{ $branch }}
+
+
+DEPLOY=$(curl --silent --location --request POST '{{$api_url}}/deployments/create' --header 'Accept: application/json' --header 'Authorization: Bearer {{$api_key}}')
+echo DEPLOY
 
 echo "***********************************************************************"
 echo "* moving code from {{ $repo_dir }} to {{ $new_release_dir }} * AAA"
@@ -95,7 +107,7 @@ npm install
 echo "***********************************************************************"
 echo "* build VUE *"
 cd {{$new_release_dir}}
-ln -sf {{ $path }}/private/ {{ $new_release_dir }}/resources/
+ln -sf {{ $path }}/assets/private/ {{ $new_release_dir }}/resources/
 npm run build
 
 echo "***********************************************************************"
@@ -128,6 +140,9 @@ echo "Cache"
 
 rm -rf node_modules
 
+DEPLOY=$(curl --silent --location --request POST '{{$api_url}}/deployments/latest/edit?state=deployed'  --header 'Accept: application/json' --header 'Authorization: Bearer {{$api_key}}')
+echo $DEPLOY
+
 echo "***********************************************************************"
 echo "* Activating new release ({{ $new_release_dir }} -> {{ $current_release_dir }}) *"
 ln -nsf {{ $new_release_dir }} {{ $current_release_dir }}
@@ -136,6 +151,9 @@ ln -nsf {{ $new_release_dir }} {{ $current_release_dir }}
 echo "* Executing cleanup command in {{ $releases_dir }} *"
 cd {{$releases_dir}}
 ls -r | tail -n +10 | xargs rm -rf
+
+
+
 
 @endtask
 

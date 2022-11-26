@@ -26,12 +26,12 @@ $user=$_ENV['DEPLOYMENT_USER'];
 if (empty($_ENV['DEPLOYMENT_PATH'])) {
 exit('ERROR: DEPLOYMENT_PATH var empty or not defined');
 }
-if(!$environment){
-    $environment='staging';
+if(!$env){
+    $env='staging';
 }
 
 $base_path=$_ENV['DEPLOYMENT_PATH'];
-$path=$base_path.'/'.$environment;
+$path=$base_path.'/'.$env;
 
 
 
@@ -74,10 +74,16 @@ $skip_build=false;
 
 @task('install', ['on' => 'production','confirm' => true])
 
+sudo rm -rf {{ $path }}/envs
+sudo rm -rf {{ $path }}/storage
 
-rm -rf {{ $path }}/storage/tenants
-rm -rf {{ $path }}/storage/logs/*
-
+mkdir -p {{ $path }}/envs
+sudo chgrp -R www-data {{ $path }}/envs
+sudo chmod g+s {{ $path }}/envs
+cp {{ $base_path }}/env.{{$env}} {{ $path }}/envs/.env
+sudo chmod g+r {{ $path }}/envs/.env
+sudo chgrp -R www-data {{ $path }}/envs
+sudo chmod g+s {{ $path }}/envs
 mkdir -p {{ $new_release_dir }}
 mkdir -p {{ $new_release_dir }}/public/
 
@@ -87,6 +93,10 @@ cd {{$repo_dir}}
 git pull origin {{ $branch }}
 cp {{$repo_dir}}/devops/production_install/domain.php {{ $path }}
 sudo chgrp www-data {{ $path }}/domain.php
+
+cp -R {{$repo_dir}}/storage {{ $path }}
+sudo chgrp -R www-data {{ $path }}/storage
+sudo chmod g+s {{ $path }}/storage
 
 
 echo "***********************************************************************"
@@ -105,7 +115,7 @@ ln -nsf {{ $path }}/domain.php {{ $new_release_dir }}/config/
 echo "***********************************************************************"
 echo "* Composer install *"
 cd {{$new_release_dir}}
-{{$php}}  /usr/local/bin/composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader --prefer-dist
+{{$php}}  /usr/local/bin/composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader --prefer-dist 
 
 echo "***********************************************************************"
 echo "* NPM install *"
@@ -115,18 +125,14 @@ npm install
 echo "***********************************************************************"
 echo "* build VUE *"
 cd {{$new_release_dir}}
-ln -sf {{ $base_path }}/private/ {{ $new_release_dir }}/resources/
+ln -sf {{ $base_path }}/assets/private/ {{ $new_release_dir }}/resources/
 npm run build
-
-
-touch {{ $new_release_dir }}/deploy-manifest.json
-
 
 echo "***********************************************************************"
 echo "migrating DB and seeding"
 cd {{ $new_release_dir }}
 
-{{$php}} artisan optimize:clear
+{{$php}} artisan optimize:clear --quiet
 {{$php}} artisan migrate:refresh --force
 {{$php}} artisan db:seed --force
 {{$php}} artisan create:first-deployment
@@ -141,16 +147,16 @@ cd {{ $new_release_dir }}
 
 cd {{ $new_release_dir }}
 {{ $php }} artisan optimize:clear --quiet
-{{$php}}  /usr/local/bin/composer dump-autoload -o
+{{$php}}  /usr/local/bin/composer dump-autoload -o --quiet
 echo "Queue restarted"
 #{{ $php }} artisan queue:restart --quiet
 
 echo "Cache"
-{{ $php }} artisan config:cache
-{{ $php }} artisan view:cache
+{{ $php }} artisan config:cache --quiet
+{{ $php }} artisan view:cache --quiet
 
 # Only use when no closure used in routes
-{{ $php }} artisan route:cache
+{{ $php }} artisan route:cache --quiet
 
 rm -rf node_modules
 

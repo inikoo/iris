@@ -1,9 +1,14 @@
 <?php
+/*
+ *  Author: Raul Perusquia <raul@inikoo.com>
+ *  Created: Sat, 26 Nov 2022 12:48:25 Central Indonesia Time, Sheffield, UK
+ *  Copyright (c) 2022, Raul A Perusquia Flores
+ */
 
 namespace App\Models\Central;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
 
 /**
  * App\Models\Central\Deployment
@@ -18,16 +23,9 @@ use Illuminate\Support\Arr;
  * @property-read mixed $skip_build
  * @property-read mixed $skip_composer_install
  * @property-read mixed $skip_npm_install
- * @method static \Illuminate\Database\Eloquent\Builder|Deployment newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Deployment newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Deployment query()
- * @method static \Illuminate\Database\Eloquent\Builder|Deployment whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Deployment whereData($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Deployment whereHash($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Deployment whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Deployment whereState($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Deployment whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Deployment whereVersion($value)
+ * @method static Builder|Deployment newModelQuery()
+ * @method static Builder|Deployment newQuery()
+ * @method static Builder|Deployment query()
  * @mixin \Eloquent
  */
 class Deployment extends Model
@@ -40,15 +38,5 @@ class Deployment extends Model
         'data' => 'array'
     ];
 
-    protected $appends = ['skip_build','skip_npm_install','skip_composer_install'];
 
-    public function getSkipComposerInstallAttribute(){
-        return Arr::get($this->data,'skip.composer_install',false);
-    }
-    public function getSkipNpmInstallAttribute(){
-        return Arr::get($this->data,'skip.npm_install',false);
-    }
-    public function getSkipBuildAttribute(){
-        return Arr::get($this->data,'skip.build',false);
-    }
 }
