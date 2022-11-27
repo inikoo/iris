@@ -88,6 +88,8 @@ rsync   -rlptgoDPzSlh  --no-p --chmod=g=rwX  --delete  --stats --exclude-from={{
 sudo chgrp www-data {{ $new_release_dir }}/bootstrap/cache
 
 
+cp {{ $base_path }}/env.{{$env}} {{ $path }}/envs/.env
+
 ln -nsf {{ $path }}/envs {{ $new_release_dir }}/envs
 ln -nsf {{ $path }}/storage {{ $new_release_dir }}/storage
 ln -nsf {{ $path }}/storage/app/public {{ $new_release_dir }}/public/storage
