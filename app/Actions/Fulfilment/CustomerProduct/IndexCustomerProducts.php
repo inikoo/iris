@@ -1,15 +1,15 @@
 <?php
 /*
  *  Author: Raul Perusquia <raul@inikoo.com>
- *  Created: Sat, 22 Oct 2022 18:35:25 British Summer Time, Sheffield, UK
+ *  Created: Mon, 12 Dec 2022 19:22:46 Malaysia Time, Sheffield, UK
  *  Copyright (c) 2022, Raul A Perusquia Flores
  */
 
-namespace App\Actions\Fulfilment\Stock;
+namespace App\Actions\Fulfilment\CustomerProduct;
 
 use App\Actions\UI\WithInertia;
-use App\Http\Resources\Fulfilment\StockResource;
-use App\Models\Fulfilment\Stock;
+use App\Http\Resources\Fulfilment\CustomerProductResource;
+use App\Models\Marketing\Product;
 use App\Models\Sales\Customer;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -21,7 +21,7 @@ use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 
-class IndexStocks
+class IndexCustomerProducts
 {
     use AsAction;
     use WithInertia;
@@ -33,18 +33,18 @@ class IndexStocks
     {
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
-                $query->where('stocks.code', 'LIKE', "$value%")
-                    ->orWhere('stocks.description', 'LIKE', "%$value%");
+                $query->where('products.code', 'LIKE', "$value%")
+                    ->orWhere('products.name', 'LIKE', "%$value%");
             });
         });
 
 
-        return QueryBuilder::for(Stock::class)
-            ->defaultSort('stocks.code')
-            ->select(['slug','code', 'stocks.id as id', 'description', 'stock_value', 'number_locations', 'quantity'])
+        return QueryBuilder::for(Product::class)
+            ->defaultSort('products.code')
+            ->select(['slug','code', 'name', 'description'])
             ->where('owner_type', 'Customer')->where('owner_id', $this->customer->id)
-            ->leftJoin('stock_stats', 'stock_stats.stock_id', 'stocks.id')
-            ->allowedSorts(['code', 'description', 'number_locations', 'number_locations', 'quantity'])
+            ->leftJoin('product_stats', 'product_stats.product_id', 'products.id')
+            ->allowedSorts(['code', 'name'])
             ->allowedFilters([$globalSearch])
             ->paginate($this->perPage ?? config('ui.table.records_per_page'))
             ->withQueryString();
@@ -70,29 +70,28 @@ class IndexStocks
 
     public function jsonResponse(): AnonymousResourceCollection
     {
-        return StockResource::collection($this->handle());
+        return CustomerProductResource::collection($this->handle());
     }
 
 
-    public function htmlResponse(LengthAwarePaginator $stocks)
+    public function htmlResponse(LengthAwarePaginator $products)
     {
         return Inertia::render(
-            'Inventory/Stocks',
+            'Fulfilment/CustomerProducts',
             [
-                'title' => __('stocks'),
+                'title' => __('products'),
                 'pageHead' => [
-                    'title' => __('stocks'),
+                    'title' => __('products'),
                 ],
-                'stocks' => StockResource::collection($stocks),
+                'products' => CustomerProductResource::collection($products),
 
 
             ]
         )->table(function (InertiaTable $table) {
             $table
                 ->withGlobalSearch()
-                ->column(key: 'code', label: 'SKU', canBeHidden: false, sortable: true, searchable: true)
-                ->column(key: 'description', label: __('description'), canBeHidden: false, sortable: true, searchable: true)
-                ->column(key: 'quantity', label: __('stock'), canBeHidden: false, sortable: true)
+                ->column(key: 'code', label: 'code', canBeHidden: false, sortable: true, searchable: true)
+                ->column(key: 'name', label: __('name'), canBeHidden: false, sortable: true, searchable: true)
                 ->defaultSort('code');
         });
     }

@@ -5,9 +5,17 @@
  *  Copyright (c) 2022, Raul A Perusquia Flores
  */
 
+use App\Actions\Fulfilment\CustomerProduct\IndexCustomerProducts;
+use App\Actions\Fulfilment\FulfilmentOrder\IndexFulfilmentOrders;
+use App\Actions\Fulfilment\FulfilmentOrder\ShowFulfilmentOrder;
 use App\Actions\Fulfilment\Stock\IndexStocks;
 use App\Actions\Fulfilment\Stock\StoreStock;
 
-Route::get('/stocks', IndexStocks::class)->name('stocks.show');
+Route::get('/stocks', IndexStocks::class)->name('stocks.index');
 Route::post('/stocks', StoreStock::class)->name('stocks.store');
 
+Route::get('/products', IndexCustomerProducts::class)->name('products.index');
+//Route::post('/stocks', StoreProduct::class)->name('stocks.store');
+
+Route::get('/orders', IndexFulfilmentOrders::class)->name('orders.index');
+Route::get('/orders/{fulfilmentOrder}', ShowFulfilmentOrder::class)->name('orders.show');
