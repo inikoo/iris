@@ -1,11 +1,11 @@
 <?php
 /*
  *  Author: Raul Perusquia <raul@inikoo.com>
- *  Created: Mon, 12 Dec 2022 19:22:46 Malaysia Time, Sheffield, UK
+ *  Created: Wed, 14 Dec 2022 14:26:44 Malaysia Time, Sheffield, UK
  *  Copyright (c) 2022, Raul A Perusquia Flores
  */
 
-namespace App\Actions\Fulfilment\CustomerProduct;
+namespace App\Actions\Marketing\Product;
 
 use App\Actions\UI\WithInertia;
 use App\Http\Resources\Fulfilment\CustomerProductResource;
@@ -28,6 +28,7 @@ class IndexCustomerProducts
 
 
     private Customer $customer;
+    private int $perPage;
 
     public function handle(): LengthAwarePaginator
     {
@@ -63,6 +64,11 @@ class IndexCustomerProducts
         $request->validate();
 
         $this->customer = $request->user()->customer;
+
+        // Todo investigate if this works for Inertia
+        if ($request->wantsJson()) {
+            $this->perPage=500;
+        }
 
         return $this->handle();
     }

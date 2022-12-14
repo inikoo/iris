@@ -6,6 +6,8 @@
  */
 
 
+use App\Actions\Marketing\Product\IndexCustomerProducts;
 use App\Actions\Web\WebUser\ShowWebUser;
 
 Route::get('/', ShowWebUser::class)->name('show');
+Route::get('/products', IndexCustomerProducts::class)->name('products.index');
