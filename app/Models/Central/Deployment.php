@@ -13,9 +13,6 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * App\Models\Central\Deployment
  *
- * @property-read mixed $skip_build
- * @property-read mixed $skip_composer_install
- * @property-read mixed $skip_npm_install
  * @method static Builder|Deployment newModelQuery()
  * @method static Builder|Deployment newQuery()
  * @method static Builder|Deployment query()

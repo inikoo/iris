@@ -11,13 +11,13 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * @property string $reference
- * @property mixed $email
+ * @property string $email
  * @property mixed $created_at
  * @property mixed $updated_at
- * @property mixed $name
- * @property mixed $contact_name
- * @property mixed $company_name
- * @property mixed $phone
+ * @property string $name
+ * @property string $contact_name
+ * @property string $company_name
+ * @property string $phone
  */
 class CustomerResource extends JsonResource
 {

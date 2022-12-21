@@ -1,16 +1,16 @@
 <?php
 /*
  *  Author: Raul Perusquia <raul@inikoo.com>
- *  Created: Mon, 28 Nov 2022 09:29:28 Central Indonesia Time, Sheffield, UK
+ *  Created: Wed, 21 Dec 2022 13:52:30 Malaysia Time, Sheffield, UK
  *  Copyright (c) 2022, Raul A Perusquia Flores
  */
 
-namespace App\Actions\Fulfilment\FulfilmentOrder;
+namespace App\Actions\Sales\Order;
 
 use App\Actions\UI\WithInertia;
-use App\Http\Resources\Fulfilment\FulfilmentOrderResource;
-use App\Models\Fulfilment\FulfilmentOrder;
+use App\Http\Resources\OrderResource;
 use App\Models\Sales\Customer;
+use App\Models\Sales\Order;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Inertia\Inertia;
@@ -21,28 +21,28 @@ use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 
-class IndexFulfilmentOrders
+class IndexOrders
 {
     use AsAction;
     use WithInertia;
 
-
     private Customer $customer;
+    private int $perPage;
 
     public function handle(): LengthAwarePaginator
     {
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
-                $query->where('fulfilment_orders.number', 'LIKE', "$value%");
+                $query->where('orders.number', 'LIKE', "$value%");
             });
         });
 
 
-        return QueryBuilder::for(FulfilmentOrder::class)
-            ->defaultSort('fulfilment_orders.number')
-            ->select(['slug','number', 'state', 'customer_client_id', 'created_at', 'updated_at'])
+        return QueryBuilder::for(Order::class)
+            ->defaultSort('orders.number')
+            ->select(['slug', 'number', 'state', 'customer_client_id', 'customer_number', 'created_at', 'updated_at'])
             ->where('customer_id', $this->customer->id)
-            ->allowedSorts(['number', 'state', 'created_at', 'updated_at'])
+            ->allowedSorts(['number', 'state', 'created_at', 'updated_at', 'customer_number'])
             ->allowedFilters([$globalSearch])
             ->paginate($this->perPage ?? config('ui.table.records_per_page'))
             ->withQueryString();
@@ -61,6 +61,9 @@ class IndexFulfilmentOrders
         $request->validate();
 
         $this->customer = $request->user()->customer;
+        if ($request->wantsJson()) {
+            $this->perPage = 500;
+        }
 
         return $this->handle();
     }
@@ -68,7 +71,7 @@ class IndexFulfilmentOrders
 
     public function jsonResponse(): AnonymousResourceCollection
     {
-        return FulfilmentOrderResource::collection($this->handle());
+        return OrderResource::collection($this->handle());
     }
 
 
@@ -77,11 +80,11 @@ class IndexFulfilmentOrders
         return Inertia::render(
             'Fulfillment/Order',
             [
-                'title'             => __('orders'),
-                'pageHead'          => [
+                'title' => __('orders'),
+                'pageHead' => [
                     'title' => __('orders'),
                 ],
-                'fulfillmentOrders' => FulfilmentOrderResource::collection($fulfilmentOrders),
+                'orders' => OrderResource::collection($fulfilmentOrders),
 
 
             ]
