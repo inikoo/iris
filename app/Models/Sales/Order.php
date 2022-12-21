@@ -15,6 +15,7 @@
 namespace App\Models\Sales;
 
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -47,36 +48,36 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $cancelled_at equivalent deleted_at
  * @property int|null $source_id
- * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Order query()
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereBillingAddressId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereCanDispatch($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereCancelledAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereCharges($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereCurrencyId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereCustomerClientId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereCustomerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereCustomerNumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereData($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereDeliveryAddressId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereExchange($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereIsInvoiced($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereIsPickingOnHold($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereItemsDiscounts($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereItemsNet($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereNet($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereNumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereShipping($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereShopId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereSourceId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereState($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereTax($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
+ * @method static Builder|Order newModelQuery()
+ * @method static Builder|Order newQuery()
+ * @method static Builder|Order query()
+ * @method static Builder|Order whereBillingAddressId($value)
+ * @method static Builder|Order whereCanDispatch($value)
+ * @method static Builder|Order whereCancelledAt($value)
+ * @method static Builder|Order whereCharges($value)
+ * @method static Builder|Order whereCreatedAt($value)
+ * @method static Builder|Order whereCurrencyId($value)
+ * @method static Builder|Order whereCustomerClientId($value)
+ * @method static Builder|Order whereCustomerId($value)
+ * @method static Builder|Order whereCustomerNumber($value)
+ * @method static Builder|Order whereData($value)
+ * @method static Builder|Order whereDeliveryAddressId($value)
+ * @method static Builder|Order whereExchange($value)
+ * @method static Builder|Order whereId($value)
+ * @method static Builder|Order whereIsInvoiced($value)
+ * @method static Builder|Order whereIsPickingOnHold($value)
+ * @method static Builder|Order whereItemsDiscounts($value)
+ * @method static Builder|Order whereItemsNet($value)
+ * @method static Builder|Order whereNet($value)
+ * @method static Builder|Order whereNumber($value)
+ * @method static Builder|Order whereShipping($value)
+ * @method static Builder|Order whereShopId($value)
+ * @method static Builder|Order whereSlug($value)
+ * @method static Builder|Order whereSourceId($value)
+ * @method static Builder|Order whereState($value)
+ * @method static Builder|Order whereTax($value)
+ * @method static Builder|Order whereType($value)
+ * @method static Builder|Order whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class Order extends Model

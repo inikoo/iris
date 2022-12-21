@@ -9,6 +9,7 @@ namespace App\Models\Fulfilment;
 
 
 use App\Models\Traits\HasOrder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -36,26 +37,26 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read \App\Models\Sales\Customer $customer
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Fulfilment\FulfilmentOrderItem[] $items
  * @property-read int|null $items_count
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder newQuery()
+ * @method static Builder|FulfilmentOrder newModelQuery()
+ * @method static Builder|FulfilmentOrder newQuery()
  * @method static \Illuminate\Database\Query\Builder|FulfilmentOrder onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder query()
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder whereCanDispatch($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder whereCustomerClientId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder whereCustomerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder whereData($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder whereDeliveryAddressId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder whereIsPickingOnHold($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder whereNumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder whereReadyToDispatchAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder whereSentWarehouseAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder whereShopId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder whereState($value)
- * @method static \Illuminate\Database\Eloquent\Builder|FulfilmentOrder whereUpdatedAt($value)
+ * @method static Builder|FulfilmentOrder query()
+ * @method static Builder|FulfilmentOrder whereCanDispatch($value)
+ * @method static Builder|FulfilmentOrder whereCreatedAt($value)
+ * @method static Builder|FulfilmentOrder whereCustomerClientId($value)
+ * @method static Builder|FulfilmentOrder whereCustomerId($value)
+ * @method static Builder|FulfilmentOrder whereData($value)
+ * @method static Builder|FulfilmentOrder whereDeletedAt($value)
+ * @method static Builder|FulfilmentOrder whereDeliveryAddressId($value)
+ * @method static Builder|FulfilmentOrder whereId($value)
+ * @method static Builder|FulfilmentOrder whereIsPickingOnHold($value)
+ * @method static Builder|FulfilmentOrder whereNumber($value)
+ * @method static Builder|FulfilmentOrder whereReadyToDispatchAt($value)
+ * @method static Builder|FulfilmentOrder whereSentWarehouseAt($value)
+ * @method static Builder|FulfilmentOrder whereShopId($value)
+ * @method static Builder|FulfilmentOrder whereSlug($value)
+ * @method static Builder|FulfilmentOrder whereState($value)
+ * @method static Builder|FulfilmentOrder whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|FulfilmentOrder withTrashed()
  * @method static \Illuminate\Database\Query\Builder|FulfilmentOrder withoutTrashed()
  * @mixin \Eloquent
