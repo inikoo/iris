@@ -20,7 +20,7 @@ use Lorisleiva\Actions\ActionRequest;
 use Lorisleiva\Actions\Concerns\AsAction;
 
 
-class StoreOrder
+class StoreDropshippingOrderViaAurora
 {
     use AsAction;
     use WithInertia;
@@ -32,24 +32,23 @@ class StoreOrder
 
     public function handle(WebUser $webUser, array $modelData): PromiseInterface|Response
     {
+
+
+        $products=[];
+        foreach(Arr::pluck($modelData['items'], 'quantity', $this->productIDField) as $productIDField=>$quantity){
+            $product=Product::where($this->productIDField,$productIDField)->first();
+            $products[$product->id]=[
+                'quantity'=>$quantity
+            ];
+        }
+
+        $modelData['items']=$products;
+
         $parameters = array_merge([
                                       'web_user_id' => $webUser->id
                                   ],
                                   $modelData
         );
-
-
-        $products=[];
-        foreach(Arr::pluck($modelData['items'], 'quantity', $this->productIDField) as $productIDField=>$quantity){
-           $product=Product::where($this->productIDField,$productIDField)->first();
-            $products[$product->id]=$quantity;
-        }
-
-        $names = Arr::pluck($modelData['items'], 'quantity', $this->productIDField);
-
-
-
-        
 
         return Http::acceptJson()
             ->withToken(config('pika.token'))

@@ -61,7 +61,7 @@ $new_release_dir = $releases_dir . '/' . $date;
 
 
 // Command or path to invoke PHP
-$php = empty($php) ? 'php8.1' : $php;
+$php = empty($php) ? 'php8.2' : $php;
 $branch = empty($branch) ? 'main' : $branch;
 
 $deployment_key=null;
@@ -115,7 +115,7 @@ ln -nsf {{ $path }}/domain.php {{ $new_release_dir }}/config/
 echo "***********************************************************************"
 echo "* Composer install *"
 cd {{$new_release_dir}}
-{{$php}}  /usr/local/bin/composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader --prefer-dist 
+{{$php}}  /usr/local/bin/composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader --prefer-dist
 
 echo "***********************************************************************"
 echo "* NPM install *"

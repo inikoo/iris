@@ -8,10 +8,10 @@
 
 use App\Actions\Sales\Order\IndexOrders;
 use App\Actions\Sales\Order\ShowOrder;
-use App\Actions\Sales\Order\StoreOrder;
+use App\Actions\Sales\Order\StoreDropshippingOrderViaAurora;
 
 Route::get('/orders', IndexOrders::class)->name('orders.index');
-Route::post('/orders', StoreOrder::class)->name('orders.store');
+Route::post('/orders', StoreDropshippingOrderViaAurora::class)->name('orders.store');
 
 Route::get('/orders/{order}', ShowOrder::class)->name('orders.show');
 
