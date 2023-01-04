@@ -56,7 +56,7 @@ $new_release_dir = $releases_dir . '/' . $date;
 
 
 // Command or path to invoke PHP
-$php = empty($php) ? 'php8.1' : $php;
+$php = empty($php) ? 'php8.2' : $php;
 $branch = empty($branch) ? 'main' : $branch;
 
 $deployment_key=null;
