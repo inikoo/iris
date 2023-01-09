@@ -45,10 +45,10 @@ exit('ERROR: PRODUCTION_ADMIN_CODE var empty or not defined');
 }
 $adminCode=$_ENV['PRODUCTION_ADMIN_CODE'];
 
-if (empty($_ENV['PRODUCTION_ADMIN_NANE'])) {
-exit('ERROR: PRODUCTION_ADMIN_NANE var empty or not defined');
+if (empty($_ENV['PRODUCTION_ADMIN_NAME'])) {
+exit('ERROR: PRODUCTION_ADMIN_NAME var empty or not defined');
 }
-$adminName=$_ENV['PRODUCTION_ADMIN_NANE'];
+$adminName=$_ENV['PRODUCTION_ADMIN_NAME'];
 
 
 
