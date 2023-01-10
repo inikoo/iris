@@ -25,11 +25,11 @@ class ShowFulfilmentOrder
     private Customer $customer;
 
 
-    public function authorize(ActionRequest $request): bool
+    public function authorize(ActionRequest $request, FulfilmentOrder $fulfilmentOrder): bool
     {
         return
             (
-            $request->user()->tokenCan('*')
+                $request->user()->tokenCan('*') and $fulfilmentOrder->customer_id == $request->user()->customer_id
             );
     }
 

@@ -65,8 +65,6 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 class Address extends Model
 {
 
-    protected $primaryKey = 'address_id';
-
     protected $guarded = [];
 
 

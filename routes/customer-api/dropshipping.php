@@ -7,6 +7,7 @@
 
 
 use App\Actions\Dropshipping\CustomerClient\IndexCustomerClients;
+use App\Actions\Dropshipping\CustomerClient\ShowCustomerClient;
 use App\Actions\Sales\Order\IndexOrders;
 use App\Actions\Sales\Order\ShowOrder;
 use App\Actions\Sales\Order\StoreDropshippingOrderViaAurora;
@@ -17,4 +18,4 @@ Route::post('/orders', StoreDropshippingOrderViaAurora::class)->name('orders.sto
 Route::get('/orders/{order}', ShowOrder::class)->name('orders.show');
 
 Route::get('/clients', IndexCustomerClients::class)->name('clients.index');
-Route::get('/clients', IndexCustomerClients::class)->name('clients.index');
+Route::get('/clients/{customerClient:slug}', ShowCustomerClient::class)->name('clients.show');
