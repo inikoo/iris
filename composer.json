@@ -19,7 +19,9 @@
         "sentry/sentry-laravel": "^3.0",
         "spatie/laravel-query-builder": "^5.0",
         "spatie/laravel-sluggable": "^3.4",
-        "tightenco/ziggy": "^1.0"
+        "tightenco/ziggy": "^1.0",
+        "commerceguys/addressing": "^1.4",
+        "commerceguys/intl": "^1.1"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",

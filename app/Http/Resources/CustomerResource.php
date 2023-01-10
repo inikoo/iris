@@ -11,6 +11,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * @property string $reference
+ * @property string $slug
  * @property string $email
  * @property mixed $created_at
  * @property mixed $updated_at
@@ -24,6 +25,7 @@ class CustomerResource extends JsonResource
     public function toArray($request): array
     {
         return [
+            'slug'         => $this->slug,
             'reference'    => $this->reference,
             'name'         => $this->name,
             'contact_name' => $this->contact_name,
