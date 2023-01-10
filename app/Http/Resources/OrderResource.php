@@ -17,12 +17,13 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class OrderResource extends JsonResource
 {
 
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
-            'slug'            => $this->slug,
-            'number'          => $this->number,
-            'customer_number' => $this->customer_number,
+            'slug'          => $this->slug,
+            'code'          => $this->number,
+            'order_number'  => $this->customer_number,
+            'delivery_data' => new OrderDeliveryData($this)
 
 
         ];

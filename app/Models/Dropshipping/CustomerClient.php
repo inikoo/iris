@@ -38,7 +38,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property int|null $source_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|Address[] $addresses
+ * @property-read int|null $addresses_count
  * @property-read Customer|null $customer
+ * @property-read Address|null $deliveryAddress
  * @property-read Shop|null $shop
  * @method static Builder|CustomerClient newModelQuery()
  * @method static Builder|CustomerClient newQuery()

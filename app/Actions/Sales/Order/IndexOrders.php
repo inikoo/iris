@@ -40,7 +40,10 @@ class IndexOrders
 
         return QueryBuilder::for(Order::class)
             ->defaultSort('orders.number')
-            ->select(['slug', 'number', 'state', 'customer_client_id', 'customer_number', 'created_at', 'updated_at'])
+            ->select(['slug', 'number', 'state', 'customer_client_id', 'customer_number','delivery_address_id',
+
+                      'created_at', 'updated_at'])
+            ->with('deliveryAddress')
             ->where('customer_id', $this->customer->id)
             ->allowedSorts(['number', 'state', 'created_at', 'updated_at', 'customer_number'])
             ->allowedFilters([$globalSearch])

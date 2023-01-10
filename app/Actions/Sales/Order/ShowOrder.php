@@ -25,16 +25,18 @@ class ShowOrder
     private Customer $customer;
 
 
-    public function authorize(ActionRequest $request, Order $order): bool
+    public function authorize(ActionRequest $request): bool
     {
+
         return
             (
-                $request->user()->tokenCan('*') and $order->customer_id == $request->user()->customer_id
+                $request->user()->tokenCan('*')
             );
     }
 
     public function asController(Order $order, ActionRequest $request): Order
     {
+
         $request->validate();
 
 

@@ -15,7 +15,7 @@ use App\Actions\Sales\Order\StoreDropshippingOrderViaAurora;
 Route::get('/orders', IndexOrders::class)->name('orders.index');
 Route::post('/orders', StoreDropshippingOrderViaAurora::class)->name('orders.store');
 
-Route::get('/orders/{order}', ShowOrder::class)->name('orders.show');
+Route::get('/orders/{order:slug}', ShowOrder::class)->name('orders.show');
 
 Route::get('/clients', IndexCustomerClients::class)->name('clients.index');
 Route::get('/clients/{customerClient:slug}', ShowCustomerClient::class)->name('clients.show');

@@ -24,11 +24,11 @@ class ShowCustomerClient
     private Customer $customer;
 
 
-    public function authorize(ActionRequest $request, CustomerClient $customerClient): bool
+    public function authorize(ActionRequest $request): bool
     {
         return
             (
-                $request->user()->tokenCan('*') and $customerClient->customer_id == $request->user()->customer_id
+                $request->user()->tokenCan('*')
             );
     }
 

@@ -15,8 +15,11 @@
 namespace App\Models\Sales;
 
 
+use App\Models\Helpers\Address;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\Models\Sales\Order
@@ -48,6 +51,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $cancelled_at equivalent deleted_at
  * @property int|null $source_id
+ * @property-read Address|null $deliveryAddress
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sales\Transaction[] $transactions
+ * @property-read int|null $transactions_count
  * @method static Builder|Order newModelQuery()
  * @method static Builder|Order newQuery()
  * @method static Builder|Order query()
@@ -88,5 +94,14 @@ class Order extends Model
         return 'slug';
     }
 
+    public function deliveryAddress(): BelongsTo
+    {
+        return $this->belongsTo(Address::class,'delivery_address_id','id');
+    }
+
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class);
+    }
 
 }
