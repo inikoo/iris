@@ -33,7 +33,7 @@ class StoreAdmin
         $user  = StoreUser::run($admin);
 
 
-        $token = $user->createToken('pika-access', ['pika'])->plainTextToken;
+        $token = $user->createToken('aiku-access', ['aiku'])->plainTextToken;
         $command->line("SysAdmin access token: $token");
 
 

@@ -51,9 +51,9 @@ class StoreDropshippingOrderViaAurora
         );
 
         return Http::acceptJson()
-            ->withToken(config('pika.token'))
+            ->withToken(config('aiku.token'))
             ->post(
-                config('pika.url').'/api/iris/dropshipping/orders',
+                config('aiku.url').'/api/iris/dropshipping/orders',
                 $parameters
             );
     }
@@ -96,7 +96,7 @@ class StoreDropshippingOrderViaAurora
             'contact_name'                  => ['sometimes', 'string', 'max:255'],
             'phone'                         => ['sometimes', 'string', 'max:255'],
             'delivery_address'              => ['required', 'array:address_line_1,address_line_2,sorting_code,postal_code,locality,dependant_locality,administrative_area,country_code'],
-            'delivery_address.country_code' => ['required', 'string', 'size:2', 'exists:pika_central.countries,code'],
+            'delivery_address.country_code' => ['required', 'string', 'size:2', 'exists:aiku_central.countries,code'],
             'items'                         => ['required', 'array'],
             'items.*'                       => ['required', "array:$this->productIDField,quantity"],
             "items.*.quantity"              => ['required', 'numeric', 'min:0', 'max:1000000','not_in:0'],
