@@ -7,12 +7,15 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Helpers\Address;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * @property string $email
+ * @property string $phone
+ * @property Address $deliveryAddress
  */
-class OrderDeliveryData extends JsonResource
+class OrderDeliveryDataResource extends JsonResource
 {
 
     public function toArray($request): array

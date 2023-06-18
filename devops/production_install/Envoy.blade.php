@@ -76,6 +76,7 @@ $skip_build=false;
 
 sudo rm -rf {{ $path }}/envs
 sudo rm -rf {{ $path }}/storage
+sudo rm -rf {{$releases_dir}}/*
 
 mkdir -p {{ $path }}/envs
 sudo chgrp -R www-data {{ $path }}/envs
@@ -133,6 +134,7 @@ echo "migrating DB and seeding"
 cd {{ $new_release_dir }}
 
 {{$php}} artisan optimize:clear --quiet
+{{$php}} artisan key:generate --force
 {{$php}} artisan migrate:refresh --force
 {{$php}} artisan db:seed --force
 {{$php}} artisan create:first-deployment
