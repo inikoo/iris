@@ -61,12 +61,12 @@ class StoreDomain
             [
                 'WEBSITE_ID'     => $domain->website_id,
                 'WEBSITE_DOMAIN' => $domain->url,
-                'DB_CONNECTION'  => 'pika',
-                'PIKA_DB_SCHEMA' => 'pika_'.$centralDomain->tenant->code
+                'DB_CONNECTION'  => 'aiku',
+                'AIKU_DB_SCHEMA' => 'aiku_'.$centralDomain->tenant->code
             ];
 
-        if (Arr::exists($modelData, 'pika_token')) {
-            $environmentData['PIKA_TOKEN'] = Arr::get($modelData, 'pika_token');
+        if (Arr::exists($modelData, 'aiku_token')) {
+            $environmentData['AIKU_TOKEN'] = Arr::get($modelData, 'aiku_token');
         }
 
         $environmentData = json_encode($environmentData);
@@ -86,7 +86,7 @@ class StoreDomain
     {
         return [
             'central_domain_id' => ['required', 'exists:App\Models\Central\CentralDomain,id'],
-            'pika_token'        => ['sometimes', 'string']
+            'aiku_token'        => ['sometimes', 'string']
         ];
     }
 
@@ -105,7 +105,7 @@ class StoreDomain
     {
         $request->validate();
 
-        return $this->handle($this->centralDomain, $request->only(['pika_token', 'soft']));
+        return $this->handle($this->centralDomain, $request->only(['aiku_token', 'soft']));
     }
 
     public function jsonResponse(Domain $domain): DomainResource

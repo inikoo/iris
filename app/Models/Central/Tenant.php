@@ -26,7 +26,7 @@ class Tenant extends Model
 {
     use ReadOnlyTrait;
 
-    protected $connection = 'pika';
+    protected $connection = 'aiku';
 
 
     public function centralDomains(): HasMany

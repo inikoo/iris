@@ -20,7 +20,7 @@ class CentralDomain extends Model
 {
     use ReadOnlyTrait;
 
-    protected $connection = 'pika';
+    protected $connection = 'aiku';
 
     public function tenant(): BelongsTo
     {

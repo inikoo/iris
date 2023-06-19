@@ -36,9 +36,9 @@ class StoreStock
         );
 
         return Http::acceptJson()
-            ->withToken(config('pika.token'))
+            ->withToken(config('aiku.token'))
             ->post(
-                config('pika.url').'/api/iris/stocks',
+                config('aiku.url').'/api/iris/stocks',
                 $parameters
             );
     }

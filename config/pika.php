@@ -6,8 +6,8 @@
  */
 
 return [
-    'url'=>env('PIKA_URL'),
-    'token'=>env('PIKA_TOKEN'),
+    'url'=>env('AIKU_URL'),
+    'token'=>env('AIKU_TOKEN'),
 ];
 
 

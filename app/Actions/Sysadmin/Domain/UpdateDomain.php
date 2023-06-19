@@ -24,10 +24,10 @@ class UpdateDomain
 
     public function handle(Domain $domain, array $modelData): Domain
     {
-        if (Arr::exists($modelData, 'pika_token')) {
+        if (Arr::exists($modelData, 'aiku_token')) {
             $environmentData = json_encode(
                 [
-                    'PIKA_TOKEN' => Arr::pull($modelData, 'pika_token')
+                    'AIKU_TOKEN' => Arr::pull($modelData, 'aiku_token')
                 ]
 
             );
@@ -45,7 +45,7 @@ class UpdateDomain
     public function rules(): array
     {
         return [
-            'pika_token' => ['sometimes', 'string']
+            'aiku_token' => ['sometimes', 'string']
         ];
     }
 
@@ -55,7 +55,7 @@ class UpdateDomain
         $request->validate();
 
 
-        return $this->handle($domain, $request->only(['pika_token']));
+        return $this->handle($domain, $request->only(['aiku_token']));
     }
 
     public function jsonResponse(Domain $domain): DomainResource
