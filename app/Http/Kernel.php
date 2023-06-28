@@ -9,7 +9,7 @@ namespace App\Http;
 
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\EncryptCookies;
-use App\Http\Middleware\EnsureNoCentralDomain;
+use App\Http\Middleware\EnsureNoDomain;
 use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -59,7 +59,7 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            EnsureNoCentralDomain::class,
+            EnsureNoDomain::class,
             EncryptCookies::class,
             AddQueuedCookiesToResponse::class,
             StartSession::class,

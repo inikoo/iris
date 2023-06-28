@@ -5,24 +5,22 @@
  *  Copyright (c) 2022, Raul A Perusquia Flores
  */
 
-namespace App\Actions\Sysadmin\Domain;
+namespace App\Actions\Sysadmin\Instance;
 
 use App\Actions\WithActionUpdate;
-use App\Http\Resources\DomainResource;
-use App\Models\Central\CentralDomain;
-use App\Models\SysAdmin\Domain;
+use App\Http\Resources\InstanceResource;
+use App\Models\SysAdmin\Instance;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Artisan;
 use Lorisleiva\Actions\ActionRequest;
 
-class UpdateDomain
+class UpdateInstance
 {
     use WithActionUpdate;
 
 
-    private ?CentralDomain $centralDomain;
 
-    public function handle(Domain $domain, array $modelData): Domain
+    public function handle(Instance $instance, array $modelData): Instance
     {
         if (Arr::exists($modelData, 'aiku_token')) {
             $environmentData = json_encode(
@@ -31,15 +29,15 @@ class UpdateDomain
                 ]
 
             );
-            Artisan::call("domain:update_env --domain_values='$environmentData' $domain->url");
+            Artisan::call("domain:update_env --Instance_values='$environmentData' $instance->url");
             if (app()->environment('production') or app()->environment('staging')) {
-                Artisan::call("config:cache --domain=$domain->url");
+                Artisan::call("config:cache --Instance=$instance->url");
             }
 
         }
 
 
-        return $this->update($domain, $modelData);
+        return $this->update($instance, $modelData);
     }
 
     public function rules(): array
@@ -50,17 +48,17 @@ class UpdateDomain
     }
 
 
-    public function asController(Domain $domain, ActionRequest $request): Domain
+    public function asController(Instance $instance, ActionRequest $request): Instance
     {
         $request->validate();
 
 
-        return $this->handle($domain, $request->only(['aiku_token']));
+        return $this->handle($instance, $request->only(['aiku_token']));
     }
 
-    public function jsonResponse(Domain $domain): DomainResource
+    public function jsonResponse(Instance $instance): InstanceResource
     {
-        return new DomainResource($domain);
+        return new InstanceResource($instance);
     }
 
 

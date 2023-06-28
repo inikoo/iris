@@ -12,15 +12,8 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-/**
- * App\Models\SysAdmin\Domain
- *
- * @method static Builder|Domain newModelQuery()
- * @method static Builder|Domain newQuery()
- * @method static Builder|Domain query()
- * @mixin \Eloquent
- */
-class Domain extends Model
+
+class Instance extends Model
 {
     use HasSlug;
 

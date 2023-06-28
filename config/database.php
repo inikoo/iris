@@ -62,7 +62,7 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
-            'search_path' => env('AIKU_DB_CENTRAL_SCHEMA', 'central'),
+            'search_path' => env('AIKU_DB_CENTRAL_SCHEMA', 'public'),
             'sslmode' => 'prefer',
         ],
         'aiku' => [

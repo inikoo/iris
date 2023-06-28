@@ -13,13 +13,13 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class EnsureNoCentralDomain
+class EnsureNoDomain
 {
 
     public function handle(Request $request, Closure $next): Response|RedirectResponse|JsonResponse
     {
 
-        if ( !app()->environment('local') and  preg_match('/([a-z0-9]+[.])*'.preg_replace('/\./', '\.', config('app.central_domain')).'/', app()->domain)) {
+        if ( !app()->environment('local') and  preg_match('/([a-z0-9]+[.])*'.preg_replace('/\./', '\.', config('app.domain')).'/', app()->domain)) {
             abort(404);
         }
 

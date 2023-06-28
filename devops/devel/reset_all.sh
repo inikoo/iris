@@ -4,7 +4,7 @@
 # Copyright (c) 2023, Raul A Perusquia Flores
 #
 
-
+cd ../../
 sudo chgrp -R www-data envs
 sudo chmod g+s envs
 sudo chmod g+r envs/.env

@@ -12,26 +12,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
 
-/**
- * App\Models\Central\Tenant
- *
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Central\CentralDomain[] $centralDomains
- * @property-read int|null $central_domains_count
- * @method static Builder|Tenant newModelQuery()
- * @method static Builder|Tenant newQuery()
- * @method static Builder|Tenant query()
- * @mixin \Eloquent
- */
+
 class Tenant extends Model
 {
     use ReadOnlyTrait;
 
-    protected $connection = 'aiku';
+    protected $connection = 'aiku_central';
 
 
     public function centralDomains(): HasMany
     {
-        return $this->hasMany(CentralDomain::class);
+        return $this->hasMany(Domain::class);
     }
 
 

@@ -12,22 +12,22 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
 
-    public function up()
+    public function up(): void
     {
-        Schema::create('domains', function (Blueprint $table) {
+        Schema::create('instances', function (Blueprint $table) {
             $table->id();
             $table->string('slug');
             $table->string('url')->unique();
-            $table->string('tenant_id');
-            $table->unsignedBigInteger('website_id');
-
+            $table->unsignedSmallInteger('tenant_id');
+            $table->unsignedSmallInteger('website_id');
+            $table->unsignedSmallInteger('domain_id');
             $table->timestampsTz();
         });
     }
 
 
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('domains');
+        Schema::dropIfExists('instances');
     }
 };

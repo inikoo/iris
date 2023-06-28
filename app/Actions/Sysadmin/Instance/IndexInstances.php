@@ -5,28 +5,28 @@
  *  Copyright (c) 2022, Raul A Perusquia Flores
  */
 
-namespace App\Actions\Sysadmin\Domain;
+namespace App\Actions\Sysadmin\Instance;
 
-use App\Http\Resources\DomainResource;
-use App\Models\SysAdmin\Domain;
+use App\Http\Resources\InstanceResource;
+use App\Models\SysAdmin\Instance;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Lorisleiva\Actions\Concerns\AsAction;
 
-class IndexDomains
+class IndexInstances
 {
     use AsAction;
 
 
     public function asController(): Collection
     {
-        return Domain::all();
+        return Instance::all();
     }
 
     public function jsonResponse($domains): AnonymousResourceCollection
     {
-        return DomainResource::collection($domains);
+        return InstanceResource::collection($domains);
     }
 
 }
