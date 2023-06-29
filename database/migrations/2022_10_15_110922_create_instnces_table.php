@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('url')->unique();
             $table->unsignedSmallInteger('tenant_id');
             $table->unsignedSmallInteger('website_id');
+            $table->unsignedSmallInteger('shop_id');
             $table->unsignedSmallInteger('domain_id');
             $table->timestampsTz();
         });

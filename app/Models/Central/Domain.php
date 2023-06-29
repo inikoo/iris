@@ -19,6 +19,7 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
  * @property string $slug
  * @property int $tenant_id
  * @property int $website_id
+ * @property int $shop_id
  * @property string $domain
  * @property string|null $cloudflare_id
  * @property string|null $cloudflare_status
@@ -39,6 +40,7 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
  * @method static Builder|Domain whereId($value)
  * @method static Builder|Domain whereIrisId($value)
  * @method static Builder|Domain whereIrisStatus($value)
+ * @method static Builder|Domain whereShopId($value)
  * @method static Builder|Domain whereSlug($value)
  * @method static Builder|Domain whereTenantId($value)
  * @method static Builder|Domain whereUpdatedAt($value)

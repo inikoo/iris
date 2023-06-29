@@ -25,7 +25,6 @@ class StoreInstance
 
     public function handle(Domain $domain, array $modelData, string $authToken = null): Instance
     {
-
         $instance = Instance::create($modelData);
         $exitCode = Artisan::call("domain:add $instance->url");
 
@@ -38,6 +37,7 @@ class StoreInstance
             [
                 'WEBSITE_ID'     => $instance->website_id,
                 'WEBSITE_DOMAIN' => $instance->url,
+                'SHOP_ID'        => $instance->shop_id,
                 'DB_CONNECTION'  => 'aiku',
                 'AIKU_DB_SCHEMA' => 'tenant_'.$domain->tenant->code
             ];
@@ -65,6 +65,7 @@ class StoreInstance
             'domain_id'  => ['required', 'unique:instances'],
             'tenant_id'  => ['required', 'exists:App\Models\Central\Tenant,id'],
             'website_id' => ['required', 'integer'],
+            'shop_id'    => ['required', 'integer'],
             'slug'       => ['required', 'string'],
             'url'        => ['required', 'string', 'unique:instances'],
             'aiku_token' => ['sometimes', 'string'],
@@ -80,6 +81,7 @@ class StoreInstance
                 'slug'       => $this->domain->slug,
                 'tenant_id'  => $this->domain->tenant_id,
                 'website_id' => $this->domain->website_id,
+                'shop_id'    => $this->domain->shop_id,
 
             ]
         );

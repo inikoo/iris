@@ -24,6 +24,7 @@ class DomainResource extends JsonResource
             'domain'      => $domain->domain,
             'tenant_id'   => $domain->tenant_id,
             'website_id'  => $domain->website_id,
+            'shop_id'     => $domain->shop_id,
             'iris_id'     => $domain->iris_id,
             'iris_status' => $domain->iris_status,
             'created_at'  => $domain->created_at,
