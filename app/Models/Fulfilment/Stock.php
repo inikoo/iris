@@ -18,23 +18,25 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property int $id
  * @property string $slug
  * @property string $code
- * @property string $owner_type
+ * @property string|null $name
+ * @property string|null $description
+ * @property string $owner_type Tenant|Customer
  * @property int $owner_id
  * @property int|null $stock_family_id
- * @property string $composition
- * @property string|null $state
- * @property string|null $quantity_status
+ * @property string|null $trade_unit_composition
+ * @property string $state
  * @property bool $sellable
  * @property bool $raw_material
  * @property string|null $barcode
- * @property string|null $description
  * @property int|null $units_per_pack units per pack
  * @property int|null $units_per_carton units per carton
- * @property string|null $quantity stock quantity in units
+ * @property string|null $quantity_in_locations stock quantity in units
+ * @property string|null $quantity_status
  * @property float|null $available_forecast days
- * @property string|null $value
+ * @property int $number_locations
+ * @property string|null $unit_value
+ * @property string $value_in_locations
  * @property int|null $image_id
- * @property int|null $package_image_id
  * @property mixed $settings
  * @property mixed $data
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -44,7 +46,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property string|null $discontinued_at
  * @property string|null $deleted_at
  * @property int|null $source_id
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Fulfilment\Location[] $locations
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Fulfilment\Location> $locations
  * @property-read int|null $locations_count
  * @method static Builder|Stock newModelQuery()
  * @method static Builder|Stock newQuery()
@@ -53,7 +55,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @method static Builder|Stock whereAvailableForecast($value)
  * @method static Builder|Stock whereBarcode($value)
  * @method static Builder|Stock whereCode($value)
- * @method static Builder|Stock whereComposition($value)
  * @method static Builder|Stock whereCreatedAt($value)
  * @method static Builder|Stock whereData($value)
  * @method static Builder|Stock whereDeletedAt($value)
@@ -62,10 +63,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @method static Builder|Stock whereDiscontinuingAt($value)
  * @method static Builder|Stock whereId($value)
  * @method static Builder|Stock whereImageId($value)
+ * @method static Builder|Stock whereName($value)
+ * @method static Builder|Stock whereNumberLocations($value)
  * @method static Builder|Stock whereOwnerId($value)
  * @method static Builder|Stock whereOwnerType($value)
- * @method static Builder|Stock wherePackageImageId($value)
- * @method static Builder|Stock whereQuantity($value)
+ * @method static Builder|Stock whereQuantityInLocations($value)
  * @method static Builder|Stock whereQuantityStatus($value)
  * @method static Builder|Stock whereRawMaterial($value)
  * @method static Builder|Stock whereSellable($value)
@@ -74,10 +76,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @method static Builder|Stock whereSourceId($value)
  * @method static Builder|Stock whereState($value)
  * @method static Builder|Stock whereStockFamilyId($value)
+ * @method static Builder|Stock whereTradeUnitComposition($value)
+ * @method static Builder|Stock whereUnitValue($value)
  * @method static Builder|Stock whereUnitsPerCarton($value)
  * @method static Builder|Stock whereUnitsPerPack($value)
  * @method static Builder|Stock whereUpdatedAt($value)
- * @method static Builder|Stock whereValue($value)
+ * @method static Builder|Stock whereValueInLocations($value)
  * @mixin \Eloquent
  */
 class Stock extends Model

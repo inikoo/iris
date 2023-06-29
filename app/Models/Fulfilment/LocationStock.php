@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  * @property int $id
  * @property int $stock_id
  * @property int $location_id
- * @property string $quantity
+ * @property string $quantity in units
  * @property string $type
  * @property int|null $picking_priority
  * @property string|null $notes

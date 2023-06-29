@@ -34,10 +34,11 @@ use Laravel\Sanctum\HasApiTokens;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $deleted_at
- * @property string $web_login_version
+ * @property string $login_version
  * @property int|null $source_id
+ * @property string|null $source_password source password
  * @property-read Customer $customer
- * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
  * @method static Builder|WebUser newModelQuery()
  * @method static Builder|WebUser newQuery()
@@ -49,17 +50,18 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static Builder|WebUser whereEmail($value)
  * @method static Builder|WebUser whereEmailVerifiedAt($value)
  * @method static Builder|WebUser whereId($value)
+ * @method static Builder|WebUser whereLoginVersion($value)
  * @method static Builder|WebUser whereNumberApiTokens($value)
  * @method static Builder|WebUser wherePassword($value)
  * @method static Builder|WebUser whereRememberToken($value)
  * @method static Builder|WebUser whereSettings($value)
  * @method static Builder|WebUser whereSlug($value)
  * @method static Builder|WebUser whereSourceId($value)
+ * @method static Builder|WebUser whereSourcePassword($value)
  * @method static Builder|WebUser whereStatus($value)
  * @method static Builder|WebUser whereType($value)
  * @method static Builder|WebUser whereUpdatedAt($value)
  * @method static Builder|WebUser whereUsername($value)
- * @method static Builder|WebUser whereWebLoginVersion($value)
  * @method static Builder|WebUser whereWebsiteId($value)
  * @mixin \Eloquent
  */

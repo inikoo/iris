@@ -22,16 +22,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * App\Models\Marketing\Shop
  *
  * @property int $id
- * @property string|null $slug
+ * @property string $slug
  * @property string $code
  * @property string $name
  * @property string|null $company_name
  * @property string|null $contact_name
  * @property string|null $email
  * @property string|null $phone
- * @property string|null $url
- * @property string|null $tax_number
- * @property string|null $tax_number_status
  * @property string|null $identity_document_type
  * @property string|null $identity_document_number
  * @property int|null $address_id
@@ -41,6 +38,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|null $subtype
  * @property string|null $open_at
  * @property string|null $closed_at
+ * @property int $country_id
  * @property int $language_id
  * @property int $currency_id
  * @property int $timezone_id
@@ -50,22 +48,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property int|null $source_id
- * @property-read \Illuminate\Database\Eloquent\Collection|Customer[] $customers
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Customer> $customers
  * @property-read int|null $customers_count
- * @property-read \Illuminate\Database\Eloquent\Collection|Order[] $orders
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Order> $orders
  * @property-read int|null $orders_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Marketing\Product[] $products
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Marketing\Product> $products
  * @property-read int|null $products_count
  * @property-read Website|null $website
  * @method static Builder|Shop newModelQuery()
  * @method static Builder|Shop newQuery()
- * @method static \Illuminate\Database\Query\Builder|Shop onlyTrashed()
+ * @method static Builder|Shop onlyTrashed()
  * @method static Builder|Shop query()
  * @method static Builder|Shop whereAddressId($value)
  * @method static Builder|Shop whereClosedAt($value)
  * @method static Builder|Shop whereCode($value)
  * @method static Builder|Shop whereCompanyName($value)
  * @method static Builder|Shop whereContactName($value)
+ * @method static Builder|Shop whereCountryId($value)
  * @method static Builder|Shop whereCreatedAt($value)
  * @method static Builder|Shop whereCurrencyId($value)
  * @method static Builder|Shop whereData($value)
@@ -84,14 +83,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static Builder|Shop whereSourceId($value)
  * @method static Builder|Shop whereState($value)
  * @method static Builder|Shop whereSubtype($value)
- * @method static Builder|Shop whereTaxNumber($value)
- * @method static Builder|Shop whereTaxNumberStatus($value)
  * @method static Builder|Shop whereTimezoneId($value)
  * @method static Builder|Shop whereType($value)
  * @method static Builder|Shop whereUpdatedAt($value)
- * @method static Builder|Shop whereUrl($value)
- * @method static \Illuminate\Database\Query\Builder|Shop withTrashed()
- * @method static \Illuminate\Database\Query\Builder|Shop withoutTrashed()
+ * @method static Builder|Shop withTrashed()
+ * @method static Builder|Shop withoutTrashed()
  * @mixin \Eloquent
  */
 class Shop extends Model

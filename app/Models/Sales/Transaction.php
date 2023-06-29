@@ -18,11 +18,18 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property int $id
  * @property int $shop_id
  * @property int $customer_id
- * @property int $order_id
- * @property string|null $state
+ * @property int|null $order_id
+ * @property int|null $invoice_id
+ * @property string $type
+ * @property string $state
+ * @property string $status
  * @property string|null $item_type
  * @property int|null $item_id
- * @property string $quantity
+ * @property string $quantity_ordered
+ * @property string $quantity_bonus
+ * @property string $quantity_dispatched
+ * @property string $quantity_fail
+ * @property string $quantity_cancelled
  * @property string $discounts
  * @property string $net
  * @property int|null $tax_band_id
@@ -33,7 +40,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property int|null $source_id
  * @property-read \App\Models\Sales\Customer $customer
  * @property-read Model|\Eloquent $item
- * @property-read \App\Models\Sales\Order $order
+ * @property-read \App\Models\Sales\Order|null $order
  * @property-read Shop $shop
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction newQuery()
@@ -44,15 +51,22 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereDiscounts($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereInvoiceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereItemId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereItemType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereNet($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereOrderId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereQuantityBonus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereQuantityCancelled($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereQuantityDispatched($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereQuantityFail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereQuantityOrdered($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereShopId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereSourceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereTaxBandId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereUpdatedAt($value)
  * @mixin \Eloquent
  */

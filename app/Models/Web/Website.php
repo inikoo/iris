@@ -19,20 +19,22 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
  * @property string $slug
  * @property int $shop_id
  * @property string $state
+ * @property string $engine
  * @property string $code
  * @property string $domain
  * @property string $name
  * @property mixed $settings
  * @property mixed $data
- * @property mixed $webnodes
+ * @property mixed $structure
+ * @property bool $in_maintenance
+ * @property int|null $current_layout_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $launched_at
  * @property string|null $closed_at
- * @property int|null $current_layout_id
  * @property string|null $deleted_at
  * @property int|null $source_id
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Web\WebsiteNode[] $websiteNodes
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Web\WebsiteNode> $websiteNodes
  * @property-read int|null $website_nodes_count
  * @method static Builder|Website newModelQuery()
  * @method static Builder|Website newQuery()
@@ -44,7 +46,9 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
  * @method static Builder|Website whereData($value)
  * @method static Builder|Website whereDeletedAt($value)
  * @method static Builder|Website whereDomain($value)
+ * @method static Builder|Website whereEngine($value)
  * @method static Builder|Website whereId($value)
+ * @method static Builder|Website whereInMaintenance($value)
  * @method static Builder|Website whereLaunchedAt($value)
  * @method static Builder|Website whereName($value)
  * @method static Builder|Website whereSettings($value)
@@ -52,8 +56,8 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
  * @method static Builder|Website whereSlug($value)
  * @method static Builder|Website whereSourceId($value)
  * @method static Builder|Website whereState($value)
+ * @method static Builder|Website whereStructure($value)
  * @method static Builder|Website whereUpdatedAt($value)
- * @method static Builder|Website whereWebnodes($value)
  * @mixin \Eloquent
  */
 class Website extends Model

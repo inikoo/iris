@@ -31,13 +31,20 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int|null $customer_client_id
  * @property string|null $number
  * @property string|null $customer_number Customers own order number
- * @property string|null $type
  * @property string $state
+ * @property string $status
+ * @property string $date
+ * @property string|null $submitted_at
+ * @property string|null $in_warehouse_at
+ * @property string|null $handling_at
+ * @property string|null $packed_at
+ * @property string|null $finalised_at
+ * @property string|null $dispatched_at
+ * @property string|null $settled_at
+ * @property string|null $cancelled_at
  * @property bool $is_invoiced
  * @property bool|null $is_picking_on_hold
  * @property bool|null $can_dispatch
- * @property int|null $billing_address_id
- * @property int|null $delivery_address_id
  * @property string $items_discounts
  * @property string $items_net
  * @property int $currency_id
@@ -49,15 +56,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property mixed $data
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $cancelled_at equivalent deleted_at
+ * @property string|null $deleted_at
  * @property int|null $source_id
  * @property-read Address|null $deliveryAddress
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sales\Transaction[] $transactions
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Sales\Transaction> $transactions
  * @property-read int|null $transactions_count
  * @method static Builder|Order newModelQuery()
  * @method static Builder|Order newQuery()
  * @method static Builder|Order query()
- * @method static Builder|Order whereBillingAddressId($value)
  * @method static Builder|Order whereCanDispatch($value)
  * @method static Builder|Order whereCancelledAt($value)
  * @method static Builder|Order whereCharges($value)
@@ -67,22 +73,30 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static Builder|Order whereCustomerId($value)
  * @method static Builder|Order whereCustomerNumber($value)
  * @method static Builder|Order whereData($value)
- * @method static Builder|Order whereDeliveryAddressId($value)
+ * @method static Builder|Order whereDate($value)
+ * @method static Builder|Order whereDeletedAt($value)
+ * @method static Builder|Order whereDispatchedAt($value)
  * @method static Builder|Order whereExchange($value)
+ * @method static Builder|Order whereFinalisedAt($value)
+ * @method static Builder|Order whereHandlingAt($value)
  * @method static Builder|Order whereId($value)
+ * @method static Builder|Order whereInWarehouseAt($value)
  * @method static Builder|Order whereIsInvoiced($value)
  * @method static Builder|Order whereIsPickingOnHold($value)
  * @method static Builder|Order whereItemsDiscounts($value)
  * @method static Builder|Order whereItemsNet($value)
  * @method static Builder|Order whereNet($value)
  * @method static Builder|Order whereNumber($value)
+ * @method static Builder|Order wherePackedAt($value)
+ * @method static Builder|Order whereSettledAt($value)
  * @method static Builder|Order whereShipping($value)
  * @method static Builder|Order whereShopId($value)
  * @method static Builder|Order whereSlug($value)
  * @method static Builder|Order whereSourceId($value)
  * @method static Builder|Order whereState($value)
+ * @method static Builder|Order whereStatus($value)
+ * @method static Builder|Order whereSubmittedAt($value)
  * @method static Builder|Order whereTax($value)
- * @method static Builder|Order whereType($value)
  * @method static Builder|Order whereUpdatedAt($value)
  * @mixin \Eloquent
  */

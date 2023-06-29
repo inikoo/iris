@@ -1,1 +1,5 @@
-php artisan ide-helper:models -Wr --domain=aroma.test
+php artisan ide-helper:models -Wr --domain=aroma.test --ignore='App\Models\SysAdmin\Instance,App\Models\SysAdmin\Admin,App\Models\SysAdmin\User,App\Models\Central\Deployment'
+php artisan ide-helper:models -Wr 'App\Models\SysAdmin\Instance'
+php artisan ide-helper:models -Wr 'App\Models\SysAdmin\Admin'
+php artisan ide-helper:models -Wr 'App\Models\SysAdmin\User'
+php artisan ide-helper:models -Wr 'App\Models\Central\Deployment'

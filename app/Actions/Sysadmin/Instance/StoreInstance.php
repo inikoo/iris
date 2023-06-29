@@ -38,7 +38,7 @@ class StoreInstance
                 'WEBSITE_ID'     => $instance->website_id,
                 'WEBSITE_DOMAIN' => $instance->url,
                 'DB_CONNECTION'  => 'aiku',
-                'AIKU_DB_SCHEMA' => 'aiku_'.$domain->tenant->code
+                'AIKU_DB_SCHEMA' => 'tenant_'.$domain->tenant->code
             ];
 
         if ($authToken) {

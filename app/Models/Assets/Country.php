@@ -30,7 +30,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @method static Builder|Country newModelQuery()
  * @method static Builder|Country newQuery()
- * @method static \Illuminate\Database\Query\Builder|Country onlyTrashed()
+ * @method static Builder|Country onlyTrashed()
  * @method static Builder|Country query()
  * @method static Builder|Country whereCapital($value)
  * @method static Builder|Country whereCode($value)
@@ -46,8 +46,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static Builder|Country whereTimezoneId($value)
  * @method static Builder|Country whereType($value)
  * @method static Builder|Country whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|Country withTrashed()
- * @method static \Illuminate\Database\Query\Builder|Country withoutTrashed()
+ * @method static Builder|Country withTrashed()
+ * @method static Builder|Country withoutTrashed()
  * @mixin \Eloquent
  */
 class Country extends Model {
