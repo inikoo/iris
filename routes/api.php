@@ -8,6 +8,7 @@
 use App\Actions\Central\Deployment\ShowDeployment;
 use App\Actions\Central\Deployment\StoreDeployment;
 use App\Actions\Central\Deployment\UpdateDeployment;
+use App\Actions\Central\Domain\IndexDomains;
 use App\Actions\Sysadmin\Instance\DeleteInstance;
 use App\Actions\Sysadmin\Instance\IndexInstances;
 use App\Actions\Sysadmin\Instance\ShowInstance;
@@ -19,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:admin')->group(function () {
     Route::get('/user', ShowUser::class);
+
+    Route::get('/domains', IndexDomains::class)->name('domains.index');
 
     Route::post('/domains/{domain}/instance', StoreInstance::class)->name('domains.show.instance.store');
     Route::get('/domains/{domain}/instance', [ShowInstance::class,'inDomain'])->name('domains.show.instance.show');

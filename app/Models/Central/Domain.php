@@ -7,11 +7,9 @@
 
 namespace App\Models\Central;
 
-use App\Models\SysAdmin\Instance;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
 
 /**
@@ -24,6 +22,7 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
  * @property string $domain
  * @property string|null $cloudflare_id
  * @property string|null $cloudflare_status
+ * @property int|null $iris_id
  * @property string|null $iris_status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -38,6 +37,7 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
  * @method static Builder|Domain whereDeletedAt($value)
  * @method static Builder|Domain whereDomain($value)
  * @method static Builder|Domain whereId($value)
+ * @method static Builder|Domain whereIrisId($value)
  * @method static Builder|Domain whereIrisStatus($value)
  * @method static Builder|Domain whereSlug($value)
  * @method static Builder|Domain whereTenantId($value)
