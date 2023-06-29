@@ -25,12 +25,15 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::post('/domains/{domain}/instance', StoreInstance::class)->name('domains.show.instance.store');
     Route::get('/domains/{domain}/instance', [ShowInstance::class,'inDomain'])->name('domains.show.instance.show');
+    Route::delete('/domains/{domain}/instance', [DeleteInstance::class,'inDomain'])->name('domains.show.instance.delate');
 
 
-    Route::get('/instances', IndexInstances::class);
-    Route::delete('/instances/{instance}', DeleteInstance::class);
-    Route::get('/instances/{instance}', ShowInstance::class);
-    Route::patch('/instances/{instance}', UpdateInstance::class);
+    Route::get('/instances', IndexInstances::class)->name('instances.index');
+    Route::delete('/instances/{instance}', DeleteInstance::class)->name('instances.delete');
+    Route::delete('/instances/url/{instance:url}', DeleteInstance::class)->name('instances.url.delete');
+
+    Route::get('/instances/{instance}', ShowInstance::class)->name('instances.show');
+    Route::patch('/instances/{instance}', UpdateInstance::class)->name('instances.up');
 
     Route::get('/deployments/latest', [ShowDeployment::class, 'latest'])->name('deployments.latest');
     Route::get('/deployments/{deployment}', ShowDeployment::class)->name('deployments.show');
