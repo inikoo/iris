@@ -18,8 +18,14 @@ class InstanceResource extends JsonResource
         $instance = $this;
 
         return [
+            'id'         => $instance->id,
             'slug'       => $instance->slug,
-            'created_at' => $instance->created_at
+            'url'        => $instance->url,
+            'tenant_id'  => $instance->tenant_id,
+            'website_id' => $instance->website_id,
+            'domain_id'  => $instance->domain_id,
+            'created_at' => $instance->created_at,
+            'updated_at' => $instance->updated_at
         ];
     }
 }
