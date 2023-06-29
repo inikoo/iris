@@ -14,7 +14,7 @@ sudo chmod g+s envs
 
 sudo chgrp -R www-data storage
 sudo chmod g+s storage
-
+cp devops/stubs/domain.php config/
 php8.2 composer install
 npm install
 php8.2 artisan migrate:refresh --force
