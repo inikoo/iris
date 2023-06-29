@@ -25,6 +25,7 @@ class StoreInstance
 
     public function handle(Domain $domain, array $modelData, string $authToken = null): Instance
     {
+
         $instance = Instance::create($modelData);
         $exitCode = Artisan::call("domain:add $instance->url");
 
@@ -42,7 +43,7 @@ class StoreInstance
             ];
 
         if ($authToken) {
-            $environmentData['AIKU_TOKEN'] = Arr::get($modelData, 'aiku_token');
+            $environmentData['AIKU_TOKEN'] = $authToken;
         }
 
         $environmentData = json_encode($environmentData);
@@ -90,6 +91,7 @@ class StoreInstance
         $this->domain = $domain;
 
         $request->validate();
+
 
         return $this->handle(
             domain: $domain,
