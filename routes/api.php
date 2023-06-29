@@ -8,6 +8,7 @@
 use App\Actions\Central\Deployment\ShowDeployment;
 use App\Actions\Central\Deployment\StoreDeployment;
 use App\Actions\Central\Deployment\UpdateDeployment;
+use App\Actions\Sysadmin\Instance\DeleteInstance;
 use App\Actions\Sysadmin\Instance\IndexInstances;
 use App\Actions\Sysadmin\Instance\ShowInstance;
 use App\Actions\Sysadmin\Instance\StoreInstance;
@@ -24,8 +25,7 @@ Route::middleware('auth:admin')->group(function () {
 
 
     Route::get('/instances', IndexInstances::class);
-   // Route::delete('/instances', Delete::class);
-
+    Route::delete('/instances/{instance}', DeleteInstance::class);
     Route::get('/instances/{instance}', ShowInstance::class);
     Route::patch('/instances/{instance}', UpdateInstance::class);
 
