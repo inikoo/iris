@@ -52,8 +52,4 @@ class Instance extends Model
             ->saveSlugsTo('slug');
     }
 
-    public function getRouteKeyName(): string
-    {
-        return 'slug';
-    }
 }
