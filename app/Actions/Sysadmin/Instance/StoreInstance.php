@@ -73,16 +73,9 @@ class StoreInstance
 
     public function prepareForValidation(ActionRequest $request): void
     {
-        $url = match (app()->environment()) {
-            'production' => $this->domain->domain,
-            'staging' => $this->domain->slug.'.'.config('app.staging_domain'),
-            default => $this->domain->slug.'.test'
-        };
-
         $request->merge(
             [
                 'domain_id'  => $this->domain->id,
-                'url'        => $url,
                 'slug'       => $this->domain->slug,
                 'tenant_id'  => $this->domain->tenant_id,
                 'website_id' => $this->domain->website_id,
