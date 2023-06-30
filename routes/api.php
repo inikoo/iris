@@ -39,5 +39,7 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('/deployments/{deployment}', ShowDeployment::class)->name('deployments.show');
     Route::post('/deployments/create', StoreDeployment::class)->name('deployments.store');
     Route::post('/deployments/latest/edit', [UpdateDeployment::class, 'latest'])->name('deployments.edit.latest');
+
+
 });
 

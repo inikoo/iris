@@ -5,7 +5,7 @@
   -->
 
 <script setup>
-import { Head, Link } from '@inertiajs/inertia-vue3';
+import { Head } from '@inertiajs/vue3';
 </script>
 
 <template layout="Ecommerce">

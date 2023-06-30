@@ -7,7 +7,7 @@
 <script setup>
 import Checkbox from '@/Components/Checkbox.vue';
 
-import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
+import {Head, Link, useForm} from '@inertiajs/vue3';
 import Password from '@/Components/Forms/Inputs/Password.vue';
 import ValidationErrors from '@/Components/Forms/ValidationErrors.vue';
 import {trans} from 'laravel-vue-i18n';
