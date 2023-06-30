@@ -11,7 +11,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class InstanceResource extends JsonResource
 {
-
     public function toArray($request): array
     {
         /** @var \App\Models\SysAdmin\Instance $instance */

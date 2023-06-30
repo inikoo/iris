@@ -11,15 +11,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware([
                       'auth:sanctum'
                   ])->name('customer-api.')->group(function () {
-    Route::prefix('user')
-        ->name('user.')
-        ->group(__DIR__.'/user.php');
-    Route::prefix('fulfilment')
-        ->name('fulfilment.')
-        ->group(__DIR__.'/fulfilment.php');
-    Route::prefix('dropshipping')
-        ->name('dropshipping.')
-        ->group(__DIR__.'/dropshipping.php');
-});
-
-
+                      Route::prefix('user')
+                          ->name('user.')
+                          ->group(__DIR__.'/user.php');
+                      Route::prefix('fulfilment')
+                          ->name('fulfilment.')
+                          ->group(__DIR__.'/fulfilment.php');
+                      Route::prefix('dropshipping')
+                          ->name('dropshipping.')
+                          ->group(__DIR__.'/dropshipping.php');
+                  });

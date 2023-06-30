@@ -8,8 +8,6 @@
 use App\Actions\Web\Webpage\ShowWebpage;
 use Illuminate\Support\Facades\Route;
 
-
-
 Route::get('/', [ShowWebpage::class, 'home']);
 
 
@@ -20,4 +18,3 @@ Route::prefix('account')
 
 
 require __DIR__.'/auth.php';
-

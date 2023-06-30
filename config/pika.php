@@ -6,8 +6,6 @@
  */
 
 return [
-    'url'=>env('AIKU_URL'),
-    'token'=>env('AIKU_TOKEN'),
+    'url'  => env('AIKU_URL'),
+    'token'=> env('AIKU_TOKEN'),
 ];
-
-

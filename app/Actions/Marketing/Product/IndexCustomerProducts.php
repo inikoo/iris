@@ -20,7 +20,6 @@ use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-
 class IndexCustomerProducts
 {
     use AsAction;
@@ -55,7 +54,7 @@ class IndexCustomerProducts
     {
         return
             (
-            $request->user()->tokenCan('*')
+                $request->user()->tokenCan('*')
             );
     }
 
@@ -85,7 +84,7 @@ class IndexCustomerProducts
         return Inertia::render(
             'Fulfilment/CustomerProducts',
             [
-                'title' => __('products'),
+                'title'    => __('products'),
                 'pageHead' => [
                     'title' => __('products'),
                 ],

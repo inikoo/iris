@@ -18,7 +18,8 @@ use Lorisleiva\Actions\Concerns\WithAttributes;
 
 class StoreInstance
 {
-    use AsAction, WithAttributes;
+    use AsAction;
+    use WithAttributes;
 
 
     private ?Domain $domain;
@@ -99,7 +100,6 @@ class StoreInstance
             domain: $domain,
             modelData: Arr::except($request->validated(), 'aiku_token'),
             authToken: Arr::get($request->validated(), 'aiku_token')
-
         );
     }
 
@@ -110,6 +110,3 @@ class StoreInstance
 
 
 }
-
-
-

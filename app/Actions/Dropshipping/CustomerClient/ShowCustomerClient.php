@@ -14,7 +14,6 @@ use App\Models\Sales\Customer;
 use Lorisleiva\Actions\ActionRequest;
 use Lorisleiva\Actions\Concerns\AsAction;
 
-
 class ShowCustomerClient
 {
     use AsAction;

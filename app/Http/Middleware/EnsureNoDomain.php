@@ -15,11 +15,10 @@ use Illuminate\Http\Response;
 
 class EnsureNoDomain
 {
-
     public function handle(Request $request, Closure $next): Response|RedirectResponse|JsonResponse
     {
 
-        if ( !app()->environment('local') and  preg_match('/([a-z0-9]+[.])*'.preg_replace('/\./', '\.', config('app.domain')).'/', app()->domain)) {
+        if (!app()->environment('local') and  preg_match('/([a-z0-9]+[.])*'.preg_replace('/\./', '\.', config('app.domain')).'/', app()->domain)) {
             abort(404);
         }
 

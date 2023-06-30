@@ -20,7 +20,6 @@ use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-
 class IndexCustomerClients
 {
     use AsAction;
@@ -53,7 +52,7 @@ class IndexCustomerClients
     {
         return
             (
-            $request->user()->tokenCan('*')
+                $request->user()->tokenCan('*')
             );
     }
 
@@ -81,7 +80,7 @@ class IndexCustomerClients
         return Inertia::render(
             'Dropshipping/Clients',
             [
-                'title' => __('clients'),
+                'title'    => __('clients'),
                 'pageHead' => [
                     'title' => __('clients'),
                 ],

@@ -17,8 +17,6 @@ use Illuminate\Validation\Rule;
 use Lorisleiva\Actions\ActionRequest;
 use Lorisleiva\Actions\Concerns\AsAction;
 
-
-
 class StoreStock
 {
     use AsAction;
@@ -29,10 +27,11 @@ class StoreStock
 
     public function handle(WebUser $webUser, array $modelData): PromiseInterface|Response
     {
-        $parameters = array_merge([
+        $parameters = array_merge(
+            [
                                       'web_user_id' => $webUser->id
                                   ],
-                                  $modelData
+            $modelData
         );
 
         return Http::acceptJson()
@@ -47,7 +46,7 @@ class StoreStock
     {
         return
             (
-            $request->user()->tokenCan('*')
+                $request->user()->tokenCan('*')
             );
     }
 
@@ -57,7 +56,7 @@ class StoreStock
             'code'        => [
                 'required',
                 Rule::unique('stocks', 'code')->where(
-                    fn($query) => $query->where('owner_type', 'Customer')->where('owner_id', $request->user()->customer->id)
+                    fn ($query) => $query->where('owner_type', 'Customer')->where('owner_id', $request->user()->customer->id)
                 )
             ],
             'description' => ['sometimes', 'nullable', 'string', 'max:10000']

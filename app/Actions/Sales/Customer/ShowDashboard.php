@@ -18,11 +18,11 @@ class ShowDashboard
     public function asController(): Response
     {
         return Inertia::render(
-        'Account/Dashboard',[]);
+            'Account/Dashboard',
+            []
+        );
     }
 
 
 
 }
-
-

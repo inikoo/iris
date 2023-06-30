@@ -16,7 +16,6 @@ use Symfony\Component\Process\Exception\RuntimeException;
 use Symfony\Component\Process\Process;
 use Throwable;
 
-
 class StoreDeployment
 {
     use AsAction;
@@ -76,17 +75,17 @@ class StoreDeployment
             $latestHash = $latestDeployment->hash;
 
 
-            if (!$this->validateHash($currentHash) ) {
+            if (!$this->validateHash($currentHash)) {
                 return response()->json([
                                             'msg' => "Invalid current hash $currentHash ",
 
                                         ], 400);
-            }elseif ( !$this->validateHash($latestHash)) {
+            } elseif (!$this->validateHash($latestHash)) {
                 return response()->json([
                                             'msg' => "Invalid latest hash $latestHash",
 
                                         ], 400);
-            }  else {
+            } else {
                 $filesChanged = $this->runGitCommand("git --git-dir ".config('deployments.repo_path')."   diff --name-only $currentHash $latestHash");
 
 

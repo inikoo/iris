@@ -7,12 +7,8 @@
 
 namespace App\Models\Fulfilment;
 
-
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-
 
 /**
  * App\Models\Fulfilment\FulfilmentOrderItem
@@ -50,7 +46,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class FulfilmentOrderItem extends Model
 {
-
     protected $casts = [
         'data' => 'array'
     ];

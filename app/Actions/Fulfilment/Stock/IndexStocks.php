@@ -20,7 +20,6 @@ use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-
 class IndexStocks
 {
     use AsAction;
@@ -54,7 +53,7 @@ class IndexStocks
     {
         return
             (
-            $request->user()->tokenCan('*')
+                $request->user()->tokenCan('*')
             );
     }
 
@@ -79,7 +78,7 @@ class IndexStocks
         return Inertia::render(
             'Inventory/Stocks',
             [
-                'title' => __('stocks'),
+                'title'    => __('stocks'),
                 'pageHead' => [
                     'title' => __('stocks'),
                 ],

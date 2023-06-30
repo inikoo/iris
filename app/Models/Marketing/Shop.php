@@ -16,8 +16,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-
 /**
  * App\Models\Marketing\Shop
  *
@@ -92,7 +90,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Shop extends Model
 {
-
     use SoftDeletes;
 
     protected $casts = [

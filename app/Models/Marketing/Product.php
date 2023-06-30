@@ -9,7 +9,6 @@ namespace App\Models\Marketing;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 /**
  * App\Models\Marketing\Product
  *
@@ -72,7 +71,4 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Product extends Model
 {
-
-
-
 }

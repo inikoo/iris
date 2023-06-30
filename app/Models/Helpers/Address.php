@@ -60,7 +60,6 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  */
 class Address extends Model
 {
-
     protected $guarded = [];
 
 

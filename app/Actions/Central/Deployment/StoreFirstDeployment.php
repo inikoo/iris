@@ -11,7 +11,6 @@ use App\Models\Central\Deployment;
 use Illuminate\Console\Command;
 use Lorisleiva\Actions\Concerns\AsAction;
 
-
 class StoreFirstDeployment
 {
     use AsAction;

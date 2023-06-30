@@ -20,7 +20,7 @@ class ShowInstance
 
     public function inDomain(Domain $domain): Instance
     {
-        return Instance::where('domain_id',$domain->id)->firstOrFail();
+        return Instance::where('domain_id', $domain->id)->firstOrFail();
     }
 
     public function asController(Instance $instance): Instance
@@ -34,6 +34,3 @@ class ShowInstance
     }
 
 }
-
-
-

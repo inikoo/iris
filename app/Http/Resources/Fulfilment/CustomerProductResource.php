@@ -16,13 +16,12 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 class CustomerProductResource extends JsonResource
 {
-
     public function toArray($request): array
     {
         return [
-            'slug'=>$this->slug,
-            'code'=>$this->code,
-            'name'=>$this->name,
+            'slug'=> $this->slug,
+            'code'=> $this->code,
+            'name'=> $this->name,
 
         ];
     }

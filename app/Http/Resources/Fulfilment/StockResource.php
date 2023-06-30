@@ -16,14 +16,13 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 class StockResource extends JsonResource
 {
-
     public function toArray($request): array
     {
-       return [
-           'slug'=>$this->slug,
-           'code'=>$this->code,
-           'description'=>$this->description,
+        return [
+            'slug'       => $this->slug,
+            'code'       => $this->code,
+            'description'=> $this->description,
 
-       ];
+        ];
     }
 }

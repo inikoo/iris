@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'env_stub' => '.env',
+  'env_stub'     => '.env',
   'storage_dirs' => [
     'app' => [
       'public' => [

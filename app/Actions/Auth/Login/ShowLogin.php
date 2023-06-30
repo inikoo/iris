@@ -18,12 +18,13 @@ class ShowLogin
     public function asController(): Response
     {
         return Inertia::render(
-            'Auth/Login',[
+            'Auth/Login',
+            [
 
-        ]);
+        ]
+        );
     }
 
 
 
 }
-

@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
 
-
 /**
  * App\Models\Web\Webpage
  *

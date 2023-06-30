@@ -14,7 +14,6 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-
 /**
  * App\Models\SysAdmin\User
  *
@@ -40,12 +39,13 @@ use Spatie\Sluggable\SlugOptions;
  */
 class User extends Model
 {
-    use HasApiTokens,HasSlug;
+    use HasApiTokens;
+    use HasSlug;
 
     protected $guarded = [
     ];
 
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('code')

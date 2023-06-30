@@ -7,7 +7,6 @@
 
 namespace App\Actions\Web\Webpage;
 
-
 use App\Models\Web\Webpage;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -35,4 +34,3 @@ class ShowWebpage
     }
 
 }
-

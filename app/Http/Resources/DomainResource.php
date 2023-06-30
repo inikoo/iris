@@ -12,7 +12,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class DomainResource extends JsonResource
 {
-
     public function toArray($request): array
     {
         /** @var Domain $domain */

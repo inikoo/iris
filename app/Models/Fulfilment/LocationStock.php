@@ -7,12 +7,9 @@
 
 namespace App\Models\Fulfilment;
 
-
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Pivot;
-
-
 
 /**
  * App\Models\Fulfilment\LocationStock
@@ -54,7 +51,6 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  */
 class LocationStock extends Pivot
 {
-
     protected $casts = [
         'data'     => 'array',
         'settings' => 'array'

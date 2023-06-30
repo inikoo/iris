@@ -50,11 +50,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static Builder|Country withoutTrashed()
  * @mixin \Eloquent
  */
-class Country extends Model {
+class Country extends Model
+{
     use SoftDeletes;
 
     protected $connection= 'aiku_central';
-    protected $table = 'countries';
+    protected $table     = 'countries';
 
     protected $casts = [
         'data' => 'array'

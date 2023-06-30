@@ -8,8 +8,4 @@
 use App\Actions\Sales\Customer\ShowDashboard;
 use Illuminate\Support\Facades\Route;
 
-
-
 Route::get('/', [ShowDashboard::class, 'home']);
-
-
