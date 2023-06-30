@@ -17,7 +17,6 @@ use App\Actions\Sysadmin\Instance\UpdateInstance;
 use App\Actions\Sysadmin\User\ShowUser;
 use Illuminate\Support\Facades\Route;
 
-
 Route::middleware('auth:admin')->group(function () {
     Route::get('/user', ShowUser::class);
 
@@ -39,5 +38,6 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('/deployments/{deployment}', ShowDeployment::class)->name('deployments.show');
     Route::post('/deployments/create', StoreDeployment::class)->name('deployments.store');
     Route::post('/deployments/latest/edit', [UpdateDeployment::class, 'latest'])->name('deployments.edit.latest');
-});
 
+
+});

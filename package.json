@@ -5,10 +5,6 @@
         "build": "vite build && vite build --ssr"
     },
     "devDependencies": {
-        "@inertiajs/inertia": "^0.11.0",
-        "@inertiajs/inertia-vue3": "^0.6.0",
-        "@inertiajs/progress": "^0.2.7",
-        "@inertiajs/server": "^0.1.0",
         "@prettier/plugin-php": "^0.19.2",
         "@tailwindcss/aspect-ratio": "^0.4.2",
         "@tailwindcss/forms": "^0.5.2",
@@ -32,6 +28,7 @@
         "@fortawesome/vue-fontawesome": "^3.0.1",
         "@headlessui/vue": "^1.7.3",
         "@heroicons/vue": "^2.0.12",
+        "@inertiajs/vue3": "^1.0.9",
         "@protonemedia/inertiajs-tables-laravel-query-builder": "^2.1.0",
         "laravel-vue-i18n": "^2.3.0"
     }

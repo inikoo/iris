@@ -34,7 +34,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Deployment extends Model
 {
-    protected $guarded = [];
+    protected $guarded    = [];
     protected $attributes = [
         'data' => '{}',
     ];

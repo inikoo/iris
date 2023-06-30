@@ -7,7 +7,6 @@
 
 namespace App\Actions\Web\WebUser;
 
-
 use App\Http\Resources\WebUserResource;
 use App\Models\Web\WebUser;
 use Lorisleiva\Actions\ActionRequest;
@@ -29,6 +28,3 @@ class ShowWebUser
     }
 
 }
-
-
-

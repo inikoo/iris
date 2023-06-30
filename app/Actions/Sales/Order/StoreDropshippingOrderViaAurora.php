@@ -19,7 +19,6 @@ use Illuminate\Validation\Rule;
 use Lorisleiva\Actions\ActionRequest;
 use Lorisleiva\Actions\Concerns\AsAction;
 
-
 class StoreDropshippingOrderViaAurora
 {
     use AsAction;
@@ -35,19 +34,20 @@ class StoreDropshippingOrderViaAurora
 
 
         $products=[];
-        foreach(Arr::pluck($modelData['items'], 'quantity', $this->productIDField) as $productIDField=>$quantity){
-            $product=Product::where($this->productIDField,$productIDField)->first();
+        foreach(Arr::pluck($modelData['items'], 'quantity', $this->productIDField) as $productIDField=>$quantity) {
+            $product               =Product::where($this->productIDField, $productIDField)->first();
             $products[$product->id]=[
-                'quantity'=>$quantity
+                'quantity'=> $quantity
             ];
         }
 
         $modelData['items']=$products;
 
-        $parameters = array_merge([
+        $parameters = array_merge(
+            [
                                       'web_user_id' => $webUser->id
                                   ],
-                                  $modelData
+            $modelData
         );
 
         return Http::acceptJson()
@@ -62,7 +62,7 @@ class StoreDropshippingOrderViaAurora
     {
         return
             (
-            $request->user()->tokenCan('*')
+                $request->user()->tokenCan('*')
             );
     }
 
@@ -70,7 +70,7 @@ class StoreDropshippingOrderViaAurora
     {
         $orderType = Arr::get($request->get('settings'), 'type', 'shop');
 
-        $this->productIDField = $orderType=='fulfilment'?'code':'slug';
+        $this->productIDField = $orderType=='fulfilment' ? 'code' : 'slug';
 
         if ($orderType == 'fulfilment' and Arr::exists($request->get('settings'), 'product_id_field')) {
             $this->productIDField = Arr::get($request->get('get'), 'product_id_field', 'code');

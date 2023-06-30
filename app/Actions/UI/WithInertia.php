@@ -8,16 +8,13 @@
 
 namespace App\Actions\UI;
 
-
 use Lorisleiva\Actions\Concerns\WithAttributes;
 
-trait WithInertia{
-
+trait WithInertia
+{
     use WithAttributes;
 
 
 
 
 }
-
-

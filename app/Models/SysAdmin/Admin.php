@@ -38,13 +38,12 @@ use Spatie\Sluggable\SlugOptions;
  */
 class Admin extends Model
 {
-
     use HasSlug;
 
     protected $guarded = [
     ];
 
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('code')

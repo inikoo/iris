@@ -72,7 +72,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Customer extends Model
 {
-
     public function webUsers(): HasMany
     {
         return $this->hasMany(WebUser::class);

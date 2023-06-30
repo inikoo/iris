@@ -17,7 +17,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard'     => 'web',
         'passwords' => 'users',
     ],
 
@@ -40,13 +40,13 @@ return [
 
     'guards' => [
         'web' => [
-            'driver' => 'session',
+            'driver'   => 'session',
             'provider' => 'users',
         ],
         'admin' => [
-            'driver' => 'sanctum',
+            'driver'   => 'sanctum',
             'provider' => 'admin',
-            'hash' => false,
+            'hash'     => false,
         ],
     ],
 
@@ -70,11 +70,11 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => WebUser::class,
+            'model'  => WebUser::class,
         ],
         'admin' => [
             'driver' => 'eloquent',
-            'model' => User::class,
+            'model'  => User::class,
         ],
 
 
@@ -98,8 +98,8 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
+            'table'    => 'password_resets',
+            'expire'   => 60,
             'throttle' => 60,
         ],
     ],

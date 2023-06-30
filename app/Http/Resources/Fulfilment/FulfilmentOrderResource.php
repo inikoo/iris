@@ -19,7 +19,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 class FulfilmentOrderResource extends JsonResource
 {
-
     public function toArray($request): array
     {
         return [

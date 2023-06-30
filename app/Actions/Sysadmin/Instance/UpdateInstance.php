@@ -27,7 +27,6 @@ class UpdateInstance
                 [
                     'AIKU_TOKEN' => Arr::pull($modelData, 'aiku_token')
                 ]
-
             );
             Artisan::call("domain:update_env --Instance_values='$environmentData' $instance->url");
             if (app()->environment('production') or app()->environment('staging')) {
@@ -63,6 +62,3 @@ class UpdateInstance
 
 
 }
-
-
-

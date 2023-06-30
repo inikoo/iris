@@ -15,7 +15,6 @@ use App\Models\Sales\Order;
 use Lorisleiva\Actions\ActionRequest;
 use Lorisleiva\Actions\Concerns\AsAction;
 
-
 class ShowOrder
 {
     use AsAction;

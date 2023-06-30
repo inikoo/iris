@@ -19,10 +19,10 @@ class UserResource extends JsonResource
     public function toArray($request): array
     {
         return [
-            'id' => $this->id,
-            'code' => $this->code,
-            'userable_type'=>$this->userable_type,
-            'userable' => $this->whenMorphToLoaded('userable', [
+            'id'           => $this->id,
+            'code'         => $this->code,
+            'userable_type'=> $this->userable_type,
+            'userable'     => $this->whenMorphToLoaded('userable', [
                 Admin::class => AdminResource::class,
             ]),
             'created_at' => $this->created_at,

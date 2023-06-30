@@ -14,7 +14,6 @@
 
 namespace App\Models\Sales;
 
-
 use App\Models\Helpers\Address;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -102,7 +101,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Order extends Model
 {
-
     public function getRouteKeyName(): string
     {
         return 'slug';
@@ -110,7 +108,7 @@ class Order extends Model
 
     public function deliveryAddress(): BelongsTo
     {
-        return $this->belongsTo(Address::class,'delivery_address_id','id');
+        return $this->belongsTo(Address::class, 'delivery_address_id', 'id');
     }
 
     public function transactions(): HasMany

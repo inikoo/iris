@@ -7,8 +7,8 @@
 
 namespace App\Models\Marketing;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-
 
 /**
  * App\Models\Marketing\Product
@@ -39,40 +39,37 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $deleted_at
  * @property int|null $source_id
- * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Product query()
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereAvailable($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereCurrentHistoricProductId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereData($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereImageId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereOwnerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereOwnerType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereParentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereParentType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereRrp($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereSettings($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereShopId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereSourceId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereState($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereTradeUnitComposition($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereUnits($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
+ * @method static Builder|Product newModelQuery()
+ * @method static Builder|Product newQuery()
+ * @method static Builder|Product query()
+ * @method static Builder|Product whereAvailable($value)
+ * @method static Builder|Product whereCode($value)
+ * @method static Builder|Product whereCreatedAt($value)
+ * @method static Builder|Product whereCurrentHistoricProductId($value)
+ * @method static Builder|Product whereData($value)
+ * @method static Builder|Product whereDeletedAt($value)
+ * @method static Builder|Product whereDescription($value)
+ * @method static Builder|Product whereId($value)
+ * @method static Builder|Product whereImageId($value)
+ * @method static Builder|Product whereName($value)
+ * @method static Builder|Product whereOwnerId($value)
+ * @method static Builder|Product whereOwnerType($value)
+ * @method static Builder|Product whereParentId($value)
+ * @method static Builder|Product whereParentType($value)
+ * @method static Builder|Product wherePrice($value)
+ * @method static Builder|Product whereRrp($value)
+ * @method static Builder|Product whereSettings($value)
+ * @method static Builder|Product whereShopId($value)
+ * @method static Builder|Product whereSlug($value)
+ * @method static Builder|Product whereSourceId($value)
+ * @method static Builder|Product whereState($value)
+ * @method static Builder|Product whereStatus($value)
+ * @method static Builder|Product whereTradeUnitComposition($value)
+ * @method static Builder|Product whereType($value)
+ * @method static Builder|Product whereUnits($value)
+ * @method static Builder|Product whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class Product extends Model
 {
-
-
-
 }

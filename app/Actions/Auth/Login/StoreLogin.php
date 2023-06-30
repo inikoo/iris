@@ -50,7 +50,7 @@ class StoreLogin
                 'username'                => $this->request->get('username'),
                 'data->au_auth->password' => hash('sha256', $this->request->get('password')),
                 'status'                  => true,
-                'password'                => Arr::get($webUser->data,'au_auth.tmp_password')
+                'password'                => Arr::get($webUser->data, 'au_auth.tmp_password')
             ],
             default => array_merge($this->request->only('username', 'password'), ['status' => true])
         };
@@ -118,4 +118,3 @@ class StoreLogin
 
 
 }
-

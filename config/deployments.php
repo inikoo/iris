@@ -9,4 +9,3 @@ return [
 
     'repo_path' => (env('APP_ENV') == 'local' ? base_path('.git') : env('REPO_DIR'))
 ];
-

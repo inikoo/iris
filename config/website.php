@@ -6,7 +6,6 @@
  */
 
 return [
-    'id'=>env('WEBSITE_ID'),
-    'domain'=>env('WEBSITE_DOMAIN'),
+    'id'    => env('WEBSITE_ID'),
+    'domain'=> env('WEBSITE_DOMAIN'),
 ];
-

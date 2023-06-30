@@ -24,7 +24,9 @@ $domainParams = [
 
 
 $app = new Gecche\Multidomain\Foundation\Application(
-    $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__), dirname(__DIR__).DIRECTORY_SEPARATOR.'envs', $domainParams
+    $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__),
+    dirname(__DIR__).DIRECTORY_SEPARATOR.'envs',
+    $domainParams
 );
 
 /*

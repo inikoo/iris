@@ -8,7 +8,6 @@
 namespace App\Actions\Sysadmin\User;
 
 use App\Http\Resources\UserResource;
-use App\Models\SysAdmin\Admin;
 use App\Models\SysAdmin\User;
 use Lorisleiva\Actions\ActionRequest;
 use Lorisleiva\Actions\Concerns\AsAction;
@@ -30,6 +29,3 @@ class ShowUser
     }
 
 }
-
-
-

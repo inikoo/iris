@@ -14,7 +14,7 @@ return [
     'release'     => trim(
         exec(
             'git '.(
-            (env('APP_ENV') == 'production' or env('APP_ENV') == 'staging')
+                (env('APP_ENV') == 'production' or env('APP_ENV') == 'staging')
                 ?
                 '--git-dir '.env('REPO_DIR')
                 :
