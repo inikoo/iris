@@ -10,5 +10,5 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
 
 <template layout="Ecommerce">
     <Head title="Welcome" />
-    <h1>hello</h1>
+    <h1>xxxx</h1>
 </template>
