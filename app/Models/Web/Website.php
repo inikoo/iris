@@ -34,7 +34,7 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
  * @property string|null $closed_at
  * @property string|null $deleted_at
  * @property int|null $source_id
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Web\WebsiteNode> $websiteNodes
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Web\WebpageVariant> $websiteNodes
  * @property-read int|null $website_nodes_count
  * @method static Builder|Website newModelQuery()
  * @method static Builder|Website newQuery()
@@ -67,7 +67,7 @@ class Website extends Model
 
     public function websiteNodes(): HasMany
     {
-        return $this->hasMany(WebsiteNode::class);
+        return $this->hasMany(WebpageVariant::class);
     }
 
 }

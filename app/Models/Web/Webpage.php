@@ -30,7 +30,7 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $deleted_at
  * @property int|null $source_id
- * @property-read \App\Models\Web\WebsiteNode|null $websiteNode
+ * @property-read \App\Models\Web\WebpageVariant|null $websiteNode
  * @method static Builder|Webpage newModelQuery()
  * @method static Builder|Webpage newQuery()
  * @method static Builder|Webpage query()
@@ -57,7 +57,7 @@ class Webpage extends Model
 
     public function websiteNode(): BelongsTo
     {
-        return $this->belongsTo(WebsiteNode::class);
+        return $this->belongsTo(WebpageVariant::class);
     }
 
 }

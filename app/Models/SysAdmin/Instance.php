@@ -21,6 +21,7 @@ use Spatie\Sluggable\SlugOptions;
  * @property string $url
  * @property int $tenant_id
  * @property int $website_id
+ * @property int $shop_id
  * @property int $domain_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -30,6 +31,7 @@ use Spatie\Sluggable\SlugOptions;
  * @method static Builder|Instance whereCreatedAt($value)
  * @method static Builder|Instance whereDomainId($value)
  * @method static Builder|Instance whereId($value)
+ * @method static Builder|Instance whereShopId($value)
  * @method static Builder|Instance whereSlug($value)
  * @method static Builder|Instance whereTenantId($value)
  * @method static Builder|Instance whereUpdatedAt($value)

@@ -5,12 +5,12 @@
  *  Copyright (c) 2022, Raul A Perusquia Flores
  */
 
-use App\Actions\Web\WebsiteNode\ShowWebsiteNode;
+use App\Actions\Web\Webpage\ShowWebpage;
 use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', [ShowWebsiteNode::class, 'home']);
+Route::get('/', [ShowWebpage::class, 'home']);
 
 
 Route::prefix('account')

@@ -5,45 +5,36 @@
  *  Copyright (c) 2022, Raul A Perusquia Flores
  */
 
-namespace App\Actions\Web\WebsiteNode;
+namespace App\Actions\Web\Webpage;
 
 
-use App\Models\Web\Website;
-use App\Models\Web\WebsiteNode;
+use App\Models\Web\Webpage;
+use App\Models\Web\WebpageVariant;
 use Inertia\Inertia;
 use Inertia\Response;
 use Lorisleiva\Actions\Concerns\AsAction;
 
-class ShowWebsiteNode
+class ShowWebpage
 {
     use AsAction;
 
-    public function handle(WebsiteNode $websiteNode): Response
+    public function handle(?Webpage $webpage): Response
     {
-
         return Inertia::render('Webpage', [
 
         ]);
-
     }
 
-    public function asController(WebsiteNode $websiteNode): Response
+    public function asController(WebpageVariant $websiteNode): Response
     {
-
         return $this->handle($websiteNode);
-
     }
 
     public function home(): Response
     {
-        //todo fetch website
-
-
-       // $website=Website::find(config('website.id'));
-       // $websiteNode=WebsiteNode::where('');
-        return $this->handle();
-
-
+        return $this->handle(
+            Webpage::where('website_id', config('website.id'))->where('purpose', 'home')->first()
+        );
     }
 
 }
