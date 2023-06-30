@@ -15,6 +15,7 @@
 -->
 <template>
     <div class="bg-white">
+        <Header/>
         <main>
            <slot/>
         </main>
@@ -83,7 +84,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import Header from './Header/HeaderOne.vue'
 const footerNavigation = {
     shop: [
         { name: 'Bags', href: '#' },
@@ -113,5 +114,4 @@ const footerNavigation = {
     ],
 }
 
-const mobileMenuOpen = ref(false)
 </script>
