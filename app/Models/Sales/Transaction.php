@@ -8,6 +8,7 @@
 namespace App\Models\Sales;
 
 use App\Models\Marketing\Shop;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -42,32 +43,32 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property-read Model|\Eloquent $item
  * @property-read \App\Models\Sales\Order|null $order
  * @property-read Shop $shop
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction query()
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereCustomerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereData($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereDiscounts($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereInvoiceId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereItemId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereItemType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereNet($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereOrderId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereQuantityBonus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereQuantityCancelled($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereQuantityDispatched($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereQuantityFail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereQuantityOrdered($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereShopId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereSourceId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereState($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereTaxBandId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transaction whereUpdatedAt($value)
+ * @method static Builder|Transaction newModelQuery()
+ * @method static Builder|Transaction newQuery()
+ * @method static Builder|Transaction query()
+ * @method static Builder|Transaction whereCreatedAt($value)
+ * @method static Builder|Transaction whereCustomerId($value)
+ * @method static Builder|Transaction whereData($value)
+ * @method static Builder|Transaction whereDeletedAt($value)
+ * @method static Builder|Transaction whereDiscounts($value)
+ * @method static Builder|Transaction whereId($value)
+ * @method static Builder|Transaction whereInvoiceId($value)
+ * @method static Builder|Transaction whereItemId($value)
+ * @method static Builder|Transaction whereItemType($value)
+ * @method static Builder|Transaction whereNet($value)
+ * @method static Builder|Transaction whereOrderId($value)
+ * @method static Builder|Transaction whereQuantityBonus($value)
+ * @method static Builder|Transaction whereQuantityCancelled($value)
+ * @method static Builder|Transaction whereQuantityDispatched($value)
+ * @method static Builder|Transaction whereQuantityFail($value)
+ * @method static Builder|Transaction whereQuantityOrdered($value)
+ * @method static Builder|Transaction whereShopId($value)
+ * @method static Builder|Transaction whereSourceId($value)
+ * @method static Builder|Transaction whereState($value)
+ * @method static Builder|Transaction whereStatus($value)
+ * @method static Builder|Transaction whereTaxBandId($value)
+ * @method static Builder|Transaction whereType($value)
+ * @method static Builder|Transaction whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class Transaction extends Model
