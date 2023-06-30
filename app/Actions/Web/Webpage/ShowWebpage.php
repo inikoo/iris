@@ -9,7 +9,6 @@ namespace App\Actions\Web\Webpage;
 
 
 use App\Models\Web\Webpage;
-use App\Models\Web\WebpageVariant;
 use Inertia\Inertia;
 use Inertia\Response;
 use Lorisleiva\Actions\Concerns\AsAction;
@@ -20,14 +19,12 @@ class ShowWebpage
 
     public function handle(?Webpage $webpage): Response
     {
-        return Inertia::render('Webpage', [
-
-        ]);
+        return Inertia::render('Webpage');
     }
 
-    public function asController(WebpageVariant $websiteNode): Response
+    public function asController(Webpage $webpage): Response
     {
-        return $this->handle($websiteNode);
+        return $this->handle($webpage);
     }
 
     public function home(): Response
