@@ -12,6 +12,8 @@ import {Head, Link, useForm} from '@inertiajs/vue3';
 import Password from '@/Components/Forms/Inputs/Password.vue';
 import ValidationErrors from '@/Components/Forms/ValidationErrors.vue';
 import { trans } from 'laravel-vue-i18n';
+import FocusGuestLayout from '@/Layouts/FocusGuestLayout.vue';
+import Ecommerce from '@/Layouts/Ecommerce.vue';
 
 const form = useForm({
     username: '',
@@ -25,12 +27,19 @@ const submit = () => {
         onFinish: () => form.reset('password'),
     });
 };
+
+const layoutType='eCommerce';
+
+//defineOptions({ layout: FocusGuestLayout })
+defineOptions({ layout: Ecommerce })
+
+
 </script>
 
 
 
 
-<template layout="Ecommerce">
+<template>
     <Head title="Login" />
     <div class="flex  flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-md">

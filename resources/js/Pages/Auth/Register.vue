@@ -1,10 +1,12 @@
 <script setup>
-import GuestLayout from '@/Layouts/GuestLayout.vue';
+import GuestLayout from '@/Layouts/FocusGuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import FocusGuestLayout from '@/Layouts/FocusGuestLayout.vue';
+import Ecommerce from '@/Layouts/Ecommerce.vue';
 
 const form = useForm({
     name: '',
@@ -19,10 +21,14 @@ const submit = () => {
         onFinish: () => form.reset('password', 'password_confirmation'),
     });
 };
+
+//defineOptions({ layout: Ecommerce })
+defineOptions({ layout: FocusGuestLayout })
+
+
 </script>
 
 <template>
-    <GuestLayout>
         <Head title="Register" />
 
         <form @submit.prevent="submit">
@@ -60,5 +66,4 @@ const submit = () => {
                 </PrimaryButton>
             </div>
         </form>
-    </GuestLayout>
 </template>
