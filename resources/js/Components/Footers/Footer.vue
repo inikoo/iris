@@ -42,14 +42,6 @@ const navigations = [
             { name: 'Terms', href: '#' },
         ],
     },
-    {
-        title: 'legal',
-        data: [
-            { name: 'Claim', href: '#' },
-            { name: 'Privacy', href: '#' },
-            { name: 'Terms', href: '#' },
-        ],
-    },
 ]
 
 const socials = [
@@ -81,7 +73,9 @@ const socials = [
         <h2 id="footer-heading" class="sr-only">Footer</h2>
         <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
             <div class="xl:grid xl:grid-cols-3 xl:gap-20 items-center">
-                <div class="grid justify-center space-y-5 rounded-xl bg-gray-950 border border-indigo-500 py-4">
+
+                <!-- Box -->
+                <div class="grid justify-center space-y-5 rounded-xl bg-gray-950 border border-indigo-500 py-4 mb-8 xl:mb-0">
                     <div class=" flex justify-center">
                         <img class="h-24" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                             alt="Company name" />
