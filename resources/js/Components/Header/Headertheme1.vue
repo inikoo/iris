@@ -15,13 +15,15 @@ import {ref, watchEffect} from 'vue';
    TransitionChild,
    TransitionRoot,
  } from '@headlessui/vue'
- import { ChevronDownIcon } from '@heroicons/vue/20/solid'
-import { router } from '@inertiajs/vue3'
-
+ import { router } from '@inertiajs/vue3'
+ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+ import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+ import { library } from "@fortawesome/fontawesome-svg-core";
  import {trans} from 'laravel-vue-i18n';
  import { Link, } from '@inertiajs/vue3';
  import { usePage } from "@inertiajs/vue3";
- const currencies = ['CAD', 'USD', 'AUD', 'EUR', 'GBP']
+ 
+library.add( faBars, faMagnifyingGlass );
  const navigation = {
    categories: [
      {
@@ -203,14 +205,7 @@ router.on('success', (event) => {
         <div class="fixed inset-0 z-40 flex">
           <TransitionChild as="template" enter="transition ease-in-out duration-300 transform" enter-from="-translate-x-full" enter-to="translate-x-0" leave="transition ease-in-out duration-300 transform" leave-from="translate-x-0" leave-to="-translate-x-full">
             <DialogPanel class="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
-              <div class="flex px-4 pb-2 pt-5">
-                <button type="button" class="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400" @click="mobileMenuOpen = false">
-                  <span class="sr-only">Close menu</span>
-                  <XMarkIcon class="h-6 w-6" aria-hidden="true" />
-                </button>
-              </div>
 
-              <!-- Links -->
               <TabGroup as="div" class="mt-2">
                 <div class="border-b border-gray-200">
                   <TabList class="-mb-px flex space-x-8 px-4">
@@ -221,34 +216,29 @@ router.on('success', (event) => {
                 </div>
                 <TabPanels as="template">
                   <TabPanel v-for="category in navigation.categories" :key="category.name" class="space-y-12 px-4 py-6">
-                    <div class="grid grid-cols-2 gap-x-4 gap-y-10">
+                    <div class="grid grid-cols-1 gap-x-4">
                       <div v-for="item in category.featured" :key="item.name" class="group relative">
-                        <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-gray-100 group-hover:opacity-75">
-                          <img :src="item.imageSrc" :alt="item.imageAlt" class="object-cover object-center" />
-                        </div>
+
                         <a :href="item.href" class="mt-6 block text-sm font-medium text-gray-900">
                           <span class="absolute inset-0 z-10" aria-hidden="true" />
                           {{ item.name }}
                         </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">Shop now</p>
                       </div>
                     </div>
                   </TabPanel>
                 </TabPanels>
               </TabGroup>
 
-              <div class="space-y-6 border-t border-gray-200 px-4 py-6">
-                <div v-for="page in navigation.pages" :key="page.name" class="flow-root">
-                  <a :href="page.href" class="-m-2 block p-2 font-medium text-gray-900">{{ page.name }}</a>
-                </div>
-              </div>
 
               <div class="space-y-6 border-t border-gray-200 px-4 py-6">
-                <div class="flow-root">
-                  <a href="#" class="-m-2 block p-2 font-medium text-gray-900">Create an account</a>
+                <div class="flow-root" v-if="user == null">
+                  <Link  :href="route('login')"  class="-m-2 block p-2 font-medium text-gray-900">{{trans('Login')}}</Link>
                 </div>
-                <div class="flow-root">
-                  <a href="#" class="-m-2 block p-2 font-medium text-gray-900">Sign in</a>
+                <div class="flow-root" v-if="user == null">
+                  <Link  :href="route('register')"  class="-m-2 block p-2 font-medium text-gray-900">{{trans('Register')}}</Link>
+                </div>
+                <div class="flow-root" v-if="user">
+                  <Link method="post"  :href="route('logout')"  class="-m-2 block p-2 font-medium text-gray-900">{{trans('Logout')}}</Link>
                 </div>
               </div>
 
@@ -266,12 +256,11 @@ router.on('success', (event) => {
        <header class="relative z-10">
          <nav aria-label="Top">
            <div class="bg-gray-900">
-             <div class="mx-auto flex h-10  items-center justify-between px-4 sm:px-6 lg:px-8">
+             <div class="mx-auto flex h-10   justify-between px-4 sm:px-6 lg:px-8">
 
                  <div>
                   <div class="hidden lg:flex lg:flex-1 lg:items-center">
                      <a href="#">
-                       <span class="sr-only">Your Company</span>
                        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="" />
                      </a>
                    </div>
@@ -280,9 +269,8 @@ router.on('success', (event) => {
 
                <div class="flex items-center space-x-6">
                  <Link v-if="user == null" :href="route('login')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('Login')}}</Link>
-                   <Link v-if="user == null" :href="route('register')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('Register')}}</Link>
-
-                   <Link  v-if="user"  method="post" :href="route('logout')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('Logout')}}</Link>
+                 <Link v-if="user == null" :href="route('register')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('Register')}}</Link>
+                 <Link  v-if="user"  method="post" :href="route('logout')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('Logout')}}</Link>
                </div>
              </div>
            </div>
@@ -334,26 +322,24 @@ router.on('success', (event) => {
                    <!-- Mobile menu and search (lg-) -->
                    <div class="flex flex-1 items-center lg:hidden">
                      <button type="button" class="-ml-2 p-2 text-white" @click="mobileMenuOpen = true">
-                       <span class="sr-only">Open menu</span>
-                       +
+                       <span class="sr-only">{{trans('Open menu')}}</span>
+                       <FontAwesomeIcon icon="fa-solid fa-bars"  aria-hidden="true" />
                      </button>
 
                      <!-- Search -->
-                     <a href="#" class="ml-2 p-2 text-white">
-                       <span class="sr-only">Search</span>
-                       ---
-                     </a>
+                     <div class="flex flex-1 items-center justify-end w-full">
+                      <button type="button" class="w-full bg-white lg:flex items-center text-sm leading-6 text-slate-400 rounded-md ring-1 ring-slate-900/10 shadow-sm py-1.5 pl-2 pr-3 hover:ring-slate-300 dark:bg-slate-800 dark:highlight-white/5 dark:hover:bg-slate-700">
+                        {{trans('Quick search...')}}
+                     </button>
+                     </div>
+                  
                    </div>
 
-                   <!-- Logo (lg-) -->
-                   <a href="#" class="lg:hidden">
-                     <span class="sr-only">Your Company</span>
-                     <img src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="" class="h-8 w-auto" />
-                   </a>
-
                    <div class="flex flex-1 items-center justify-end">
-                     <a href="#" class="hidden text-sm font-medium text-white lg:block">Search</a>
-
+                     <!-- <a href="#" class="hidden text-sm font-medium text-white lg:block">Search</a> -->
+                     <button type="button" class="hidden w-1/5 bg-white lg:flex items-center text-sm leading-6 text-slate-400 rounded-md ring-1 ring-slate-900/10 shadow-sm py-1.5 pl-2 pr-3 hover:ring-slate-300 dark:bg-slate-800 dark:highlight-white/5 dark:hover:bg-slate-700">
+                      {{trans('Quick search...')}}
+                     </button>
                    </div>
                  </div>
                </div>
@@ -362,7 +348,11 @@ router.on('success', (event) => {
          </nav>
        </header>
      </div>
-
  </template>
+ 
 
-
+<style>
+:focus-visible {
+    outline: -webkit-focus-ring-color auto 0px;
+}
+</style>
