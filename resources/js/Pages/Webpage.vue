@@ -11,5 +11,5 @@ import Baskets from '@/Components/Baskets/Baskets.vue'
 
 <template layout="Ecommerce">
     <Head title="Welcome" />
-    <Baskets theme="1"/>
+    <Baskets theme="2"/>
 </template>
