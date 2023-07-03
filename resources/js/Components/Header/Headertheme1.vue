@@ -53,6 +53,42 @@
            name: 'Freedom Fund',
            href: '#',
          },
+         {
+           name: 'Business Ethics',
+           href: '#',
+         },
+         {
+           name: 'Catalogue',
+           href: '#',
+         },
+         {
+           name: 'Retruns Policy',
+           href: '#',
+         },
+         {
+           name: 'Dropshiping Sevices',
+           href: '#',
+         },
+         {
+           name: 'Working with local businesses',
+           href: '#',
+         },
+         {
+           name: 'sustainable palm oil',
+           href: '#',
+         },
+         {
+           name: 'Privacy Policy',
+           href: '#',
+         },
+         {
+           name: 'Cookies Policy',
+           href: '#',
+         },
+         {
+           name: 'Travel Blog',
+           href: '#',
+         },
        ],
      },
      {
@@ -143,8 +179,6 @@
  }
  
  const user = ref(usePage().props.auth.user);
- console.log('sdsd',user.value)
- 
  
  const mobileMenuOpen = ref(false)
  </script>
@@ -238,7 +272,7 @@
                <div class="flex items-center space-x-6">
                  <Link v-if="user == null" :href="route('login')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('Login')}}</Link>
                 <Link  v-if="user"  method="post" :href="route('logout')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('Logout')}}</Link>
-                 <a href="#" class="text-sm font-medium text-white hover:text-gray-100">Create an account</a>
+                 <!-- <a href="#" class="text-sm font-medium text-white hover:text-gray-100">Register</a> -->
                </div>
              </div>
            </div>
@@ -310,23 +344,6 @@
                    <div class="flex flex-1 items-center justify-end">
                      <a href="#" class="hidden text-sm font-medium text-white lg:block">Search</a>
  
-                     <div class="flex items-center lg:ml-8">
-                       <!-- Help -->
-                       <a href="#" class="p-2 text-white lg:hidden">
-                         <span class="sr-only">Help</span>
-                         <QuestionMarkCircleIcon class="h-6 w-6" aria-hidden="true" />
-                       </a>
-                       <a href="#" class="hidden text-sm font-medium text-white lg:block">Help</a>
- 
-                       <!-- Cart -->
-                       <div class="ml-4 flow-root lg:ml-8">
-                         <a href="#" class="group -m-2 flex items-center p-2">
-                           <ShoppingBagIcon class="h-6 w-6 flex-shrink-0 text-white" aria-hidden="true" />
-                           <span class="ml-2 text-sm font-medium text-white">0</span>
-                           <span class="sr-only">items in cart, view bag</span>
-                         </a>
-                       </div>
-                     </div>
                    </div>
                  </div>
                </div>
