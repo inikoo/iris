@@ -16,16 +16,16 @@
 <template>
     <div class="bg-white">
         <Header />
+
         <main>
             <slot />
         </main>
 
-        <FooterTheme3 />
-
+        <Footer theme="2"/>
     </div>
 </template>
 
 <script setup>
 import Header from './Header/HeaderOne.vue'
-import FooterTheme3 from '@/Components/Footers/FooterTheme3.vue'
+import Footer from '@/Components/Footers/Footer.vue'
 </script>
