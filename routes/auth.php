@@ -5,9 +5,10 @@
  * Copyright (c) 2023, Raul A Perusquia Flores
  */
 
-use App\Actions\Auth\Login\ShowLogin;
-use App\Actions\Auth\Login\Login;
-use App\Actions\Auth\Registration\ShowRegistration;
+use App\Actions\Auth\UI\AuthSession\Login;
+use App\Actions\Auth\UI\AuthSession\Logout;
+use App\Actions\Auth\UI\AuthSession\ShowLogin;
+use App\Actions\Auth\UI\Registration\ShowRegistration;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -58,6 +59,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-                ->name('logout');
+    Route::post('logout', Logout::class)->name('logout');
+
+
 });
