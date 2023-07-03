@@ -20,12 +20,12 @@
             <slot />
         </main>
 
-        <Footer />
+        <FooterTheme2 />
 
     </div>
 </template>
 
 <script setup>
 import Header from './Header/HeaderOne.vue'
-import Footer from '@/Components/Footers/Footer.vue'
+import FooterTheme2 from '@/Components/Footers/FooterTheme2.vue'
 </script>
