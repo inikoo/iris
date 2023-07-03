@@ -5,9 +5,10 @@
  * Copyright (c) 2023, Raul A Perusquia Flores
  */
 
-use App\Actions\Auth\Login\ShowLogin;
-use App\Actions\Auth\Login\StoreLogin;
-use App\Actions\Auth\Registration\ShowRegistration;
+use App\Actions\Auth\UI\AuthSession\Login;
+use App\Actions\Auth\UI\AuthSession\Logout;
+use App\Actions\Auth\UI\AuthSession\ShowLogin;
+use App\Actions\Auth\UI\Registration\ShowRegistration;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -26,7 +27,7 @@ Route::middleware('guest')->group(function () {
     Route::get('login', ShowLogin::class)
                 ->name('login');
 
-    Route::post('login', StoreLogin::class);
+    Route::post('login', Login::class);
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('password.request');
@@ -58,6 +59,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-                ->name('logout');
+    Route::post('logout', Logout::class)->name('logout');
+
+
 });

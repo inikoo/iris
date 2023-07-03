@@ -8,7 +8,7 @@
 namespace App\Actions\Web\WebUser;
 
 use App\Http\Resources\WebUserResource;
-use App\Models\Web\WebUser;
+use App\Models\Auth\WebUser;
 use Lorisleiva\Actions\ActionRequest;
 use Lorisleiva\Actions\Concerns\AsAction;
 

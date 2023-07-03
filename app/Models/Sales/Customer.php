@@ -7,7 +7,8 @@
 
 namespace App\Models\Sales;
 
-use App\Models\Web\WebUser;
+
+use App\Models\Auth\WebUser;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -28,13 +29,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string|null $identity_document_type
  * @property string|null $identity_document_number
  * @property string|null $contact_website
- * @property mixed $location
+ * @property array $location
  * @property string $status
  * @property string $state
  * @property string $trade_state number of invoices
  * @property bool $is_fulfilment
  * @property bool $is_dropshipping
- * @property mixed $data
+ * @property array $data
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $deleted_at

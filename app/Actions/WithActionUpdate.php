@@ -8,12 +8,16 @@
 
 namespace App\Actions;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Lorisleiva\Actions\Concerns\AsAction;
+use Lorisleiva\Actions\Concerns\WithAttributes;
 
 trait WithActionUpdate
 {
     use AsAction;
+    use WithAttributes;
+
     protected function extractJson($modelData, $field = ['data']): array
     {
         $data = [];
@@ -25,7 +29,7 @@ trait WithActionUpdate
                     $value = json_encode($value);
                 }
             }
-            if ($value) {
+            if (preg_match('/\./', $key) or $value) {
                 $data[preg_replace('/\./', '->', $key)] = $value;
             }
         }
@@ -43,5 +47,8 @@ trait WithActionUpdate
         return $model;
     }
 
-
+    public function htmlResponse(): RedirectResponse
+    {
+        return back();
+    }
 }

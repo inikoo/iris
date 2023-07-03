@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\SysAdmin\User;
-use App\Models\Web\WebUser;
+use App\Models\Auth\User;
+use App\Models\Auth\WebUser;
 
 return [
 
@@ -41,7 +41,7 @@ return [
     'guards' => [
         'web' => [
             'driver'   => 'session',
-            'provider' => 'users',
+            'provider' => 'web-users',
         ],
         'admin' => [
             'driver'   => 'sanctum',
@@ -68,8 +68,8 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
+        'web-users' => [
+            'driver' => 'user-with-legacy-password',
             'model'  => WebUser::class,
         ],
         'admin' => [

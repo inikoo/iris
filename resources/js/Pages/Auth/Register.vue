@@ -22,8 +22,8 @@ const submit = () => {
     });
 };
 
-//defineOptions({ layout: Ecommerce })
-defineOptions({ layout: FocusGuestLayout })
+defineOptions({ layout: Ecommerce })
+//defineOptions({ layout: FocusGuestLayout })
 
 
 </script>

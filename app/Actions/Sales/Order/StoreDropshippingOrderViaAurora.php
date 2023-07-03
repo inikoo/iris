@@ -8,9 +8,9 @@
 namespace App\Actions\Sales\Order;
 
 use App\Actions\UI\WithInertia;
+use App\Models\Auth\WebUser;
 use App\Models\Marketing\Product;
 use App\Models\Sales\Customer;
-use App\Models\Web\WebUser;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Arr;
