@@ -1,5 +1,5 @@
 <script setup>
- import { ref } from 'vue'
+import {ref, watchEffect} from 'vue';
  import {
    Dialog,
    DialogPanel,
@@ -16,6 +16,8 @@
    TransitionRoot,
  } from '@headlessui/vue'
  import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+import { router } from '@inertiajs/vue3'
+
  import {trans} from 'laravel-vue-i18n';
  import { Link, } from '@inertiajs/vue3';
  import { usePage } from "@inertiajs/vue3";
@@ -177,12 +179,21 @@
      },
    ],
  }
- 
- const user = ref(usePage().props.auth.user);
- 
+
+
  const mobileMenuOpen = ref(false)
+
+ const user=ref(null);
+
+router.on('success', (event) => {
+     user.value = usePage().props.auth.user;
+})
+
+
+
  </script>
 <template>
+    <!-- Mobile -->
    <TransitionRoot as="template" :show="mobileMenuOpen">
       <Dialog as="div" class="relative z-40 lg:hidden" @close="mobileMenuOpen = false">
         <TransitionChild as="template" enter="transition-opacity ease-linear duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="transition-opacity ease-linear duration-300" leave-from="opacity-100" leave-to="opacity-0">
@@ -241,24 +252,22 @@
                 </div>
               </div>
 
-             
+
             </DialogPanel>
           </TransitionChild>
         </div>
       </Dialog>
     </TransitionRoot>
 
-    <!-- Hero section -->
+    <!-- Dasktop -->
     <div class="relative bg-gray-900">
        <div aria-hidden="true" class="absolute inset-0 bg-gray-900 opacity-50" />
- 
-       <!-- Navigation -->
+
        <header class="relative z-10">
          <nav aria-label="Top">
-           <!-- Top navigation -->
            <div class="bg-gray-900">
              <div class="mx-auto flex h-10  items-center justify-between px-4 sm:px-6 lg:px-8">
-             
+
                  <div>
                   <div class="hidden lg:flex lg:flex-1 lg:items-center">
                      <a href="#">
@@ -267,22 +276,23 @@
                      </a>
                    </div>
                  </div>
-       
- 
+
+
                <div class="flex items-center space-x-6">
                  <Link v-if="user == null" :href="route('login')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('Login')}}</Link>
-                <Link  v-if="user"  method="post" :href="route('logout')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('Logout')}}</Link>
-                 <!-- <a href="#" class="text-sm font-medium text-white hover:text-gray-100">Register</a> -->
+                   <Link v-if="user == null" :href="route('register')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('Register')}}</Link>
+
+                   <Link  v-if="user"  method="post" :href="route('logout')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('Logout')}}</Link>
                </div>
              </div>
            </div>
- 
+
            <!-- Secondary navigation -->
            <div class="bg-white bg-opacity-10 backdrop-blur-md backdrop-filter">
              <div class="mx-auto  px-4 sm:px-6 lg:px-4">
                <div>
                  <div class="flex h-16 items-center justify-between">
- 
+
                    <div class="hidden h-full lg:flex">
                      <!-- Flyout menus -->
                      <PopoverGroup class="inset-x-0 bottom-0 px-4">
@@ -294,12 +304,12 @@
                                <span :class="[open ? 'bg-white' : '', 'absolute inset-x-0 -bottom-px h-0.5 transition duration-200 ease-out']" aria-hidden="true" />
                              </PopoverButton>
                            </div>
- 
+
                            <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0" enter-to-class="opacity-100" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100" leave-to-class="opacity-0">
                              <PopoverPanel class="absolute inset-x-0 top-full text-sm text-gray-500">
                                <!-- Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow -->
                                <div class="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
- 
+
                                <div class="relative bg-white">
                                  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                                    <div class="grid grid-cols-3 gap-x-8 gap-y-4 py-4">
@@ -315,35 +325,35 @@
                              </PopoverPanel>
                            </transition>
                          </Popover>
- 
+
                          <a v-for="page in navigation.pages" :key="page.name" :href="page.href" class="flex items-center text-sm font-medium text-white">{{ page.name }}</a>
                        </div>
                      </PopoverGroup>
                    </div>
- 
+
                    <!-- Mobile menu and search (lg-) -->
                    <div class="flex flex-1 items-center lg:hidden">
                      <button type="button" class="-ml-2 p-2 text-white" @click="mobileMenuOpen = true">
                        <span class="sr-only">Open menu</span>
                        +
                      </button>
- 
+
                      <!-- Search -->
                      <a href="#" class="ml-2 p-2 text-white">
                        <span class="sr-only">Search</span>
                        ---
                      </a>
                    </div>
- 
+
                    <!-- Logo (lg-) -->
                    <a href="#" class="lg:hidden">
                      <span class="sr-only">Your Company</span>
                      <img src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="" class="h-8 w-auto" />
                    </a>
- 
+
                    <div class="flex flex-1 items-center justify-end">
                      <a href="#" class="hidden text-sm font-medium text-white lg:block">Search</a>
- 
+
                    </div>
                  </div>
                </div>
@@ -354,6 +364,5 @@
      </div>
 
  </template>
- 
- 
- 
+
+

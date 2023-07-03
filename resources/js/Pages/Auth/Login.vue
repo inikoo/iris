@@ -26,7 +26,7 @@ const submit = () => {
     });
 };
 
-const defineOptionsValue = 'FocusGuestLayout';
+const defineOptionsValue = 'Ecommerce';
 
 defineOptions({layout: defineOptionsValue == 'FocusGuestLayout' ? FocusGuestLayout : Ecommerce});
 
@@ -37,7 +37,8 @@ defineOptions({layout: defineOptionsValue == 'FocusGuestLayout' ? FocusGuestLayo
 <template>
     <Head title="Login"/>
 
-    <form class="space-y-6" @submit.prevent="submit">
+    <div class="max-w-xl">
+    <form class="  space-y-6" @submit.prevent="submit">
         <div>
             <label for="login" class="block text-sm font-medium text-gray-700">{{ trans('Username') }}</label>
             <div class="mt-1">
@@ -89,7 +90,7 @@ defineOptions({layout: defineOptionsValue == 'FocusGuestLayout' ? FocusGuestLayo
 
 
     <ValidationErrors/>
-
+    </div>
 
 
 </template>
