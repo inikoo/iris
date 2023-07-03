@@ -255,8 +255,8 @@
                </form>
  
                <div class="flex items-center space-x-6">
-                 <Link :v-if="!user.value" :href="route('login')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('Login')}}</Link>
-                 <Link :v-if="user.value"  method="post" :href="route('logout')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('logout')}}</Link>
+                 <Link :v-if="!user" :href="route('login')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('Login')}}</Link>
+                 <Link :v-if="user"  method="post" :href="route('logout')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('logout')}}</Link>
                  <a href="#" class="text-sm font-medium text-white hover:text-gray-100">Create an account</a>
                </div>
              </div>
