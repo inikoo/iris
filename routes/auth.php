@@ -6,7 +6,7 @@
  */
 
 use App\Actions\Auth\Login\ShowLogin;
-use App\Actions\Auth\Login\StoreLogin;
+use App\Actions\Auth\Login\Login;
 use App\Actions\Auth\Registration\ShowRegistration;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
@@ -26,7 +26,7 @@ Route::middleware('guest')->group(function () {
     Route::get('login', ShowLogin::class)
                 ->name('login');
 
-    Route::post('login', StoreLogin::class);
+    Route::post('login', Login::class);
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('password.request');

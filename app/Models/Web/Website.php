@@ -18,6 +18,7 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
  * @property int $id
  * @property string $slug
  * @property int $shop_id
+ * @property string $type
  * @property string $state
  * @property string $engine
  * @property string $code
@@ -57,6 +58,7 @@ use MichaelAChrisco\ReadOnly\ReadOnlyTrait;
  * @method static Builder|Website whereSourceId($value)
  * @method static Builder|Website whereState($value)
  * @method static Builder|Website whereStructure($value)
+ * @method static Builder|Website whereType($value)
  * @method static Builder|Website whereUpdatedAt($value)
  * @mixin \Eloquent
  */
