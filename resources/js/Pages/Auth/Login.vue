@@ -6,8 +6,8 @@
 
 <script setup>
 import Checkbox from '@/Components/Checkbox.vue';
-
-import {Head, Link, useForm} from '@inertiajs/vue3';
+import { ref } from 'vue'
+import { Head, Link, useForm } from '@inertiajs/vue3';
 
 import Password from '@/Components/Forms/Inputs/Password.vue';
 import ValidationErrors from '@/Components/Forms/ValidationErrors.vue';
@@ -28,29 +28,34 @@ const submit = () => {
     });
 };
 
-// const layoutType= { layout: FocusGuestLayout };
 
-// defineOptions({ layout: FocusGuestLayout })
-defineOptions({ layout: Ecommerce })
+const defineOptionsValue = 'FocusGuestLayout'
+
+defineOptions({ layout: defineOptionsValue == 'FocusGuestLayout' ? FocusGuestLayout : Ecommerce });
+
+
 
 
 </script>
 
+
 <template>
     <Head title="Login" />
     <div class="flex  flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+        <div v-if="defineOptionsValue !== 'FocusGuestLayout'" class="sm:mx-auto sm:w-full sm:max-w-md">
             <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                 alt="Your Company" />
             <h2 class="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account
             </h2>
         </div>
 
-        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
-            <div class="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
+
+        <div :class="[defineOptionsValue !== 'FocusGuestLayout' ? 'mt-10' : '', 'sm:mx-auto sm:w-full sm:max-w-[480px]']">
+            <div :class="defineOptionsValue !== 'FocusGuestLayout' ? 'bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12' : ''">
                 <form class="space-y-6" @submit.prevent="submit">
                     <div>
-                        <label for="username" class="block text-sm font-medium leading-6 text-gray-900">{{ trans('Username') }}/{{ trans('Email') }}</label>
+                        <label for="username" class="block text-sm font-medium leading-6 text-gray-900">{{ trans('Username')
+                        }}/{{ trans('Email') }}</label>
                         <div class="mt-2">
                             <input id="username" name="username" type="username" autocomplete="username" required=""
                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
@@ -60,9 +65,9 @@ defineOptions({ layout: Ecommerce })
                     <div>
                         <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
                         <div class="mt-2">
-                                <Password id="password" name="password" type="password"
-                                    class="block rounded-md border-0  text-gray-900 " />
-                            </div>
+                            <Password id="password" name="password" type="password"
+                                class="block rounded-md border-0  text-gray-900 " />
+                        </div>
                     </div>
 
                     <div class="flex items-center justify-between">

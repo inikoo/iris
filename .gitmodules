@@ -1,0 +1,3 @@
+[submodule "aiku"]
+	path = aiku
+	url = https://github.com/inikoo/aiku.git
