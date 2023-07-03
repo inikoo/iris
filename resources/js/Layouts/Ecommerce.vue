@@ -15,17 +15,18 @@
 -->
 <template>
     <div class="bg-white">
-        <Header />
-
+        <Header :theme="1"/>
         <main>
-            <slot />
+           <slot/>
         </main>
 
-        <Footer theme="2"/>
+        <Footer />
+        
     </div>
 </template>
 
 <script setup>
-import Header from './Header/HeaderOne.vue'
+import Header from '@/Components/Header/index.vue'
 import Footer from '@/Components/Footers/Footer.vue'
+
 </script>
