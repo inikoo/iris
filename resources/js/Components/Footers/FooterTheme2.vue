@@ -79,11 +79,6 @@ const socials = [
         href: '#github',
         icon: ['fab', 'fa-github'],
     },
-    {
-        title: "Youtube",
-        href: '#youtube',
-        icon: ['fab', 'fa-youtube'],
-    },
 ]
 </script>
 
