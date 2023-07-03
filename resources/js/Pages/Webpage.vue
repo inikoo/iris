@@ -6,9 +6,10 @@
 
 <script setup>
 import { Head } from '@inertiajs/vue3';
+import Baskets from '@/Components/Baskets/Baskets.vue'
 </script>
 
 <template layout="Ecommerce">
     <Head title="Welcome" />
-    <h1>xxxx</h1>
+    <Baskets theme="1"/>
 </template>
