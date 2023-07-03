@@ -49,11 +49,7 @@
                                         <label :for="`quantity-${productIdx}`" class="sr-only">
                                             Quantity, {{ product.name }}
                                         </label>
-                                        <div class="h-6 flex gap-x-1">
-                                            <button @click.prevent="!!product.qty ? product.qty = product.qty - 1 : ''" :class="[ product.qty === 0 ? 'text-gray-300 cursor-not-allowed' : 'text-indigo-700 cursor-pointer', 'rounded px-2 ']">-</button>
-                                            <div class="flex items-center justify-center px-3 border-b border-indigo-500 text-gray-600 select-none text-sm">{{product.qty}}</div>
-                                            <button @click.prevent="product.qty = product.qty + 1" class="rounded px-2 cursor-pointer text-indigo-700">+</button>
-                                        </div>
+                                        <Quantity :product="product" />
                                         <!-- <select :id="`quantity-${productIdx}`" :name="`quantity-${productIdx}`"
                                             class="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
                                             <option value="1">1</option>
@@ -146,6 +142,7 @@
 <script setup>
 import { CheckIcon, ClockIcon, QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/vue/20/solid'
 import { computed, ref } from 'vue'
+import Quantity from '@/Components/Miscellanous/Quantity.vue';
 const products = ref([
     {
         id: 1,
