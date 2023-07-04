@@ -15,7 +15,7 @@
 -->
 <template>
     <div class="bg-white">
-        <Header :theme="1"/>
+        <Header :theme="HeaderTheme"/>
         <main>
            <slot/>
         </main>
@@ -28,5 +28,8 @@
 <script setup>
 import Header from '@/Components/Header/index.vue'
 import Footer from '@/Components/Footers/Footer.vue'
+
+// header = [ DarkHeader, LightHeader ]
+const HeaderTheme = 'DarkHeader'
 
 </script>

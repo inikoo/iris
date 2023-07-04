@@ -191,6 +191,7 @@ router.on('success', (event) => {
      user.value = usePage().props.auth.user;
 })
 
+console.log(user)
 
 
  </script>
@@ -205,10 +206,16 @@ router.on('success', (event) => {
         <div class="fixed inset-0 z-40 flex">
           <TransitionChild as="template" enter="transition ease-in-out duration-300 transform" enter-from="-translate-x-full" enter-to="translate-x-0" leave="transition ease-in-out duration-300 transform" leave-from="translate-x-0" leave-to="-translate-x-full">
             <DialogPanel class="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
-
+              <div class="flex px-4 pb-2 pt-5">
+                <button type="button" class="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+                  @click="mobileMenuOpen = false">
+                  <span class="sr-only">Close menu</span>
+                  <XMarkIcon class="h-6 w-6" aria-hidden="true" />
+                </button>
+              </div>
               <TabGroup as="div" class="mt-2">
-                <div class="border-b border-gray-200">
-                  <TabList class="-mb-px flex space-x-8 px-4">
+                <div class="border-b border-gray">
+                  <TabList class="-mb-px flex space-x-8 px-4 w-304 overflow-x-auto">
                     <Tab as="template" v-for="category in navigation.categories" :key="category.name" v-slot="{ selected }">
                       <button :class="[selected ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-900', 'flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium']">{{ category.name }}</button>
                     </Tab>
@@ -249,7 +256,7 @@ router.on('success', (event) => {
       </Dialog>
     </TransitionRoot>
 
-    <!-- Dasktop -->
+    <!-- Desktop -->
     <div class="relative bg-gray-900">
        <div aria-hidden="true" class="absolute inset-0 bg-gray-900 opacity-50" />
 
