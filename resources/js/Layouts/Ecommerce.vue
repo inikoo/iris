@@ -17,7 +17,7 @@
     <div class="bg-white">
         <Header :theme="1"/>
         <main class="px-10">
-           <slot/>
+            <slot/>
         </main>
 
         <Footer theme="2"/>

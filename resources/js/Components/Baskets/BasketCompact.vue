@@ -168,7 +168,7 @@ const calcTotal = computed(() => {
                 </p>
             </div>
             <textarea v-model="specialInstructions" name="" id="" rows="5" placeholder="Special instructions (for example: leave safe)"
-                class="focus:border-indigo-500 focus:ring-offset-0 focus:ring-inset focus:ring-2 focus:ring-indigo-500 w-10/12"
+                class="focus:border-indigo-500 focus:ring-offset-0 focus:ring-inset focus:ring-1 focus:ring-indigo-500 w-10/12"
             />
         </div>
         
