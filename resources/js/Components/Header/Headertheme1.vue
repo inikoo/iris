@@ -256,27 +256,28 @@ router.on('success', (event) => {
        <header class="relative z-10">
          <nav aria-label="Top">
            <div class="bg-gray-900">
-             <div class="mx-auto flex h-10   justify-between px-4 sm:px-6 lg:px-8">
+             <div class="mx-auto flex h-10  px-4 sm:px-6 lg:px-8">
 
-                 <div>
-                  <div class="hidden lg:flex lg:flex-1 lg:items-center">
+                 <div class="w-2/4">
+                  <div class="hidden lg:flex lg:flex-1 lg:items-center justify-end ">
                      <a href="#">
-                       <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="" />
+                       <div class="flex"><img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="" /><span class="p-1 text-2xl font-semibold text-white">AW GIFT</span></div>
                      </a>
                    </div>
                  </div>
 
-
-               <div class="flex items-center space-x-6">
+                 <div class="w-2/4  flex items-center space-x-6 justify-end ">
+               
                  <Link v-if="user == null" :href="route('login')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('Login')}}</Link>
                  <Link v-if="user == null" :href="route('register')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('Register')}}</Link>
                  <Link  v-if="user"  method="post" :href="route('logout')" class="text-sm font-medium text-white hover:text-gray-100">{{trans('Logout')}}</Link>
                </div>
+            
              </div>
            </div>
 
            <!-- Secondary navigation -->
-           <div class="bg-white bg-opacity-10 backdrop-blur-md backdrop-filter">
+           <div class="bg-gray-600 bg-opacity-10 backdrop-blur-md backdrop-filter">
              <div class="mx-auto  px-4 sm:px-6 lg:px-4">
                <div>
                  <div class="flex h-16 items-center justify-between">
