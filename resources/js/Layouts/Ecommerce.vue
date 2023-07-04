@@ -16,11 +16,11 @@
 <template>
     <div class="bg-white">
         <Header :theme="1"/>
-        <main>
+        <main class="px-10">
            <slot/>
         </main>
 
-        <Footer />
+        <Footer theme="2"/>
         
     </div>
 </template>

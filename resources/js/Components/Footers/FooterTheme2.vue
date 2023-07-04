@@ -119,7 +119,7 @@ const addresses = [
 <template>
     <footer class="bg-gray-50 px-6" aria-labelledby="footer-heading">
         <h2 id="footer-heading" class="sr-only">Footer</h2>
-        <div class="mx-auto max-w-7xl px-6 pb-8 pt-20 sm:pt-24 lg:px-8 lg:pt-24">
+        <div class="mx-auto max-w-7xl px-6 pb-8 pt-20 sm:pt-24 lg:px-8 lg:pt-12">
             <div class="xl:grid xl:grid-cols-3 xl:gap-x-24 xl:px-6">
                 <!-- Group: Contact Information -->
                 <div class="mt-12 xl:mt-0 space-y-6">
