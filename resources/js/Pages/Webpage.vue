@@ -9,5 +9,5 @@ import Baskets from '@/Components/Baskets/Baskets.vue'
 </script>
 
 <template layout="Ecommerce">
-    <Baskets theme="2"/>
+    <Baskets theme="1"/>
 </template>

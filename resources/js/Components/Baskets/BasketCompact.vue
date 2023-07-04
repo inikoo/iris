@@ -129,7 +129,7 @@ const calcTotal = computed(() => {
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
-                                <tr v-for="product in products" :key="product.email">
+                                <tr v-for="(product, productIdx) in products" :key="product.email">
                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                         {{ product.id }}</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ product.name }}</td>
@@ -140,9 +140,9 @@ const calcTotal = computed(() => {
                                     <td class="text-center whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ product.price * product.qty }}</td>
                                     <td
                                         class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                        <a href="#" class="text-red-300 hover:text-red-500 py-1 px-2">
+                                        <button @click.prevent="products.splice(productIdx, 1)" type="button" class="text-red-300 hover:text-red-500 py-1 px-2">
                                             <FontAwesomeIcon icon="fas fa-trash" aria-hidden="true" /><span class="sr-only">, {{ product.name }}</span>
-                                        </a>
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>
