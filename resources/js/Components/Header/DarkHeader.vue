@@ -1,5 +1,5 @@
 <script setup>
-import {ref, watchEffect} from 'vue';
+import { ref } from 'vue';
  import {
    Dialog,
    DialogPanel,
@@ -185,13 +185,13 @@ library.add( faBars, faMagnifyingGlass );
 
  const mobileMenuOpen = ref(false)
 
- const user=ref(null);
+ const user=ref(usePage().props.auth.user);
 
 router.on('success', (event) => {
      user.value = usePage().props.auth.user;
 })
 
-console.log(user)
+console.log('dddd',usePage().props.auth.user)
 
 
  </script>
