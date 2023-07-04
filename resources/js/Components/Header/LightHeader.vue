@@ -28,180 +28,185 @@ import {
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingCartIcon, UserIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 
-const navigation = {
-   categories: [
-     {
-       name: 'Home',
-       featured: [
-         {
-           name: 'About us',
-           href: '#',
-         },
-         {
-           name: 'Contact',
-           href: '#',
-         },
-         {
-           name: 'ShowRoom',
-           href: '#',
-         },
-         {
-           name: 'Trems & Conditions',
-           href: '#',
-         },
-         {
-           name: 'Delivery',
-           href: '#',
-         },
-         {
-           name: 'Operation Hours',
-           href: '#',
-         },
-         {
-           name: 'Freedom Fund',
-           href: '#',
-         },
-         {
-           name: 'Business Ethics',
-           href: '#',
-         },
-         {
-           name: 'Catalogue',
-           href: '#',
-         },
-         {
-           name: 'Retruns Policy',
-           href: '#',
-         },
-         {
-           name: 'Dropshiping Sevices',
-           href: '#',
-         },
-         {
-           name: 'Working with local businesses',
-           href: '#',
-         },
-         {
-           name: 'sustainable palm oil',
-           href: '#',
-         },
-         {
-           name: 'Privacy Policy',
-           href: '#',
-         },
-         {
-           name: 'Cookies Policy',
-           href: '#',
-         },
-         {
-           name: 'Travel Blog',
-           href: '#',
-         },
-       ],
-     },
-     {
-       name: 'Departements',
-       featured: [
-         {
-           name: 'New Arrivals',
-           href: '#',
-         },
-         {
-           name: 'Basic Tees',
-           href: '#',
-         },
-         {
-           name: 'Accessories',
-           href: '#',
-         },
-         {
-           name: 'Carry',
-           href: '#',
-         },
-       ],
-     },
-     {
-       name: 'Incentives & Inspiration',
-       featured: [
-         {
-           name: 'New Arrivals',
-           href: '#',
-         },
-         {
-           name: 'Basic Tees',
-           href: '#',
-         },
-         {
-           name: 'Accessories',
-           href: '#',
-         },
-         {
-           name: 'Carry',
-           href: '#',
-         },
-       ],
-     },
-     {
-       name: 'Delivery',
-       featured: [
-         {
-           name: 'New Arrivals',
-           href: '#',
-         },
-         {
-           name: 'Basic Tees',
-           href: '#',
-         },
-         {
-           name: 'Accessories',
-           href: '#',
-         },
-         {
-           name: 'Carry',
-           href: '#',
-         },
-       ],
-     },
-     {
-       name: 'New & Notetable',
-       featured: [
-         {
-           name: 'New Arrivals',
-           href: '#',
-         },
-         {
-           name: 'Basic Tees',
-           href: '#',
-         },
-         {
-           name: 'Accessories',
-           href: '#',
-         },
-         {
-           name: 'Carry',
-           href: '#',
-         },
-       ],
-     },
-   ],
-  pages: [
-    { name: 'login', href: '#' },
-    { name: 'Register', href: '#' },
-  ],
-}
-
-
-
 const mobileMenuOpen = ref(false)
-
-
-
-const user = ref(null);
-
-
+const user = ref(usePage().props.auth.user);
 router.on('success', (event) => {
   user.value = usePage().props.auth.user;
 })
+
+const navigation = {
+  categories: [
+    {
+      name: 'Home',
+      featured: [
+        {
+          name: 'About us',
+          href: '#',
+        },
+        {
+          name: 'Contact',
+          href: '#',
+        },
+        {
+          name: 'ShowRoom',
+          href: '#',
+        },
+        {
+          name: 'Trems & Conditions',
+          href: '#',
+        },
+        {
+          name: 'Delivery',
+          href: '#',
+        },
+        {
+          name: 'Operation Hours',
+          href: '#',
+        },
+        {
+          name: 'Freedom Fund',
+          href: '#',
+        },
+        {
+          name: 'Business Ethics',
+          href: '#',
+        },
+        {
+          name: 'Catalogue',
+          href: '#',
+        },
+        {
+          name: 'Retruns Policy',
+          href: '#',
+        },
+        {
+          name: 'Dropshiping Sevices',
+          href: '#',
+        },
+        {
+          name: 'Working with local businesses',
+          href: '#',
+        },
+        {
+          name: 'sustainable palm oil',
+          href: '#',
+        },
+        {
+          name: 'Privacy Policy',
+          href: '#',
+        },
+        {
+          name: 'Cookies Policy',
+          href: '#',
+        },
+        {
+          name: 'Travel Blog',
+          href: '#',
+        },
+      ],
+    },
+    {
+      name: 'Departements',
+      featured: [
+        {
+          name: 'New Arrivals',
+          href: '#',
+        },
+        {
+          name: 'Basic Tees',
+          href: '#',
+        },
+        {
+          name: 'Accessories',
+          href: '#',
+        },
+        {
+          name: 'Carry',
+          href: '#',
+        },
+      ],
+    },
+    {
+      name: 'Incentives & Inspiration',
+      featured: [
+        {
+          name: 'New Arrivals',
+          href: '#',
+        },
+        {
+          name: 'Basic Tees',
+          href: '#',
+        },
+        {
+          name: 'Accessories',
+          href: '#',
+        },
+        {
+          name: 'Carry',
+          href: '#',
+        },
+      ],
+    },
+    {
+      name: 'Delivery',
+      featured: [
+        {
+          name: 'New Arrivals',
+          href: '#',
+        },
+        {
+          name: 'Basic Tees',
+          href: '#',
+        },
+        {
+          name: 'Accessories',
+          href: '#',
+        },
+        {
+          name: 'Carry',
+          href: '#',
+        },
+      ],
+    },
+    {
+      name: 'New & Notetable',
+      featured: [
+        {
+          name: 'New Arrivals',
+          href: '#',
+        },
+        {
+          name: 'Basic Tees',
+          href: '#',
+        },
+        {
+          name: 'Accessories',
+          href: '#',
+        },
+        {
+          name: 'Carry',
+          href: '#',
+        },
+      ],
+    },
+  ],
+}
+
+const pages = [
+  { name: 'Login', href: 'login', user: false },
+  { name: 'Register', href: 'register', user: false },
+  { name: 'Logout', href: 'logout', user: true },
+]
+
+let filteredPages = [];
+if (user.value == null) {
+  filteredPages = pages.filter((item) => item.user);
+} else if (user.value !== null) {
+  filteredPages = pages.filter((item) => !item.user);
+}
+console.log(user,filteredPages)
+
+
 
 </script>
 <template>
@@ -232,8 +237,11 @@ router.on('success', (event) => {
               <TabGroup as="div" class="mt-2">
                 <div class="border-b border-gray">
                   <TabList class="-mb-px flex space-x-8 px-4 w-304 overflow-x-auto">
-                    <Tab as="template" v-for="category in navigation.categories" :key="category.name" v-slot="{ selected }">
-                      <button :class="[selected ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-900', 'flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium']">{{ category.name }}</button>
+                    <Tab as="template" v-for="category in navigation.categories" :key="category.name"
+                      v-slot="{ selected }">
+                      <button
+                        :class="[selected ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-900', 'flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium']">{{
+                          category.name }}</button>
                     </Tab>
                   </TabList>
                 </div>
@@ -283,16 +291,16 @@ router.on('success', (event) => {
             <div class="w-2/4  flex items-center space-x-6 justify-end ">
 
               <div class="flex flex-1 items-center justify-end">
-                  <div class="flex items-center lg:ml-8">
-                    <div class="flex space-x-8">
-                      <div class="hidden lg:flex">
-                        <a href="#" class="-m-2 p-2 text-gray-400 hover:text-gray-500">
-                          <span class="sr-only">Search</span>
-                          <MagnifyingGlassIcon class="h-6 w-6" aria-hidden="true" />
-                        </a>
-                      </div>
+                <div class="flex items-center lg:ml-8">
+                  <div class="flex space-x-8">
+                    <div class="hidden lg:flex">
+                      <a href="#" class="-m-2 p-2 text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Search</span>
+                        <MagnifyingGlassIcon class="h-6 w-6" aria-hidden="true" />
+                      </a>
+                    </div>
 
-                      <div class="flex">
+                    <div class="flex">
                       <a href="#" class="-m-2 p-2 text-gray-400 hover:text-gray-500">
                         <span class="sr-only">Account</span>
                         <UserIcon class="h-6 w-6" aria-hidden="true" />
@@ -340,28 +348,32 @@ router.on('success', (event) => {
                           enter-to-class="opacity-100" leave-active-class="transition ease-in duration-150"
                           leave-from-class="opacity-100" leave-to-class="opacity-0">
                           <PopoverPanel class="absolute inset-x-0 top-full text-sm text-gray-500">
-                               <!-- Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow -->
-                               <div class="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
+                            <!-- Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow -->
+                            <div class="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
 
-                               <div class="relative bg-white">
-                                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                                   <div class="grid grid-cols-3 gap-x-8 gap-y-4 py-4">
-                                     <div v-for="item in category.featured" :key="item.name" class="group relative">
-                                       <a :href="item.href" class="mt-4 block font-medium text-gray-900">
-                                         <span class="absolute inset-0 z-10" aria-hidden="true" />
-                                         {{ item.name }}
-                                       </a>
-                                     </div>
-                                   </div>
-                                 </div>
-                               </div>
-                             </PopoverPanel>
+                            <div class="relative bg-white">
+                              <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                                <div class="grid grid-cols-3 gap-x-8 gap-y-4 py-4">
+                                  <div v-for="item in category.featured" :key="item.name" class="group relative">
+                                    <a :href="item.href" class="mt-4 block font-medium text-gray-900">
+                                      <span class="absolute inset-0 z-10" aria-hidden="true" />
+                                      {{ item.name }}
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </PopoverPanel>
                         </transition>
                       </Popover>
+                      <div v-for="page in filteredPages" :key="page.name" :href="page.href"
+                        class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">
+                        <Link  method="post"  :href="route(page.href)"
+                          class="-m-2 block p-2 font-medium text-gray-900">
+                        {{ trans(page.name) }}
+                        </Link>
+                      </div>
 
-                      <a v-for="page in navigation.pages" :key="page.name" :href="page.href"
-                        class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">{{ page.name
-                        }}</a>
                     </div>
                   </PopoverGroup>
                 </div>
@@ -386,12 +398,12 @@ router.on('success', (event) => {
                   <span class="sr-only">Your Company</span>
                   <img src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto" />
                 </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
-  </header>
-</div></template>
+      </nav>
+    </header>
+  </div></template>
  
 
