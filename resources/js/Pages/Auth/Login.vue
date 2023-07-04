@@ -31,9 +31,9 @@ const defineOptionsValue = 'Ecommerce';
 
 defineOptions({ layout: defineOptionsValue == 'FocusGuestLayout' ? FocusGuestLayout : Ecommerce });
 
-router.on('success', (event) => {
-    console.log(`Successfully made a visit to ${event.detail.page.url}`)
-})
+// router.on('success', (event) => {
+//     console.log(`Successfully made a visit to ${event.detail.page.url}`)
+// })
 
 </script>
   
