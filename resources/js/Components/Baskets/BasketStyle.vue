@@ -15,11 +15,11 @@
 <template>
     <div class="bg-white">
         <div class="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
-            <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Shopping Cart</h1>
+            <h1 class="text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl">Shopping Cart</h1>
             <form class="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
                 <section aria-labelledby="cart-heading" class="lg:col-span-7">
                     <h2 id="cart-heading" class="sr-only">Items in your shopping cart</h2>
-                    <ul role="list" class="divide-y divide-gray-200 border-b border-t border-gray-200">
+                    <ul role="list" class="divide-y divide-gray-200 border-b">
                         <!-- Product Cart -->
                         <li v-for="(product, productIdx) in products" :key="product.id" class="flex py-6 sm:py-10">
                             <div class="flex-shrink-0">
@@ -42,7 +42,7 @@
                                             <p v-if="product.size" class="ml-4 border-l border-gray-200 pl-4 text-gray-500">
                                                 {{ product.size }}</p>
                                         </div>
-                                        <p class="mt-1 text-sm font-medium text-gray-900">${{ product.price }}.00</p>
+                                        <p class="mt-1 text-sm font-medium text-gray-800">${{ product.price }}.00</p>
                                     </div>
 
                                     <div class="mt-4 sm:mt-0 sm:pr-9">
@@ -67,7 +67,8 @@
                                             <button @click.prevent="products.splice(productIdx, 1)" type="button"
                                                 class="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500">
                                                 <span class="sr-only">Remove</span>
-                                                <XMarkIcon class="h-5 w-5" aria-hidden="true" />
+                                                <!-- <XMarkIcon class="h-5 w-5" aria-hidden="true" /> -->
+                                                <FontAwesomeIcon icon='fal fa-times' class='h-5 w-5' aria-hidden='true' />
                                             </button>
                                         </div>
                                     </div>
@@ -91,17 +92,35 @@
 
                 <!-- Order summary -->
                 <section aria-labelledby="summary-heading"
-                    class="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
-                    <h2 id="summary-heading" class="text-lg font-medium text-gray-900">Order summary</h2>
+                    class="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8 space-y-6">
+                    <h2 id="summary-heading" class="text-lg font-bold text-gray-800">Order summary</h2>
 
-                    <dl class="mt-6 space-y-4">
-                        <div class="flex items-center justify-between">
-                            <dt class="text-sm text-gray-600">Subtotal</dt>
-                            <dd class="text-sm font-medium text-gray-900">
-                                ${{ compSumPrice }}.00
+                    <dl class="divide-y divide-gray-200">
+                        <div class="flex items-center justify-between py-4">
+                            <dt class="text-sm text-gray-600">Items Gross</dt>
+                            <dd class="text-sm font-medium text-gray-800">
+                                ${{ calcPriceItemsGross }}.00
                             </dd>
                         </div>
-                        <div class="flex items-center justify-between border-t border-gray-200 pt-4">
+                        <div class="flex items-center justify-between py-4">
+                            <dt class="text-sm text-gray-600">Discounts</dt>
+                            <dd class="text-sm font-medium text-gray-800">
+                                ${{ calcDiscount }}.00
+                            </dd>
+                        </div>
+                        <div class="flex items-center justify-between py-4">
+                            <dt class="text-sm text-gray-600">Items Net</dt>
+                            <dd class="text-sm font-medium text-gray-800">
+                                ${{ calcItemsNet }}.00
+                            </dd>
+                        </div>
+                        <div class="flex items-center justify-between py-4">
+                            <dt class="text-sm text-gray-600">Charges</dt>
+                            <dd class="text-sm font-medium text-gray-800">
+                                ${{ calcCharges }}.00
+                            </dd>
+                        </div>
+                        <div class="flex items-center justify-between py-4 pt-4">
                             <dt class="flex items-center text-sm text-gray-600">
                                 <span>Shipping estimate</span>
                                 <a href="#" class="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
@@ -109,9 +128,9 @@
                                     <QuestionMarkCircleIcon class="h-5 w-5" aria-hidden="true" />
                                 </a>
                             </dt>
-                            <dd class="text-sm font-medium text-gray-900">$5.00</dd>
+                            <dd class="text-sm font-medium text-gray-800">${{ calcShippping }}.00</dd>
                         </div>
-                        <div class="flex items-center justify-between border-t border-gray-200 pt-4">
+                        <div class="flex items-center justify-between py-4 pt-4">
                             <dt class="flex text-sm text-gray-600">
                                 <span>Tax estimate</span>
                                 <a href="#" class="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
@@ -119,16 +138,19 @@
                                     <QuestionMarkCircleIcon class="h-5 w-5" aria-hidden="true" />
                                 </a>
                             </dt>
-                            <dd class="text-sm font-medium text-gray-900">
-                                ${{ compTax }}
+                            <dd class="text-sm font-medium text-gray-800">
+                                ${{ calcTax }}
                             </dd>
                         </div>
-                        <div class="flex items-center justify-between border-t border-gray-200 pt-4">
-                            <dt class="text-base font-medium text-gray-900">Order total</dt>
-                            <dd class="text-base font-medium text-gray-900">${{ compSumPrice + compTax}}</dd>
+                        <div class="flex items-center justify-between py-4 pt-4">
+                            <dt class="text-base font-semibold text-gray-800">Order total</dt>
+                            <dd class="text-base font-semibold text-gray-800">${{ calcTotal}}</dd>
                         </div>
                     </dl>
 
+                    <textarea v-model="specialInstructions" name="" id="" rows="5" placeholder="Special instructions (for example: leave safe)"
+                        class="focus:border-indigo-500 focus:ring-offset-0 focus:ring-inset focus:ring-1 focus:ring-indigo-500 w-full"
+                    />
                     <div class="mt-6">
                         <button type="submit"
                             class="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">Checkout</button>
@@ -141,8 +163,13 @@
 
 <script setup>
 import { CheckIcon, ClockIcon, QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/vue/20/solid'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faTimes } from '@/../private/pro-light-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+library.add(faTimes)
 import { computed, ref } from 'vue'
 import Quantity from '@/Components/Miscellanous/Quantity.vue';
+
 const products = ref([
     {
         id: 1,
@@ -182,13 +209,39 @@ const products = ref([
     },
 ])
 
-const compSumPrice = computed(() => {
+const specialInstructions = ref('')
+
+const calcPriceItemsGross = computed(() => {
     return products.value.reduce((accumulator, currentItem) => {
         return accumulator + (currentItem.price * currentItem.qty);
         }, 0)
 })
 
-const compTax = computed(() => {
-    return parseFloat((0.05 * compSumPrice.value).toFixed(2))
+const calcDiscount = computed(() => {
+    return 0
+})
+
+const calcItemsNet = computed(() => {
+    return calcPriceItemsGross.value - calcDiscount.value
+})
+
+const calcCharges = computed(() => {
+    return 0
+})
+
+const calcShippping = computed(() => {
+    return 0
+})
+
+const calcNet = computed (() => {
+    return calcItemsNet.value + calcCharges.value + calcShippping.value
+})
+
+const calcTax = computed(() => {
+    return parseFloat((0.05 * calcNet.value).toFixed(2))
+})
+
+const calcTotal = computed(() => {
+    return calcNet.value + calcTax.value
 })
 </script>

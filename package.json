@@ -30,6 +30,7 @@
         "@heroicons/vue": "^2.0.12",
         "@inertiajs/vue3": "^1.0.9",
         "@protonemedia/inertiajs-tables-laravel-query-builder": "^2.1.0",
-        "laravel-vue-i18n": "^2.3.0"
+        "laravel-vue-i18n": "^2.3.0",
+        "pinia": "^2.1.4"
     }
 }

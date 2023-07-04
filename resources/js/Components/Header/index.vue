@@ -1,44 +1,37 @@
 <template>
     <div>
-        <component :is="component[theme]" />
+        <component :is="component()" />
     </div>
 </template>
 
 <script setup lang="ts">
-import HeaderTheme1 from './Headertheme1.vue'
-import HeaderTheme2 from './HeaderTheme2.vue'
-
+import DarkHeader from './DarkHeader.vue'
+import LightHeader from './LightHeader.vue'
+import { userStore } from '@/Stores/User.js'
+import { ref } from 'vue';
+import { router, usePage } from '@inertiajs/vue3'
 
 const props = defineProps<{
-    theme: number
-}>()
+  theme: string;
+}>();
 
-const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+const userS = userStore();
+const user = ref(usePage().props.auth.user);
+
+router.on('success', (event) => {
+  user.value = usePage().props.auth.user;
+});
+
+if (user.value !== null) {
+    for(const s in user.value){
+        userS[s] = user.value[s]; 
+    }
 }
-const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'Departements', href: '#', current: false },
-  { name: 'Incentives & Inspiration', href: '#', current: false },
-  { name: 'Delivery', href: '#', current: false },
-  { name: 'New & Noteable', href: '#', current: false },
-]
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
-]
 
-const component = {
-    1: HeaderTheme1, 
-    2: HeaderTheme2, 
+const component =()=> {
+  if(props.theme == 'DarkHeader') return DarkHeader 
+  if(props.theme == 'LightHeader') return LightHeader 
+  else return DarkHeader 
 }
 
 </script>
-
-<style scoped>
-
-</style>
