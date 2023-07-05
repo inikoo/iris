@@ -1,21 +1,20 @@
 <?php
+/*
+ * Author: Raul Perusquia <raul@inikoo.com>
+ * Created: Wed, 05 Jul 2023 10:36:32 Malaysia Time, Kuala Lumpur, Malaysia
+ * Copyright (c) 2023, Raul A Perusquia Flores
+ */
 
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\SysAdmin\User>
- */
-class UserFactory extends Factory
+
+class SysUserFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition()
+
+    public function definition(): array
     {
         return [
             'name'              => fake()->name(),
@@ -26,12 +25,8 @@ class UserFactory extends Factory
         ];
     }
 
-    /**
-     * Indicate that the model's email address should be unverified.
-     *
-     * @return static
-     */
-    public function unverified()
+
+    public function unverified(): SysUserFactory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,

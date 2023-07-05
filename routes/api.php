@@ -14,17 +14,17 @@ use App\Actions\Sysadmin\Instance\IndexInstances;
 use App\Actions\Sysadmin\Instance\ShowInstance;
 use App\Actions\Sysadmin\Instance\StoreInstance;
 use App\Actions\Sysadmin\Instance\UpdateInstance;
-use App\Actions\Sysadmin\User\ShowUser;
+use App\Actions\Sysadmin\SysUser\ShowSysUser;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:admin')->group(function () {
-    Route::get('/user', ShowUser::class);
+    Route::get('/sys-user', ShowSysUser::class);
 
     Route::get('/domains', IndexDomains::class)->name('domains.index');
 
     Route::post('/domains/{domain}/instance', StoreInstance::class)->name('domains.show.instance.store');
     Route::get('/domains/{domain}/instance', [ShowInstance::class,'inDomain'])->name('domains.show.instance.show');
-    Route::delete('/domains/{domain}/instance', [DeleteInstance::class,'inDomain'])->name('domains.show.instance.delate');
+    Route::delete('/domains/{domain}/instance', [DeleteInstance::class,'inDomain'])->name('domains.show.instance.delete');
 
 
     Route::get('/instances', IndexInstances::class)->name('instances.index');

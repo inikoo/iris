@@ -8,7 +8,7 @@ use Lorisleiva\Actions\Facades\Actions;
 
 class AppServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         if ($this->app->environment('local')) {
             $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
 
-    public function boot()
+    public function boot(): void
     {
         if ($this->app->runningInConsole()) {
             Actions::registerCommands();
@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
 
         Relation::morphMap(
             [
-                'User'    => 'App\Models\SysAdmin\User',
+                'SysUser'    => 'App\Models\SysAdmin\SysUser',
                 'Admin'     => 'App\Models\SysAdmin\Admin',
                 'Customer' => 'App\Models\Sales\Customer',
                 'WebUser'  => 'App\Models\Auth\WebUser',
