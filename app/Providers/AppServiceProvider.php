@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
             [
                 'SysUser'    => 'App\Models\SysAdmin\SysUser',
                 'Admin'     => 'App\Models\SysAdmin\Admin',
-                'Customer' => 'App\Models\Sales\Customer',
+                'Customer' => 'App\Models\CRM\Customer',
                 'WebUser'  => 'App\Models\Auth\WebUser',
 
             ]

@@ -10,7 +10,6 @@ namespace App\Models\Auth;
 
 use App\Enums\Auth\WebUser\WebUserAuthTypeEnum;
 use App\Enums\Auth\WebUser\WebUserTypeEnum;
-use App\Models\Sales\Customer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;

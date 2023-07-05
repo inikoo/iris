@@ -9,8 +9,8 @@ namespace App\Actions\Dropshipping\CustomerClient;
 
 use App\Actions\UI\WithInertia;
 use App\Http\Resources\CustomerClientResource;
+use App\Models\CRM\Customer;
 use App\Models\Dropshipping\CustomerClient;
-use App\Models\Sales\Customer;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Inertia\Inertia;

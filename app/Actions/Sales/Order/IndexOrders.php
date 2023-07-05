@@ -9,7 +9,7 @@ namespace App\Actions\Sales\Order;
 
 use App\Actions\UI\WithInertia;
 use App\Http\Resources\OrderResource;
-use App\Models\Sales\Customer;
+use App\Models\CRM\Customer;
 use App\Models\Sales\Order;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;

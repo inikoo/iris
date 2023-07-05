@@ -7,6 +7,7 @@
 
 namespace App\Models\Sales;
 
+use App\Models\CRM\Customer;
 use App\Models\Marketing\Shop;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -39,7 +40,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $deleted_at
  * @property int|null $source_id
- * @property-read \App\Models\Sales\Customer $customer
+ * @property-read \App\Models\CRM\Customer $customer
  * @property-read Model|\Eloquent $item
  * @property-read \App\Models\Sales\Order|null $order
  * @property-read Shop $shop

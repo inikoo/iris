@@ -9,7 +9,7 @@ namespace App\Actions\Fulfilment\Stock;
 
 use App\Actions\UI\WithInertia;
 use App\Models\Auth\WebUser;
-use App\Models\Sales\Customer;
+use App\Models\CRM\Customer;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
