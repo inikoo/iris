@@ -10,7 +10,7 @@ import FooterTheme2 from '@/Components/Footers/FooterTheme2.vue'
 import FooterTheme3 from '@/Components/Footers/FooterTheme3.vue'
 
 const props = defineProps<{
-    theme: number
+    theme: string
 }>()
 
 const component = {

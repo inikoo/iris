@@ -6,9 +6,11 @@
  */
 
 use App\Actions\Web\Webpage\ShowWebpage;
+use App\Actions\Product\ShowProduct;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ShowWebpage::class, 'home']);
+Route::get('/product', ShowProduct::class);
 
 
 Route::prefix('account')
