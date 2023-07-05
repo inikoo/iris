@@ -10,6 +10,6 @@ import Product from '@/Components/Product/Product.vue'
 
 <template layout="Ecommerce">
     <section class="py-8">
-        <Product theme="1" />
+        <Product theme="4" />
     </section>
 </template>
