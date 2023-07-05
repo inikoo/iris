@@ -73,6 +73,23 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Customer extends Model
 {
+
+    protected $casts = [
+        'data'            => 'array',
+        'location'        => 'array',
+        //'state'           => CustomerStateEnum::class,
+        //'status'          => CustomerStatusEnum::class,
+        //'trade_state'     => CustomerTradeStateEnum::class
+
+    ];
+
+    protected $attributes = [
+        'data'            => '{}',
+        'location'        => '{}',
+    ];
+
+    protected $guarded = [];
+
     public function webUsers(): HasMany
     {
         return $this->hasMany(WebUser::class);
