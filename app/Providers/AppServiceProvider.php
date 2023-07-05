@@ -25,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
 
         Relation::morphMap(
             [
-                'Admin'    => 'App\Models\SysAdmin\User',
-                'User'     => 'App\Models\SysAdmin\Admin',
+                'User'    => 'App\Models\Auth\User',
+                'Admin'     => 'App\Models\SysAdmin\Admin',
                 'Customer' => 'App\Models\Sales\Customer',
                 'WebUser'  => 'App\Models\Auth\WebUser',
 
