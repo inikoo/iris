@@ -1,11 +1,11 @@
 <?php
 /*
- *  Author: Raul Perusquia <raul@inikoo.com>
- *  Created: Tue, 08 Nov 2022 20:54:31 Malaysia Time, Sheffield, UK
- *  Copyright (c) 2022, Raul A Perusquia Flores
+ * Author: Raul Perusquia <raul@inikoo.com>
+ * Created: Wed, 05 Jul 2023 11:41:24 Malaysia Time, Kuala Lumpur, Malaysia
+ * Copyright (c) 2023, Raul A Perusquia Flores
  */
 
-namespace App\Actions\Sales\Customer;
+namespace App\Actions\CRM\Customer;
 
 use Inertia\Inertia;
 use Inertia\Response;

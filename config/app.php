@@ -218,7 +218,6 @@ return [
     ])->toArray(),
 
     'domain'        => env('APP_DOMAIN'),
-    'aiku_url'      => env('AIKU_URL'),
     'staging_domain'=> env('STAGING_DOMAIN'),
 
 ];

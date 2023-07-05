@@ -7,7 +7,7 @@
 
 namespace App\Actions\Sysadmin\Admin;
 
-use App\Actions\Sysadmin\User\StoreUser;
+use App\Actions\Sysadmin\SysUser\StoreSysUser;
 use App\Models\SysAdmin\Admin;
 use Illuminate\Console\Command;
 use Lorisleiva\Actions\Concerns\AsAction;
@@ -30,10 +30,10 @@ class StoreAdmin
 
 
         $admin = Admin::create($modelData);
-        $user  = StoreUser::run($admin);
+        $sysUser  = StoreSysUser::run($admin);
 
 
-        $token = $user->createToken('aiku-access', ['aiku'])->plainTextToken;
+        $token = $sysUser->createToken('aiku-access', ['aiku'])->plainTextToken;
         $command->line("SysAdmin access token: $token");
 
 

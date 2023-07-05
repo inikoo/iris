@@ -23,7 +23,7 @@ use Spatie\Sluggable\SlugOptions;
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\SysAdmin\User|null $user
+ * @property-read SysUser|null $user
  * @method static Builder|Admin newModelQuery()
  * @method static Builder|Admin newQuery()
  * @method static Builder|Admin query()
@@ -50,9 +50,9 @@ class Admin extends Model
             ->saveSlugsTo('slug');
     }
 
-    public function user(): MorphOne
+    public function sysUser(): MorphOne
     {
-        return $this->morphOne(User::class, 'userable');
+        return $this->morphOne(SysUser::class, 'userable');
     }
 
 }

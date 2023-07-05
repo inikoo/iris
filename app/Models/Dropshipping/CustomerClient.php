@@ -7,9 +7,9 @@
 
 namespace App\Models\Dropshipping;
 
+use App\Models\CRM\Customer;
 use App\Models\Helpers\Address;
 use App\Models\Marketing\Shop;
-use App\Models\Sales\Customer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

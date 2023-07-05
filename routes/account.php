@@ -5,7 +5,7 @@
  *  Copyright (c) 2022, Raul A Perusquia Flores
  */
 
-use App\Actions\Sales\Customer\ShowDashboard;
+use App\Actions\CRM\Customer\ShowDashboard;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ShowDashboard::class, 'home']);

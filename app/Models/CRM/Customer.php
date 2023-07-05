@@ -1,11 +1,11 @@
 <?php
 /*
- *  Author: Raul Perusquia <raul@inikoo.com>
- *  Created: Thu, 27 Oct 2022 11:55:50 British Summer Time, Sheffield, UK
- *  Copyright (c) 2022, Raul A Perusquia Flores
+ * Author: Raul Perusquia <raul@inikoo.com>
+ * Created: Wed, 05 Jul 2023 11:41:00 Malaysia Time, Kuala Lumpur, Malaysia
+ * Copyright (c) 2023, Raul A Perusquia Flores
  */
 
-namespace App\Models\Sales;
+namespace App\Models\CRM;
 
 
 use App\Models\Auth\WebUser;
@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * App\Models\Sales\Customer
+ * App\Models\CRM\Customer
  *
  * @property int $id
  * @property int|null $shop_id
@@ -73,6 +73,23 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Customer extends Model
 {
+
+    protected $casts = [
+        'data'            => 'array',
+        'location'        => 'array',
+        //'state'           => CustomerStateEnum::class,
+        //'status'          => CustomerStatusEnum::class,
+        //'trade_state'     => CustomerTradeStateEnum::class
+
+    ];
+
+    protected $attributes = [
+        'data'            => '{}',
+        'location'        => '{}',
+    ];
+
+    protected $guarded = [];
+
     public function webUsers(): HasMany
     {
         return $this->hasMany(WebUser::class);

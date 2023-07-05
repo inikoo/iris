@@ -7,7 +7,7 @@
 
 namespace App\Models\Traits;
 
-use App\Models\Sales\Customer;
+use App\Models\CRM\Customer;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 trait HasOrder

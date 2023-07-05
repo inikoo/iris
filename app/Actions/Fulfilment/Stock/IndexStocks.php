@@ -9,8 +9,8 @@ namespace App\Actions\Fulfilment\Stock;
 
 use App\Actions\UI\WithInertia;
 use App\Http\Resources\Fulfilment\StockResource;
+use App\Models\CRM\Customer;
 use App\Models\Fulfilment\Stock;
-use App\Models\Sales\Customer;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Inertia\Inertia;

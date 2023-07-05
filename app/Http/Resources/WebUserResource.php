@@ -7,7 +7,7 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Sales\Customer;
+use App\Models\CRM\Customer;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**

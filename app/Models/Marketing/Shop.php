@@ -7,7 +7,7 @@
 
 namespace App\Models\Marketing;
 
-use App\Models\Sales\Customer;
+use App\Models\CRM\Customer;
 use App\Models\Sales\Order;
 use App\Models\Web\Website;
 use Illuminate\Database\Eloquent\Builder;

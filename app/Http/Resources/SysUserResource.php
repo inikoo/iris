@@ -12,7 +12,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @property mixed $updated_at
  * @property mixed $userable_type
  */
-class UserResource extends JsonResource
+class SysUserResource extends JsonResource
 {
     use WhenMorphToLoaded;
 
