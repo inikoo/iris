@@ -33,10 +33,10 @@ library.add(faCartPlus, faFilePdf)
         <!-- Middle Menu -->
         <div class="pt-4 col-span-2 text-gray-600 pl-6 pr-8">
             <div class="capitalize text-2xl font-serif">16x Peppermint & Tea Tree Bath Bomb</div>
-            <!-- <div class="flex gap-x-4 italic text-gray-500 text-xs">
-                <p>Code: <span class="font-semibold">JBB-01</span></p>
-                <p>Stock: <span class="font-semibold">31245</span></p>
-            </div> -->
+            <div class="flex gap-x-5 italic text-gray-500 text-xs">
+                <p class="font-light"><span class="font-semibold">67</span> items sold</p>
+                <p class="font-light"><span class="font-semibold">213</span> people liked</p>
+            </div>
             <div class="flex mt-4 justify-between">
                 <div class="">
                     <p class="text-4xl text-indigo-700 font-bold"><span class="text-lg">$</span>20.40<span class="ml-1 font-light text-xs text-gray-600">($1.28/Ball)</span></p>
@@ -45,17 +45,19 @@ library.add(faCartPlus, faFilePdf)
                 </div>
 
             </div>
-            <div class="mt-4 space-y-4">
-                <p class="text-sm">
+            <div class="mt-4 space-y-4 text-sm">
+                <p class="whitespace-pre-line">
                     Come alive with a fresh blast of zingy peppermint and drop of tea tree. Peppermint & Tea Tree Bath Bombs
                     are also great value. Each ball weighs in at a massive 180+ grams and contains Shea Butter to make them
                     smoother on your skin.
                 </p>
-                <p class="text-sm">
+                <p class="">
                     We have a range of fantastic fragrances to choose from, each in their own
                     distinctive colour. Mix several different outers to make an eye catching display in your shop that your
                     customers will not be able to resist.
                 </p>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem sunt aliquid beatae omnis a voluptates!</p>
+                <p>Enjoy the product :)</p>
             </div>
             <div class="flex items-center mt-4">
                 <div
