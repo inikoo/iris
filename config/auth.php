@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Auth\User;
+use App\Models\SysAdmin\User;
 use App\Models\Auth\WebUser;
 
 return [
