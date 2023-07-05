@@ -24,3 +24,4 @@ storage/**
 /resources/private
 deploy.sh
 staging-deploy.sh
+/app/Models/Auth/IsWebUser.php
