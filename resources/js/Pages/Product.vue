@@ -9,5 +9,7 @@ import Product from '@/Components/Product/Product.vue'
 </script>
 
 <template layout="Ecommerce">
-    <Product theme="1" />
+    <section class="py-8">
+        <Product theme="1" />
+    </section>
 </template>
