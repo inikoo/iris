@@ -31,6 +31,9 @@
         "@inertiajs/vue3": "^1.0.9",
         "@protonemedia/inertiajs-tables-laravel-query-builder": "^2.1.0",
         "laravel-vue-i18n": "^2.3.0",
-        "pinia": "^2.1.4"
+        "pinia": "^2.1.4",
+        "sass": "^1.63.6",
+        "sass-loader": "^13.3.2",
+        "swiper": "^10.0.3"
     }
 }

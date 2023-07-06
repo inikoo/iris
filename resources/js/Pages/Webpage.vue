@@ -6,8 +6,10 @@
 
 <script setup>
 import Baskets from '@/Components/Baskets/Baskets.vue'
+import Banner from '@/Components/Banner.vue'
 </script>
 
 <template layout="Ecommerce">
+    <Banner />
     <Baskets theme="1"/>
 </template>

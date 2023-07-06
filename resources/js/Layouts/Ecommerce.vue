@@ -17,7 +17,7 @@
     <div class="bg-white">
         <Header :theme="HeaderTheme"/>
         
-        <main class="px-10">
+        <main class="py-5 px-10">
             <slot/>
         </main>
 
