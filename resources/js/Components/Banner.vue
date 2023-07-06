@@ -10,7 +10,7 @@
             }"
             :navigation="false" :modules="[Autoplay, Pagination, Navigation]" class="mySwiper">
             <SwiperSlide v-for="imgBanner in data.imgsBanner">
-                <img :src="imgBanner" alt="" srcset="">
+                <img :src="imgBanner.imageSrc" :alt="imgBanner.imageAlt" srcset="">
             </SwiperSlide>
         </swiper>
     </div>
@@ -29,10 +29,22 @@ import 'swiper/css/navigation';
 const data = {
     delay: 2500,
     imgsBanner: [
-        'https://tailwindui.com/img/ecommerce-images/incentives-07-hero.jpg',
-        'https://tailwindui.com/img/ecommerce-images/product-page-01-featured-product-shot.jpg',
-        'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg',
-        'https://tailwindui.com/img/ecommerce-images/product-page-05-product-01.jpg',
+        {
+            imageSrc: "https://tailwindui.com/img/ecommerce-images/incentives-07-hero.jpg",
+            imageAlt: "Front of men's Basic Tee in sienna",
+        },
+        {
+            imageSrc: "https://tailwindui.com/img/ecommerce-images/product-page-01-featured-product-shot.jpg",
+            imageAlt: "Lorem ipsum dolor sit amet consectetur.",
+        },
+        {
+            imageSrc: "https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg",
+            imageAlt: "Lorem ipsum dolor Basic Tee in sienna",
+        },
+        {
+            imageSrc: "https://tailwindui.com/img/ecommerce-images/product-page-05-product-01.jpg",
+            imageAlt: "Continuous infinite slider",
+        },
     ]
 }
 
