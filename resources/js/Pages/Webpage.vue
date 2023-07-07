@@ -12,7 +12,7 @@ import Picture from '@/Components/Picture.vue'
 import Maps from '@/Components/Maps.vue'
 </script>
 
-<template layout="Ecommerce">
+<template layout="LayoutCenter">
     <Banner />
     <Text class="text-2xl text-gray-700 font-bold mt-4 capitalize"/>
     <Picture class="w-20 h-auto" />

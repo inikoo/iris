@@ -1,4 +1,5 @@
 <template>
+    <!-- Put api-key="" to remove the 'developement' screen -->
     <GoogleMap style="" :center="markers[0]" :zoom="13">
         <MarkerCluster>
             <Marker v-for="(marker, i) in markers" :options="{ position: marker }" :key="i" />
