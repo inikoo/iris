@@ -42,6 +42,10 @@ class RouteServiceProvider extends ServiceProvider
                 ->domain('api.'.config('website.domain'))
                 ->group(base_path('routes/customer-api/root.php'));
 
+            Route::prefix('webhooks')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/webhooks/webhooks.php'));
+
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
