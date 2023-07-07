@@ -8,10 +8,12 @@
 import Baskets from '@/Components/Baskets/Baskets.vue'
 import Banner from '@/Components/Banner.vue'
 import Text from '@/Components/Text.vue'
+import Picture from '@/Components/Picture.vue'
 </script>
 
 <template layout="Ecommerce">
     <Banner />
     <Text class="text-2xl text-gray-700 font-bold mt-4 capitalize"/>
+    <Picture class="w-20 h-auto" />
     <Baskets theme="1"/>
 </template>
