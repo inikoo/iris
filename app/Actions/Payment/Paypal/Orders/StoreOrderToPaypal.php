@@ -48,7 +48,21 @@ class StoreOrderToPaypal {
                             ]
                         ]
                     ],
-                    'items' => $items
+                    'items' => $items,
+                    'payment_source' => [
+                        'paypal' => [
+                            'experience_context' => [
+                                "payment_method_preference" => "IMMEDIATE_PAYMENT_REQUIRED",
+                                "payment_method_selected" => "PAYPAL",
+                                "shipping_preference" => "SET_PROVIDED_ADDRESS",
+                                "user_action" => "PAY_NOW"
+                            ]
+                        ]
+                    ],
+                    'application_context' => [
+                        'cancel_url' => url('/payment/cancel'),
+                        'return_url' => url('/payment/execute')
+                    ]
                 ]
             ]
         ]);
