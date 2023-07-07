@@ -4,12 +4,12 @@
             <img :src="data.imgSrc" :alt="data.imgAlt" class="object-cover min-w-full min-h-full" />
         </div>
         <div class="max-w-5xl bg-gray-100">
-            <Header :theme="HeaderTheme" />
+            <Header :theme="data.header" />
 
             <main class="py-5 px-10">
                 <slot />
             </main>
-            <Footer theme="2" />
+            <Footer :theme="data.footer" />
 
         </div>
     </div>
@@ -20,11 +20,13 @@ import Header from '@/Components/Header/index.vue'
 import Footer from '@/Components/Footers/Footer.vue'
 
 const data = {
-    imgSrc: 'https://tailwindui.com/img/ecommerce-images/incentives-07-hero.jpg',
-    imgAlt: 'Background Image of Page'
+    header: "LightHeader",
+    background: {
+        imgSrc: 'https://tailwindui.com/img/ecommerce-images/incentives-07-hero.jpg',
+        imgAlt: 'Background Image of Page'
+    },
+    footer: "1"
 }
 
-// header = [ DarkHeader, LightHeader ]
-const HeaderTheme = 'DarkHeader'
 
 </script>
