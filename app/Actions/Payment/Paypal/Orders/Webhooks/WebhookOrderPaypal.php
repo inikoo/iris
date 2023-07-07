@@ -17,6 +17,8 @@ class WebhookOrderPaypal {
         $orderId = $objectData['resource']['id'];
         $status  = $objectData['resource']['status'];
 
+        // TODO Update the payment detail in database
+
         return $objectData;
     }
 
