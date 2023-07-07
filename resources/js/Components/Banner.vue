@@ -1,6 +1,6 @@
 <template>
     <div class="h-96">
-        <swiper :spaceBetween="-1" :slidesPerView="1" :centeredSlides="true" :loop="true"
+        <Swiper :spaceBetween="-1" :slidesPerView="1" :centeredSlides="true" :loop="true"
             :autoplay="{
                 delay: data.delay,
                 disableOnInteraction: false,
@@ -15,14 +15,14 @@
                     {{imgBanner.link.label}}
                 </Link>
             </SwiperSlide>
-        </swiper>
+        </Swiper>
     </div>
 </template>
 
 <script setup lang="ts">
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Link, router } from "@inertiajs/vue3"
+import { Link } from "@inertiajs/vue3"
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 
 // Import Swiper styles
