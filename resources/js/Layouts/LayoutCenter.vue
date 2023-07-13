@@ -19,13 +19,20 @@
 import Header from '@/Components/Header/index.vue'
 import Footer from '@/Components/Footers/Footer.vue'
 
+import { fab } from "@fortawesome/free-brands-svg-icons"
+import { fas } from '@/../private/pro-solid-svg-icons'
+import { far } from '@/../private/pro-regular-svg-icons'
+import { fal } from '@/../private/pro-light-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+library.add(fas, fab, far, fal)
+
 const data = {
     header: "LightHeader",
     background: {
         imgSrc: 'https://tailwindui.com/img/ecommerce-images/incentives-07-hero.jpg',
         imgAlt: 'Background Image of Page'
     },
-    footer: "1"
+    footer: "3"
 }
 
 
