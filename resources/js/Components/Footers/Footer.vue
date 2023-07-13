@@ -5,18 +5,18 @@
 </template>
 
 <script setup lang="ts">
-import FooterTheme1 from '@/Components/Footers/FooterTheme1.vue'
-import FooterTheme2 from '@/Components/Footers/FooterTheme2.vue'
-import FooterTheme3 from '@/Components/Footers/FooterTheme3.vue'
+import FooterLombok from '@/Components/Footers/FooterLombok.vue'
+import FooterBali from '@/Components/Footers/FooterBali.vue'
+import FooterBorneo from '@/Components/Footers/FooterBorneo.vue'
 
 const props = defineProps<{
     theme: string
 }>()
 
 const component = {
-    1: FooterTheme1, 
-    2: FooterTheme2, 
-    3: FooterTheme3, 
+    1: FooterLombok, 
+    2: FooterBali, 
+    3: FooterBorneo, 
 }
 
 </script>
