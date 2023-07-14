@@ -9,7 +9,7 @@
                 clickable: true,
             }"
             :navigation="false" :modules="[Autoplay, Pagination, Navigation]" class="mySwiper">
-            <SwiperSlide v-for="imgBanner in data.imgsBanner">
+            <SwiperSlide v-for="imgBanner in data.slides">
                 <img :src="imgBanner.imageSrc" :alt="imgBanner.imageAlt" srcset="">
                 <Link v-if="imgBanner.link" :href="imgBanner.link.target" class="bg-gray-800/40 text-gray-100 border border-gray-50/50 absolute bottom-6 right-11 rounded px-3 py-1 hover:bg-gray-900/60">
                     {{imgBanner.link.label}}
@@ -32,7 +32,7 @@ import 'swiper/css/navigation';
 
 const data = {
     delay: 2500,
-    imgsBanner: [
+    slides: [
         {
             imageSrc: "https://tailwindui.com/img/ecommerce-images/incentives-07-hero.jpg",
             imageAlt: "Front of men's Basic Tee in sienna",
