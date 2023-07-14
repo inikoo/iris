@@ -34,7 +34,7 @@ const data = {
     delay: 2500,
     slides: [
         {
-            imageSrc: "https://tailwindui.com/img/ecommerce-images/incentives-07-hero.jpg",
+            imageSrc: "/banner/incentives-07-hero.jpg",
             imageAlt: "Front of men's Basic Tee in sienna",
             link: {
                 label: "Open",
@@ -42,11 +42,11 @@ const data = {
             }
         },
         {
-            imageSrc: "https://tailwindui.com/img/ecommerce-images/product-page-01-featured-product-shot.jpg",
+            imageSrc: "/banner/product-page-01-featured-product-shot.jpg",
             imageAlt: "Lorem ipsum dolor sit amet consectetur.",
         },
         {
-            imageSrc: "https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg",
+            imageSrc: "/banner/product-page-03-product-01.jpg",
             imageAlt: "Lorem ipsum dolor Basic Tee in sienna",
             link: {
                 label: "Browse Promo",
@@ -54,7 +54,7 @@ const data = {
             }
         },
         {
-            imageSrc: "https://tailwindui.com/img/ecommerce-images/product-page-05-product-01.jpg",
+            imageSrc: "/banner/product-page-05-product-01.jpg",
             imageAlt: "Continuous infinite slider",
         },
     ]
