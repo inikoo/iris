@@ -9,7 +9,7 @@
                 clickable: true,
             }"
             :navigation="false" :modules="[Autoplay, Pagination, Navigation]" class="mySwiper">
-            <SwiperSlide v-for="imgBanner in data.slides">
+            <SwiperSlide v-for="imgBanner in data.slides" :key="imgBanner.id">
                 <img :src="imgBanner.imageSrc" :alt="imgBanner.imageAlt" srcset="">
                 <Link v-if="imgBanner.link" :href="imgBanner.link.target" class="bg-gray-800/40 text-gray-100 border border-gray-50/50 absolute bottom-6 right-11 rounded px-3 py-1 hover:bg-gray-900/60">
                     {{imgBanner.link.label}}
@@ -34,6 +34,7 @@ const data = {
     "delay": 2500,
     "slides": [
         {
+            "id": 1,
             "imageSrc": "/banner/incentives-07-hero.jpg",
             "imageAlt": "Front of men's Basic Tee in sienna",
             "link": {
@@ -42,10 +43,12 @@ const data = {
             }
         },
         {
+            "id": 2,
             "imageSrc": "/banner/product-page-01-featured-product-shot.jpg",
             "imageAlt": "Lorem ipsum dolor sit amet consectetur."
         },
         {
+            "id": 3,
             "imageSrc": "/banner/product-page-03-product-01.jpg",
             "imageAlt": "Lorem ipsum dolor Basic Tee in sienna",
             "link": {
@@ -54,6 +57,7 @@ const data = {
             }
         },
         {
+            "id": 4,
             "imageSrc": "/banner/product-page-05-product-01.jpg",
             "imageAlt": "Continuous infinite slider"
         }
